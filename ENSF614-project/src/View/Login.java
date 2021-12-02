@@ -79,15 +79,6 @@ public class Login extends JFrame implements ActionListener{
             registerPage.displayGUI();
         }
 
-//        // login pressed
-//        if(e.getSource() == loginButton){
-//            loginView = new LoginPage();
-//            StudentList studentList = new StudentList();
-//            loginController = new LoginController(studentList, loginView);
-//            loginView.displayGUI();
-//        }
-
-
     }
 
 
@@ -103,8 +94,8 @@ public class Login extends JFrame implements ActionListener{
      * Returns the password
      * @return
      */
-    public int getPassword() {
-        return Integer.parseInt(password.getText());
+    public String getPassword() {
+        return password.getText();
     }
 
     /**
