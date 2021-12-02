@@ -122,4 +122,12 @@ public class TicketView extends JFrame{
 	public void setTicketDisplay (String message) {
 		ticketDisplay.setText(message);
 	}
+	
+	public String getEmail () {
+		return emailField.getText();
+	}
+	
+	public int getCardNumber () {
+		return Integer.parseInt(cardNumField.getText());
+	}
 }
