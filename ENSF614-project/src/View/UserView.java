@@ -19,8 +19,20 @@ public class UserView extends JFrame implements ActionListener{
 
     private JButton bookBtn =null;
     private JButton cancelBtn = null;
+    
+    private TheatreView theatre = null;
+    private PaymentView payment = null;
 
-    public UserView() {
+    
+    public void runApp(){
+
+        bookBtn.addActionListener(this);
+        cancelBtn.addActionListener(this);
+
+        displayGUI();
+    }
+    
+    public void displayGUI() {
         this.setTitle("Registered User Info Page");
         this.setSize(600, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,108 +152,76 @@ public class UserView extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
-    public JLabel getUserName() {
-        return userName;
+    public String getUserName() {
+        return userName.getText();
     }
 
-    public void setUserName(JLabel userName) {
-        this.userName = userName;
+
+    public String getUserPwd() {
+        return userPwd.getText();
     }
 
-    public JLabel getUserPwd() {
-        return userPwd;
+
+    public String getFName() {
+        return FName.getText();
     }
 
-    public void setUserPwd(JLabel userPwd) {
-        this.userPwd = userPwd;
+
+    public String getLName() {
+        return LName.getText();
     }
 
-    public JLabel getFName() {
-        return FName;
+    public String getEmail() {
+        return Email.getText();
     }
 
-    public void setFName(JLabel FName) {
-        this.FName = FName;
+    public String getAddress() {
+        return Address.getText();
     }
 
-    public JLabel getLName() {
-        return LName;
+    public String getCardNo() {
+        return cardNo.getText();
     }
 
-    public void setLName(JLabel LName) {
-        this.LName = LName;
+
+    public String getCvv() {
+        return cvv.getText();
     }
 
-    public JLabel getEmail() {
-        return Email;
+    public String getExpDate() {
+        return expDate.getText();
     }
 
-    public void setEmail(JLabel email) {
-        Email = email;
+    public void displayMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
     }
 
-    public JLabel getAddress() {
-        return Address;
+    public void addBookListener (ActionListener listenForBookButton) {
+        bookBtn.addActionListener(listenForBookButton);
     }
 
-    public void setAddress(JLabel address) {
-        Address = address;
+    public void addCancelListener (ActionListener listenForCancelButton) {
+        cancelBtn.addActionListener(listenForCancelButton);
     }
-
-    public JLabel getCardNo() {
-        return cardNo;
-    }
-
-    public void setCardNo(JLabel cardNo) {
-        this.cardNo = cardNo;
-    }
-
-    public JLabel getCvv() {
-        return cvv;
-    }
-
-    public void setCvv(JLabel cvv) {
-        this.cvv = cvv;
-    }
-
-    public JLabel getExpDate() {
-        return expDate;
-    }
-
-    public void setExpDate(JLabel expDate) {
-        this.expDate = expDate;
-    }
-
-    public JButton getBookBtn() {
-        return bookBtn;
-    }
-
-    public void setBookBtn(JButton bookBtn) {
-        this.bookBtn = bookBtn;
-    }
-
-//    public void displayMessage(String errorMessage) {
-//        JOptionPane.showMessageDialog(this, errorMessage);
-//    }
-//
-//    public void addCalcListener (ActionListener listenForCalcButton) {
-//        bookBtn.addActionListener(listenForCalcButton);
-//    }
-//
-//
-//    }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+    	 if (e.getSource() == bookBtn) {
+             theatre = new TheatreView();
+             theatre.displayGUI();
+         }
+    	 if (e.getSource() == cancelBtn) {
+             payment = new PaymentView();
+         }
 
     }
-
-
+    
     public static void main(String[] args) {
-        new UserView();
-    }
+    	UserView userview = new UserView();
+    	userview.displayGUI();
+	}
 
 
 }
