@@ -3,7 +3,7 @@
 
 *.metadata/.plugins
 *.metadata\.plugins
-**/metadata/*
-*ENSF614-project/bin
-*ENSF614-project\bin
-ENSF614-project/bin/View/Registration.class
+
+*\bin
+bin/
+/.metadata/
