@@ -10,8 +10,10 @@ public class TheatreView extends JFrame implements ActionListener {
     private JButton theatre1 = null;
     private JButton theatre2 = null;
     private JButton theatre3 = null;
+    
+    private MovieSearchView movieSearch = null;
 
-    public TheatreView(){
+    public void displayGUI(){
         this.setTitle("Theatre view Page");
         this.setSize(600, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,14 +41,34 @@ public class TheatreView extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
+    public void displayMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
+    
+    public void addTheatreListener1(ActionListener listenForTheatre){
+        theatre1.addActionListener(listenForTheatre);
+    }
+    
+    public void addTheatreListener2(ActionListener listenForTheatre){
+        theatre2.addActionListener(listenForTheatre);
+    }
+    
+    public void addTheatreListener3(ActionListener listenForTheatre){
+        theatre3.addActionListener(listenForTheatre);
     }
 
     public static void main(String[] args) {
-        new TheatreView();
+       TheatreView theatreView = new TheatreView();
+        theatreView.displayGUI();
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == theatre1 || e.getSource() == theatre2 ||  e.getSource() == theatre3) {
+			movieSearch = new MovieSearchView();
+		}
+		
+	}
 
 
 }
