@@ -19,13 +19,10 @@ public class SqlDatabaseConnection {
     // Connect to your database.
     // Replace server name, username, and password with your credentials
     public static void main(String[] args) {
-        String connectionUrl =
-                "jdbc:mysql://localhost/ensf614" +
-                        "user=root&password=greatsqldb";
 
         ResultSet resultSet = null;
-
-        try (Connection connection = DriverManager.getConnection(connectionUrl);
+        String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
+        try (Connection connection = DriverManager.getConnection(url, "root", "Jiajia12!@");
              Statement statement = connection.createStatement();) {
 
             // Create and execute a SELECT SQL statement.

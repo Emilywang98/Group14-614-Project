@@ -17,6 +17,7 @@ public class Login extends JFrame implements ActionListener{
     private JPasswordField passwordField = new JPasswordField();
     private JLabel password;
     private Registration registerPage;
+    private UserView userPage;
 
     public void runApp(){
 
@@ -78,7 +79,14 @@ public class Login extends JFrame implements ActionListener{
             registerPage = new Registration();
             registerPage.displayGUI();
         }
+
+        //once model gets fixed, delete this.
+        if(e.getSource() == loginButton){
+            userPage = new UserView();
+            userPage.displayGUI();
+        }
     }
+
 
     public void addLoginListener(ActionListener listenForLogin){
         loginButton.addActionListener(listenForLogin);

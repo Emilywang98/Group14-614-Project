@@ -17,20 +17,19 @@ public class UserView extends JFrame implements ActionListener{
     private JLabel cvv = null;
     private JLabel expDate = null;
 
-    private JButton bookBtn =null;
-    private JButton cancelBtn = null;
+    private JButton bookBtn =  new JButton("Book ticket");
+    private JButton cancelBtn = new JButton("Cancel ticket");
     
     private TheatreView theatre = null;
     private PaymentView payment = null;
 
-    
-    public void runApp(){
-
+    public UserView(){
         bookBtn.addActionListener(this);
         cancelBtn.addActionListener(this);
 
         displayGUI();
     }
+
     
     public void displayGUI() {
         this.setTitle("Registered User Info Page");
@@ -136,11 +135,10 @@ public class UserView extends JFrame implements ActionListener{
         expDate.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(expDate);
 
-        bookBtn = new JButton("Book ticket");
+
         bookBtn.setBounds(100, 300, 180, 25);
         this.add(bookBtn);
 
-        cancelBtn = new JButton("Cancel ticket");
         cancelBtn.setBounds(300, 300, 180, 25);
         this.add(cancelBtn);
 
@@ -207,22 +205,22 @@ public class UserView extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+
     	 if (e.getSource() == bookBtn) {
              theatre = new TheatreView();
              theatre.displayGUI();
          }
-    	 if (e.getSource() == cancelBtn) {
-             payment = new PaymentView();
-         }
 
+        if (e.getSource() == cancelBtn) {
+            payment = new PaymentView();
+        }
     }
-    
-    public static void main(String[] args) {
-    	UserView userview = new UserView();
-    	userview.displayGUI();
-	}
-
+//
+//    public static void main(String[] args) {
+//    	UserView userview = new UserView();
+//    	userview.runApp();
+//	}
+//
 
 }
 

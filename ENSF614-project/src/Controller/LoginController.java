@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class LoginController {
 
     Login login;
-    TheatreView theatre;
+
 
     public LoginController(Login login){
         this.login = login;
-        this.theatre = theatre;
+//        this.theatre = theatre;
         login.addLoginListener(new LoginController.LoginListener());
     }
 
