@@ -47,7 +47,6 @@ public class Registration extends JFrame{
     public void displayGUI(){
         setTitle("Registration Form");
         setBounds(300, 90, 600, 650);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
         c = getContentPane();
