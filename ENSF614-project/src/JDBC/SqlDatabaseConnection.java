@@ -26,7 +26,7 @@ public class SqlDatabaseConnection {
 
             // Create and execute a SELECT SQL statement.
 //            String selectSql = "SELECT TOP 10 Title, FirstName, LastName from SalesLT.Customer";
-            resultSet = statement.executeQuery(query);
+            //resultSet = statement.executeQuery(query);
 
             // Print results from select statement
             while (resultSet.next()) {
