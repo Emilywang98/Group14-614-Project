@@ -1,8 +1,7 @@
 package Controller;
 import View.Login;
 import Model.LoginModel;
-import Controller.
-import View.TheatreView;
+import Controller.TheatreController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +13,7 @@ public class LoginController {
 
     public LoginController(Login login){
         this.login = login;
-        this.theatre
+        this.theatre = theatre;
     }
 
     class LoginListener implements ActionListener{

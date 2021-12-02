@@ -1,7 +1,14 @@
 package Controller;
+import View.TheatreView;
+
 
 public class TheatreController {
 
-    public
+    TheatreView view;
+
+    public TheatreController(TheatreView view){
+        this.view = view;
+    }
+
 
 }
