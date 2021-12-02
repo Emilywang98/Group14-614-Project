@@ -22,7 +22,7 @@ public class SqlDatabaseConnection {
 
         ResultSet resultSet = null;
         String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
-        try (Connection connection = DriverManager.getConnection(url, "root", "Jiajia12!@");
+        try (Connection connection = DriverManager.getConnection(url, "root", PASSWORD);
              Statement statement = connection.createStatement();) {
 
             // Create and execute a SELECT SQL statement.
