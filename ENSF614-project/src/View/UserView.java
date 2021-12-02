@@ -20,8 +20,8 @@ public class UserView extends JFrame implements ActionListener{
     private JButton bookBtn =  new JButton("Book ticket");
     private JButton cancelBtn = new JButton("Cancel ticket");
     
-    private TheatreView theatre = null;
-    private PaymentView payment = null;
+    private TheatreView theatre;
+    private PaymentView payment;
 
     public UserView(){
         bookBtn.addActionListener(this);
