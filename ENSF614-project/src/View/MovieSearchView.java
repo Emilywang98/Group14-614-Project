@@ -1,16 +1,19 @@
 package View;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MovieSearchView extends JFrame {
+	public MovieSearchView() {
+	}
 	private JButton selectShowtimeButton, searchMovieButton;
 	private JLabel movieNameLabel,showtimesLabel,enterShowtimeLabel;
-	private JTextField movieName, showtimeSeleted, output;
+	private JTextField movieName, output, showtimeSeleted;
 	private JTextArea showtimes;
-	public MovieSearchView() {
+	public void MovieSearchView() {
 
 		// Creating the Frame
 		JFrame frame = new JFrame("Movie Search Page");
@@ -61,5 +64,31 @@ public class MovieSearchView extends JFrame {
 		frame.getContentPane().add(BorderLayout.CENTER, panel);
 		
 		frame.setVisible(true);
+	}
+	public void addSearchMovieActionListener(ActionListener listen) {
+		// TODO Auto-generated method stub
+		searchMovieButton.addActionListener(listen);
+	}
+	public void addSelectShowtimeActionListener(ActionListener listen) {
+		// TODO Auto-generated method stub
+		selectShowtimeButton.addActionListener(listen);
+		
+	}
+	public String getMovie() {
+		// TODO Auto-generated method stub
+		return movieName.getText();
+	}
+	public String getShowtime() {
+		// TODO Auto-generated method stub
+		return showtimeSeleted.getText();
+	}
+	public void setTheDisplay(String message) {
+		// TODO Auto-generated method stub
+		output.setText(message);
+	}
+	public void runApp() {
+		// TODO Auto-generated method stub
+		
+		MovieSearchView();
 	}
 }

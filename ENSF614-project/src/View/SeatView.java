@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 public class SeatView extends JFrame {
 	
 	private JButton selectSeatButton;
+	private JTextField seat, display;
+	private JTextArea availableSeats;
+	private JLabel availableSeatsLabel,seatLabel;
 	public SeatView() {
 
         JFrame frame = new JFrame("Seat Page");
@@ -17,27 +20,34 @@ public class SeatView extends JFrame {
         panel.setLayout(null);
         panel.setBorder(BorderFactory.createEmptyBorder(20, 15, 15, 15));
         
-        JLabel availableSeatsLabel = new JLabel("Available seats for the movie:");
+        availableSeatsLabel = new JLabel("Available seats for the movie:");
         availableSeatsLabel.setBounds(15, 20, 456, 13);
         panel.add(availableSeatsLabel); 
         
-        JTextArea availableSeats = new JTextArea();
+        availableSeats = new JTextArea();
         availableSeats.setBounds(15, 44, 456, 338);
         panel.add(availableSeats);
        
-        JLabel seatlabel = new JLabel("Enter a seat number:");
-        seatlabel.setBounds(15, 409, 124, 13);
-        panel.add(seatlabel);
+        seatLabel = new JLabel("Enter a seat number:");
+        seatLabel.setBounds(15, 409, 124, 13);
+        panel.add(seatLabel);
         
-        JTextField seat = new JTextField(10);
+        seat = new JTextField(10);
         seat.setBounds(141, 406, 124, 19);
         panel.add(seat);
         
-        JButton selectSeatButton = new JButton("Select Seat");
+        selectSeatButton = new JButton("Select Seat");
         selectSeatButton.setBounds(365, 405, 106, 21);
         panel.add(selectSeatButton);
         
+        display = new JTextField();
+        display.setBounds(15, 434, 456, 19);
+        panel.add(display);
+        display.setColumns(10);
+        
         frame.getContentPane().add(BorderLayout.CENTER, panel);
+        
+       
         frame.setVisible(true);
     }
 
@@ -45,6 +55,21 @@ public class SeatView extends JFrame {
 	
 	public void addSelectSeatActionListener (ActionListener listen) {
 		selectSeatButton.addActionListener(listen);
+	}
+
+
+
+	public int getSeat() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(seat.getText());
+	}
+
+
+
+	public void setTheDisplay(String message) {
+		// TODO Auto-generated method stub
+		display.setText(message);
+		
 	}
 }
 
