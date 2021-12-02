@@ -79,7 +79,7 @@ public class TicketView extends JFrame{
 		payCancelButtonsPanel.setLayout(new GridLayout(1,2));
 		
 		goToPaymentButton = new JButton("Pay for tickets");
-		cancelTicketButton = new JButton("Retrieve Ticket");
+		cancelTicketButton = new JButton("Cancel tickets");
 		
 		payCancelButtonsPanel.add(goToPaymentButton);
 		payCancelButtonsPanel.add(cancelTicketButton);
