@@ -1,5 +1,8 @@
+package View;
+
 import javax.swing.*;
 import java.awt.*;
+
 public class SeatView extends JFrame {
 	
 
