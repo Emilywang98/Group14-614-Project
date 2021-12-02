@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+E:\Documents\UCalgary\2. Fall Courses\ENSF614\Project\Project\Group14-614-Project\.metadata\.plugins\org.eclipse.jdt.core
-140836171.index
