@@ -78,9 +78,11 @@ public class Login extends JFrame implements ActionListener{
             registerPage = new Registration();
             registerPage.displayGUI();
         }
-
     }
 
+    public void addLoginListener(ActionListener listenForLogin){
+        loginButton.addActionListener(listenForLogin);
+    }
 
     /**
      * Returns Username

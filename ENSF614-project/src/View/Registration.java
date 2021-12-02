@@ -13,6 +13,9 @@ public class Registration extends JFrame{
     private JLabel email = new JLabel("Email: ");
     private JLabel cardNo = new JLabel("Card Number: ");
     private JLabel cardExp = new JLabel("Card Exp Date: ");
+
+
+
     private JLabel cardCvv = new JLabel("Card CVV: ");
 
     private JTextField firstNameText = new JTextField(10);
@@ -167,4 +170,54 @@ public class Registration extends JFrame{
         c.add(submit);
         setVisible(true);
     }
+
+    public String getFirstName() {
+        return firstName.getText();
+    }
+
+    public String getLastName() {
+        return lastName.getText();
+    }
+
+    public String getAddress() {
+        return address.getText();
+    }
+
+    public String getUsername() {
+        return username.getText();
+    }
+
+    public String getPassword() {
+        return password.getText();
+    }
+
+    public String getEmail() {
+        return email.getText();
+    }
+
+    public String getCardNo() {
+        return cardNo.getText();
+    }
+
+    public String getCardExp() {
+        return cardExp.getText();
+    }
+
+    public String getCardCvv() {
+        return cardCvv.getText();
+    }
+
+    public void addRegistrationListener(ActionListener listenForRegister){
+        submit.addActionListener(listenForRegister);
+    }
+
+    public void displayPlainMessage(String titleMessage,String plainMessage){
+        JOptionPane.showMessageDialog(this, plainMessage, titleMessage, JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+
 }

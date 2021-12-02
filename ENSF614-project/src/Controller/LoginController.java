@@ -2,6 +2,7 @@ package Controller;
 import View.Login;
 import Model.LoginModel;
 import Controller.TheatreController;
+import View.TheatreView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ public class LoginController {
     public LoginController(Login login){
         this.login = login;
         this.theatre = theatre;
+        login.addLoginListener(new LoginController.LoginListener());
     }
 
     class LoginListener implements ActionListener{
@@ -35,6 +37,6 @@ public class LoginController {
             }
         }
 
-        }
+    }
 }
 
