@@ -9,10 +9,11 @@ public class SeatController {
 	SeatView seatView;
 	
 	
-	public SeatController() {
+	public SeatController(MovieController thisMovieController) {
 		this.seatView = new SeatView();
 		
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
+		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
 	
 	public SeatView getView() {
@@ -22,13 +23,29 @@ public class SeatController {
 		
         @Override
         public void actionPerformed(ActionEvent e) {
-        	int seat;
+        	int seatNum;
         	try {
-        		seat=seatView.getSeat();
-        		seatView.setTheDisplay("Seat was successfully selected");
+        		seatNum=seatView.getSeatNumber();
+        		//still need to check if seatnumber is valid/ in database
+        		seatView.setTheDisplay("Seat " + seatNum + " was successfully selected");
         		
         	}catch(NumberFormatException ex) {
 				seatView.setTheDisplay("Error!");
+			}
+        }
+    }
+	
+class SearchSeatsListener implements ActionListener {
+		
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	String availableSeats;
+        	try {
+        		availableSeats=seatView.getAvaialbleSeats();
+        		seatView.setAvailableSeatsDisplay(availableSeats);
+        		
+        	}catch(NumberFormatException ex) {
+				seatView.setAvailableSeatsDisplay("Error!");
 			}
         }
     }

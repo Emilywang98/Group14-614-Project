@@ -1,19 +1,18 @@
 package View;
 
 import javax.swing.*;
-
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
-public class MovieSearchView extends JFrame {
-	public MovieSearchView() {
-	}
-	private JButton selectShowtimeButton, searchMovieButton;
+
+public class MovieSearchView extends JFrame{
+	
+	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
 	private JLabel movieNameLabel,showtimesLabel,enterShowtimeLabel;
-	private JTextField movieName, output, showtimeSeleted;
-	private JTextArea showtimes;
-	public void MovieSearchView() {
+	private JTextField movieName, movieSuccessDisplay, showtimeSeleted, showtimeSuccessDisplay;
+	private JTextArea showtimesDisplay;
+	
+	public MovieSearchView() {
 
 		// Creating the Frame
 		JFrame frame = new JFrame("Movie Search Page");
@@ -24,29 +23,33 @@ public class MovieSearchView extends JFrame {
 		panel.setLayout(null);
 		
 		movieNameLabel = new JLabel("Enter Movie Name:");
-		movieNameLabel.setBounds(93, 109, 121, 13);
+		movieNameLabel.setBounds(85, 65, 121, 13);
 		panel.add(movieNameLabel);
 		
 		movieName = new JTextField(20); 
-		movieName.setBounds(224, 106, 166, 19);
+		movieName.setBounds(229, 65, 166, 19);
 		panel.add(movieName);
 		
 		searchMovieButton = new JButton("Search");
-		searchMovieButton.setBounds(188, 144, 96, 19);
+		searchMovieButton.setBounds(188, 104, 96, 19);
 		panel.add(searchMovieButton);
 		
-		output = new JTextField();
-		output.setBounds(70, 174, 336, 19);
-		panel.add(output);
-		output.setColumns(10);
+		movieSuccessDisplay = new JTextField();
+		movieSuccessDisplay.setBounds(70, 133, 336, 19);
+		panel.add(movieSuccessDisplay);
+		movieSuccessDisplay.setColumns(10);
+		
+		searchShowtimesButton = new JButton("Search Showtimes");
+		searchShowtimesButton.setBounds(70, 186, 159, 21);
+		panel.add(searchShowtimesButton);
 		
 		showtimesLabel = new JLabel("Avaiable showtimes for the movie:");
 		showtimesLabel.setBounds(70, 217, 336, 13);
 		panel.add(showtimesLabel);
 		
-		showtimes = new JTextArea();
-		showtimes.setBounds(70, 240, 336, 101);
-		panel.add(showtimes);
+		showtimesDisplay = new JTextArea();
+		showtimesDisplay.setBounds(70, 240, 336, 101);
+		panel.add(showtimesDisplay);
 		
 		enterShowtimeLabel = new JLabel("Enter showtime:");
 		enterShowtimeLabel.setBounds(70, 366, 108, 13);
@@ -61,34 +64,55 @@ public class MovieSearchView extends JFrame {
 		selectShowtimeButton.setBounds(321, 362, 85, 21);
 		panel.add(selectShowtimeButton);
 		
+		showtimeSuccessDisplay= new JTextField();
+		showtimeSuccessDisplay.setColumns(10);
+		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
+		panel.add(showtimeSuccessDisplay);
+		
 		frame.getContentPane().add(BorderLayout.CENTER, panel);
 		
 		frame.setVisible(true);
 	}
 	public void addSearchMovieActionListener(ActionListener listen) {
-		// TODO Auto-generated method stub
+		
 		searchMovieButton.addActionListener(listen);
 	}
 	public void addSelectShowtimeActionListener(ActionListener listen) {
-		// TODO Auto-generated method stub
+		
 		selectShowtimeButton.addActionListener(listen);
 		
 	}
+	public void addSearchShowtimesActionListener(ActionListener listen) {
+		
+		searchShowtimesButton.addActionListener(listen);
+		
+	}
 	public String getMovie() {
-		// TODO Auto-generated method stub
+		
 		return movieName.getText();
 	}
 	public String getShowtime() {
-		// TODO Auto-generated method stub
+		
 		return showtimeSeleted.getText();
 	}
-	public void setTheDisplay(String message) {
-		// TODO Auto-generated method stub
-		output.setText(message);
-	}
-	public void runApp() {
-		// TODO Auto-generated method stub
+	
+	public String getShowtimesForMovie() {
 		
-		MovieSearchView();
+		return "17:00\n18:00\n19:00";
+	}
+
+	public void setMovieSuccessDisplay(String message) {
+		
+		movieSuccessDisplay.setText(message);
+	}
+	
+	public void setShowtimeSuccessDisplay(String message) {
+		
+		showtimeSuccessDisplay.setText(message);
+	}
+	
+	public void setShowtimesDisplay(String message) {
+		
+		showtimesDisplay.setText(message);
 	}
 }
