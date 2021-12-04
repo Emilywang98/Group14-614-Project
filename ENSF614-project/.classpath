@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.27.jar"/>
+	<classpathentry kind="lib" path="E:/Documents/UCalgary/2. Fall Courses/ENSF614/Project/Project/Group14-614-Project/ENSF614-project/lib/mysql-connector-java-8.0.27.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
