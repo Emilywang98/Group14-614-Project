@@ -26,7 +26,7 @@ public class LoginModel {
     }
     
     public ArrayList<ArrayList<String>> getVerification() {
-    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Name=\"Gregory Slowski\"");
+    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Name=\"Gregory Slowski\"");
 //    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT * FROM REGISTEREDUSER");
     	return matrix;
     }
