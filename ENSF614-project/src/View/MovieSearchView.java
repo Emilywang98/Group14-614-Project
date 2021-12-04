@@ -15,9 +15,11 @@ public class MovieSearchView extends JFrame{
 	public MovieSearchView() {
 
 		// Creating the Frame
-		JFrame frame = new JFrame("Movie Search Page");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 500);
+		setSize(500,500);
+		setTitle("Movie Search Page");
+//		JFrame frame = new JFrame("Movie Search Page");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setSize(500, 500);
 
 		JPanel panel = new JPanel(); 
 		panel.setLayout(null);
@@ -43,7 +45,7 @@ public class MovieSearchView extends JFrame{
 		searchShowtimesButton.setBounds(70, 186, 159, 21);
 		panel.add(searchShowtimesButton);
 		
-		showtimesLabel = new JLabel("Avaiable showtimes for the movie:");
+		showtimesLabel = new JLabel("Available showtimes for the movie:");
 		showtimesLabel.setBounds(70, 217, 336, 13);
 		panel.add(showtimesLabel);
 		
@@ -68,10 +70,11 @@ public class MovieSearchView extends JFrame{
 		showtimeSuccessDisplay.setColumns(10);
 		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
 		panel.add(showtimeSuccessDisplay);
-		
-		frame.getContentPane().add(BorderLayout.CENTER, panel);
-		
-		frame.setVisible(true);
+
+		add(panel);
+//		frame.getContentPane().add(BorderLayout.CENTER, panel);
+//
+		setVisible(true);
 	}
 	public void addSearchMovieActionListener(ActionListener listen) {
 		

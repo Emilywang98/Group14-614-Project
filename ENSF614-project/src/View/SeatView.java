@@ -13,9 +13,9 @@ public class SeatView extends JFrame {
 	private JLabel availableSeatsLabel,seatLabel;
 	public SeatView() {
 
-        JFrame frame = new JFrame("Seat Page");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        setTitle("Seat Page");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 500);
 
         JPanel panel = new JPanel(); 
         panel.setLayout(null);
@@ -49,9 +49,10 @@ public class SeatView extends JFrame {
         display.setBounds(15, 434, 456, 19);
         panel.add(display);
         display.setColumns(10);
-        
-        frame.getContentPane().add(BorderLayout.CENTER, panel);
-        frame.setVisible(true);
+
+        add(panel);
+//        frame.getContentPane().add(BorderLayout.CENTER, panel);
+        setVisible(true);
     }
 
 
@@ -65,11 +66,10 @@ public class SeatView extends JFrame {
 	}
 
 	public int getSeatNumber() {
-		// TODO Auto-generated method stub
 		return Integer.parseInt(seat.getText());
 	}
 	
-	public String getAvaialbleSeats() {
+	public String getAvailableSeats() {
 		return "1\n2\n3\n4\n5";
 		// return a list of seats
 	}
@@ -77,13 +77,11 @@ public class SeatView extends JFrame {
 
 
 	public void setTheDisplay(String message) {
-		// TODO Auto-generated method stub
 		display.setText(message);
 		
 	}
 	
 	public void setAvailableSeatsDisplay(String message) {
-		// TODO Auto-generated method stub
 		availableSeatsDisplay.setText(message);
 		
 	}

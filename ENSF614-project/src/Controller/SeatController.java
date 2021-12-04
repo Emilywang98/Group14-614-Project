@@ -19,6 +19,23 @@ public class SeatController {
 	public SeatView getView() {
 		return seatView;
 	}
+
+	class SearchSeatsListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String availableSeats;
+			try {
+				availableSeats=seatView.getAvailableSeats();
+				seatView.setAvailableSeatsDisplay(availableSeats);
+
+			}catch(NumberFormatException ex) {
+				seatView.setAvailableSeatsDisplay("Error!");
+			}
+		}
+	}
+
+
 	class SelectSeatListener implements ActionListener {
 		
         @Override
@@ -31,21 +48,6 @@ public class SeatController {
         		
         	}catch(NumberFormatException ex) {
 				seatView.setTheDisplay("Error!");
-			}
-        }
-    }
-	
-class SearchSeatsListener implements ActionListener {
-		
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        	String availableSeats;
-        	try {
-        		availableSeats=seatView.getAvaialbleSeats();
-        		seatView.setAvailableSeatsDisplay(availableSeats);
-        		
-        	}catch(NumberFormatException ex) {
-				seatView.setAvailableSeatsDisplay("Error!");
 			}
         }
     }
