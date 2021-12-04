@@ -6,7 +6,6 @@ import java.awt.event.*;
 
 public class SeatView extends JFrame {
 	
-	
 	private JButton searchSeatsButton, selectSeatButton;
 	private JTextField seat, display;
 	private JTextArea availableSeatsDisplay;
