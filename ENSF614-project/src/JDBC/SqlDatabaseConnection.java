@@ -48,7 +48,7 @@ public class SqlDatabaseConnection {
             	   System.out.println("No records found");
 
                }
-               else {
+//               else {
             	   int i = 0;
             	   do {
             		   ArrayList<String> tempRow = new ArrayList<String>();
@@ -63,7 +63,7 @@ public class SqlDatabaseConnection {
             		   i++;
             		   
             	   } while (resultSet.next());
-               }
+//               }
                
 //               System.out.println();
 //               System.out.println(matrix.get(1).get(2));
