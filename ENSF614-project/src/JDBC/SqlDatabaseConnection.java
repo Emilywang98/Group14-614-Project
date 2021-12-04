@@ -14,8 +14,8 @@ public class SqlDatabaseConnection {
     public SqlDatabaseConnection(){
         
         String connectionUrl = "jdbc:mysql://127.0.0.1:3306/MOVIETHEATRE";
-        String name = "root";
-        String pass = "PASSWORD";
+        String name = "user";
+        String pass = "12345";
         
         try {
 			connection = DriverManager.getConnection(connectionUrl, name, pass);
