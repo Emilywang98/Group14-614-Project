@@ -14,20 +14,30 @@ public class LoginModel {
 	SqlDatabaseConnection myConnection;
 	String username;
 	String password;
-	
-	
-	public static void main(String[] args) {
-		LoginModel loginModel = new LoginModel();
-		ArrayList<ArrayList<String>> matrix = loginModel.getVerification();
-	}
-	
-    public LoginModel(){
+
+	//our database should be in RegisteredUser class
+	ArrayList<String> info;
+
+    public LoginModel() throws ClassNotFoundException {
     	myConnection = new SqlDatabaseConnection();
     }
     
-    public ArrayList<ArrayList<String>> getVerification() {
-    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Name=\"Gregory Slowski\"");
-//    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT * FROM REGISTEREDUSER");
-    	return matrix;
+    public ArrayList<String> getVerification(String username, String password) {
+
+		//query the username and password
+//		System.out.println("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
+    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
+
+		if(matrix.get(0).get(0).equals(username) && matrix.get(0).get(1).equals(password)){
+//			System.out.println("Login Successful!");
+			ArrayList<String> loginInfo = new ArrayList();
+			loginInfo.add(username);
+			loginInfo.add(password);
+			return loginInfo;
+		}
+		else{
+			throw new NullPointerException();
+		}
+
     }
 }

@@ -14,10 +14,10 @@ public class Login extends JFrame implements ActionListener{
     private JButton registerButton = new JButton("Register");
     private JButton guestButton = new JButton("Continue as Guest");
     private JTextField nameText = new JTextField();
-    private JPasswordField passwordField = new JPasswordField();
-    private JLabel password;
+//    private JPasswordField passwordField = new JPasswordField();
     private Registration registerPage;
     private UserView userPage;
+    private JTextField passwordText = new JPasswordField();
 
     public void runApp(){
 
@@ -49,14 +49,14 @@ public class Login extends JFrame implements ActionListener{
         panel.add(nameText);
 
         //add password label to panel
-        password = new JLabel("Password: ");
-        password.setBounds(10, 50, 80, 25);
-        panel.add(password);
+        JLabel passwordLabel = new JLabel("Password: ");
+        passwordLabel.setBounds(10, 50, 80, 25);
+        panel.add(passwordLabel);
 
         //add password field to panel
-        passwordField = new JPasswordField();
-        passwordField.setBounds(150, 50, 165, 25);
-        panel.add(passwordField);
+        passwordText = new JPasswordField();
+        passwordText.setBounds(150, 50, 165, 25);
+        panel.add(passwordText);
 
         loginButton.setBounds(100, 90, 100, 25);
         panel.add(loginButton);
@@ -73,17 +73,10 @@ public class Login extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         // register pressed
         if (e.getSource() == registerButton) {
             registerPage = new Registration();
             registerPage.displayGUI();
-        }
-
-        //once model gets fixed, delete this.
-        if(e.getSource() == loginButton){
-            userPage = new UserView();
-            userPage.displayGUI();
         }
     }
 
@@ -105,7 +98,7 @@ public class Login extends JFrame implements ActionListener{
      * @return
      */
     public String getPassword() {
-        return password.getText();
+        return passwordText.getText();
     }
 
     /**
