@@ -11,9 +11,10 @@ public class SqlDatabaseConnection {
     private Connection connection;
 //    private String query;
 
-    public SqlDatabaseConnection(){
-        
+    public SqlDatabaseConnection() throws ClassNotFoundException {
         String connectionUrl = "jdbc:mysql://127.0.0.1:3306/MOVIETHEATRE";
+//          String connectionUrl ="jdbc:mysql://localhost/MOVIETHEATRE";
+//        String connectionUrl = "jdbc:mysql://127.0.0.1:3306/?user=root";
         String name = "user";
         String pass = "12345";
         
@@ -45,7 +46,7 @@ public class SqlDatabaseConnection {
 	       catch (SQLException e) {
 	           e.printStackTrace();
 	       }
-        
+
         return "this didnt work";
 
     }

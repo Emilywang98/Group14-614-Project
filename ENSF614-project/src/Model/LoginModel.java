@@ -15,13 +15,13 @@ public class LoginModel {
 	String password;
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		LoginModel loginModel = new LoginModel();
 		String s = loginModel.getVerification();
 		System.out.println(s);
 	}
 	
-    public LoginModel(){
+    public LoginModel() throws ClassNotFoundException {
     	myConnection = new SqlDatabaseConnection();
     }
     
