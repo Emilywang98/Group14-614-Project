@@ -41,25 +41,6 @@ public class MovieController {
         }
     }
 
-    class SelectShowtimeListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String showtime_selected;
-
-            try {
-                showtime_selected = movieSearchView.getShowtime();
-                movieSearchView.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
-				seatController = new SeatController(thisMovieController);
-
-				seatController.getView().setVisible(true);
-				movieSearchView.setVisible(false);
-            } catch (Exception ex) {
-                movieSearchView.setShowtimeSuccessDisplay("Error!");
-            }
-        }
-    }
-
     class SearchShowtimesListener implements ActionListener {
 
         @Override
@@ -74,4 +55,24 @@ public class MovieController {
             }
         }
     }
+
+    class SelectShowtimeListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String showtime_selected;
+
+            try {
+                showtime_selected = movieSearchView.getShowtime();
+                movieSearchView.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
+                seatController = new SeatController(thisMovieController);
+
+                seatController.getView().setVisible(true);
+//				movieSearchView.setVisible(false);
+            } catch (Exception ex) {
+                movieSearchView.setShowtimeSuccessDisplay("Error!");
+            }
+        }
+    }
 }
+
