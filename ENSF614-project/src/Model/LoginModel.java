@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import JDBC.SqlDatabaseConnection;
 
@@ -17,16 +18,16 @@ public class LoginModel {
 	
 	public static void main(String[] args) {
 		LoginModel loginModel = new LoginModel();
-		String s = loginModel.getVerification();
-		System.out.println(s);
+		ArrayList<ArrayList<String>> matrix = loginModel.getVerification();
 	}
 	
     public LoginModel(){
     	myConnection = new SqlDatabaseConnection();
     }
     
-    public String getVerification() {
-    	String s = myConnection.doQuery("SELECT * FROM REGISTEREDUSER");
-    	return s;
+    public ArrayList<ArrayList<String>> getVerification() {
+    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Name=\"Gregory Slowski\"");
+//    	ArrayList<ArrayList<String>> matrix = myConnection.doQuery("SELECT * FROM REGISTEREDUSER");
+    	return matrix;
     }
 }

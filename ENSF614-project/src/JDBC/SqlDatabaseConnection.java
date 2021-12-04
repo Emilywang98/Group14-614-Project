@@ -3,8 +3,10 @@ package JDBC;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class SqlDatabaseConnection {
 
@@ -24,7 +26,7 @@ public class SqlDatabaseConnection {
 		}
     }
     
-    public String doQuery(String query) {
+    public ArrayList<ArrayList<String>> doQuery(String query) {
     	
     	ResultSet resultSet = null;
     	
@@ -34,19 +36,45 @@ public class SqlDatabaseConnection {
                // Create and execute a SELECT SQL statement
                resultSet = statement.executeQuery(query);
                
-               String s = "";
+
+               ResultSetMetaData rsmd = resultSet.getMetaData();
+               
+               ArrayList<ArrayList<String>> matrix = new ArrayList<ArrayList<String>>();
+               
                // Print results from select statement
-               while (resultSet.next()) {
-                   s += resultSet.getString(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3);
+               
+               if (!resultSet.next()) {
+            	   System.out.println("No records found");
+
+               }
+               else {
+            	   int i = 0;
+            	   do {
+            		   ArrayList<String> tempRow = new ArrayList<String>();
+            		   
+            		   for (int j = 1; j < rsmd.getColumnCount()+1; j++) {
+            			   tempRow.add(resultSet.getString(j));
+            			   System.out.print("" + tempRow.get(j-1) + " ");
+            		   }
+            		   
+            		   matrix.add(tempRow);
+            		   System.out.println();
+            		   i++;
+            		   
+            	   } while (resultSet.next());
                }
                
-               return s;
+//               System.out.println();
+//               System.out.println(matrix.get(1).get(2));
+          
+               
+               return matrix;
            }
 	       catch (SQLException e) {
 	           e.printStackTrace();
 	       }
         
-        return "this didnt work";
+        return null;
 
     }
 
