@@ -2,76 +2,117 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class MovieSearchView extends JFrame {
-	private JTextField textField;
+
+public class MovieSearchView extends JFrame{
+	
+	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
+	private JLabel movieNameLabel,showtimesLabel,enterShowtimeLabel;
+	private JTextField movieName, movieSuccessDisplay, showtimeSeleted, showtimeSuccessDisplay;
+	private JTextArea showtimesDisplay;
+	
 	public MovieSearchView() {
 
 		// Creating the Frame
-		JFrame frame = new JFrame("Movie Ticket Reservation App");
+		JFrame frame = new JFrame("Movie Search Page");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 
-		// panel at the NORTH
-		JPanel panel = new JPanel(); // the panel is not visible in output
-		
-		JLabel movieNameLabel = new JLabel("Enter Movie Name:");
-		movieNameLabel.setBounds(69, 9, 88, 13);
-		JTextField movieName = new JTextField(10); // accepts upto 10 characters
-		movieName.setBounds(162, 6, 86, 19);
-		JButton search = new JButton("Search");
-		search.setBounds(253, 5, 63, 21);
+		JPanel panel = new JPanel(); 
 		panel.setLayout(null);
 		
+		movieNameLabel = new JLabel("Enter Movie Name:");
+		movieNameLabel.setBounds(85, 65, 121, 13);
+		panel.add(movieNameLabel);
 		
-		panel.add(movieNameLabel); // Components Added using Flow Layout
+		movieName = new JTextField(20); 
+		movieName.setBounds(229, 65, 166, 19);
 		panel.add(movieName);
-		panel.add(search);
 		
+		searchMovieButton = new JButton("Search");
+		searchMovieButton.setBounds(188, 104, 96, 19);
+		panel.add(searchMovieButton);
 		
-		//panel at the CENTER
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(null);
-		JTextArea output = new JTextArea(5, 20);
-		output.setBounds(70, 104, 319, 95);
-	    centerPanel.add(output);
-			
-			
-		//panel at the South
+		movieSuccessDisplay = new JTextField();
+		movieSuccessDisplay.setBounds(70, 133, 336, 19);
+		panel.add(movieSuccessDisplay);
+		movieSuccessDisplay.setColumns(10);
 		
-		JTextArea theatreLocations = new JTextArea(5, 20);
-		theatreLocations.setBounds(0, 0, 0, 0);
-		centerPanel.add(theatreLocations);
+		searchShowtimesButton = new JButton("Search Showtimes");
+		searchShowtimesButton.setBounds(70, 186, 159, 21);
+		panel.add(searchShowtimesButton);
 		
-		// Adding Components to the frame.
-		frame.getContentPane().add(BorderLayout.NORTH, panel);
-		frame.getContentPane().add(BorderLayout.CENTER, centerPanel);
+		showtimesLabel = new JLabel("Avaiable showtimes for the movie:");
+		showtimesLabel.setBounds(70, 217, 336, 13);
+		panel.add(showtimesLabel);
 		
-		JLabel theatreLocationsLabel = new JLabel("Theatre are currently showing the movie:");
-		theatreLocationsLabel.setBounds(70, 217, 336, 13);
-		centerPanel.add(theatreLocationsLabel);
+		showtimesDisplay = new JTextArea();
+		showtimesDisplay.setBounds(70, 240, 336, 101);
+		panel.add(showtimesDisplay);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(70, 240, 336, 101);
-		centerPanel.add(textArea);
+		enterShowtimeLabel = new JLabel("Enter showtime:");
+		enterShowtimeLabel.setBounds(70, 366, 108, 13);
+		panel.add(enterShowtimeLabel);
 		
-		JLabel lblNewLabel = new JLabel("Enter Movie Name:");
-		lblNewLabel.setBounds(70, 49, 137, 13);
-		centerPanel.add(lblNewLabel);
+		showtimeSeleted = new JTextField();
+		showtimeSeleted.setBounds(188, 363, 96, 19);
+		panel.add(showtimeSeleted);
+		showtimeSeleted.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(188, 46, 218, 19);
-		centerPanel.add(textField);
-		textField.setColumns(10);
+		selectShowtimeButton = new JButton("Select");
+		selectShowtimeButton.setBounds(321, 362, 85, 21);
+		panel.add(selectShowtimeButton);
 		
-		JButton searchButton = new JButton("Search");
-		searchButton.setBounds(188, 75, 96, 19);
-		centerPanel.add(searchButton);
+		showtimeSuccessDisplay= new JTextField();
+		showtimeSuccessDisplay.setColumns(10);
+		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
+		panel.add(showtimeSuccessDisplay);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(388, 104, 19, 93);
-		centerPanel.add(scrollBar);
+		frame.getContentPane().add(BorderLayout.CENTER, panel);
 		
 		frame.setVisible(true);
+	}
+	public void addSearchMovieActionListener(ActionListener listen) {
+		
+		searchMovieButton.addActionListener(listen);
+	}
+	public void addSelectShowtimeActionListener(ActionListener listen) {
+		
+		selectShowtimeButton.addActionListener(listen);
+		
+	}
+	public void addSearchShowtimesActionListener(ActionListener listen) {
+		
+		searchShowtimesButton.addActionListener(listen);
+		
+	}
+	public String getMovie() {
+		
+		return movieName.getText();
+	}
+	public String getShowtime() {
+		
+		return showtimeSeleted.getText();
+	}
+	
+	public String getShowtimesForMovie() {
+		
+		return "17:00\n18:00\n19:00";
+	}
+
+	public void setMovieSuccessDisplay(String message) {
+		
+		movieSuccessDisplay.setText(message);
+	}
+	
+	public void setShowtimeSuccessDisplay(String message) {
+		
+		showtimeSuccessDisplay.setText(message);
+	}
+	
+	public void setShowtimesDisplay(String message) {
+		
+		showtimesDisplay.setText(message);
 	}
 }

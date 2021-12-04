@@ -2,39 +2,91 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class SeatView extends JFrame {
 	
-
+	
+	private JButton searchSeatsButton, selectSeatButton;
+	private JTextField seat, display;
+	private JTextArea availableSeatsDisplay;
+	private JLabel availableSeatsLabel,seatLabel;
 	public SeatView() {
 
-        //Creating the Frame
-        JFrame frame = new JFrame("Movie Ticket Reservation App");
+        JFrame frame = new JFrame("Seat Page");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
 
-        // Text Area at the Center
-        JPanel panel1 = new JPanel(); 
-        panel1.setBorder(BorderFactory.createEmptyBorder(20, 15, 15, 15));
-        JLabel availableSeatsLabel = new JLabel("Available seats for the movie:");
-        availableSeatsLabel.setBounds(15, 20, 456, 13);
-        JTextArea availableSeats = new JTextArea();
-        availableSeats.setBounds(15, 44, 456, 338);
-        panel1.setLayout(null);
-        panel1.add(availableSeatsLabel); // Components Added using Flow Layout
-        panel1.add(availableSeats);
-        frame.getContentPane().add(BorderLayout.CENTER, panel1);
-        JLabel seatlabel = new JLabel("Enter a seat number:");
-        seatlabel.setBounds(15, 409, 124, 13);
-        panel1.add(seatlabel);
-        JTextField tf = new JTextField(10); // accepts upto 10 characters
-        tf.setBounds(141, 406, 124, 19);
-        panel1.add(tf);
-        JButton select = new JButton("Select Seat");
-        select.setBounds(365, 405, 106, 21);
-        panel1.add(select);
+        JPanel panel = new JPanel(); 
+        panel.setLayout(null);
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 15, 15, 15));
+        
+        searchSeatsButton = new JButton("SearchSeats");
+        searchSeatsButton.setBounds(172, 29, 124, 21);
+        panel.add(searchSeatsButton);
+        
+        availableSeatsLabel = new JLabel("Available seats for the movie:");
+        availableSeatsLabel.setBounds(15, 77, 456, 13);
+        panel.add(availableSeatsLabel); 
+        
+        availableSeatsDisplay = new JTextArea();
+        availableSeatsDisplay.setBounds(15, 100, 456, 282);
+        panel.add(availableSeatsDisplay);
+       
+        seatLabel = new JLabel("Enter a seat number:");
+        seatLabel.setBounds(15, 409, 124, 13);
+        panel.add(seatLabel);
+        
+        seat = new JTextField(10);
+        seat.setBounds(141, 406, 124, 19);
+        panel.add(seat);
+        
+        selectSeatButton = new JButton("Select Seat");
+        selectSeatButton.setBounds(365, 405, 106, 21);
+        panel.add(selectSeatButton);
+        
+        display = new JTextField();
+        display.setBounds(15, 434, 456, 19);
+        panel.add(display);
+        display.setColumns(10);
+        
+        frame.getContentPane().add(BorderLayout.CENTER, panel);
         frame.setVisible(true);
     }
+
+
+	
+	public void addSelectSeatActionListener (ActionListener listen) {
+		selectSeatButton.addActionListener(listen);
+	}
+
+	public void addSearchSeatsActionListener (ActionListener listen) {
+		searchSeatsButton.addActionListener(listen);
+	}
+
+	public int getSeatNumber() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(seat.getText());
+	}
+	
+	public String getAvaialbleSeats() {
+		return "1\n2\n3\n4\n5";
+		// return a list of seats
+	}
+
+
+
+	public void setTheDisplay(String message) {
+		// TODO Auto-generated method stub
+		display.setText(message);
+		
+	}
+	
+	public void setAvailableSeatsDisplay(String message) {
+		// TODO Auto-generated method stub
+		availableSeatsDisplay.setText(message);
+		
+	}
 }
 
    
