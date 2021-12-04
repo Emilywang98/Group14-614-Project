@@ -15,7 +15,10 @@ CREATE TABLE REGISTEREDUSER (
   PRIMARY key (Username)
 );
 INSERT INTO REGISTEREDUSER VALUES
-('Erika97','123456','Erika Wang','2500 University Dr NW, Calgary, AB T2N 1N4','erikawang97@gmail.com','4485144470717028','905','1225');
+('Erika97','123456','Erika Wang','2500 University Dr NW, Calgary, AB T2N 1N4','erikawang97@gmail.com','4485144470717028','905','1225'),
+('Jintao96','123458','Jintao Wang','2500 University Dr NW, Calgary, AB T2N 1N4','jintaoWang@gmail.com','4485144470717028','905','1227'),
+('Emily98','123459','Emily Wang','2500 University Dr NW, Calgary, AB T2N 1N4','emilyWang@gmail.com','4485144470717028','905','1229'),
+('greg96','123457','Gregory Slowski','2500 University Dr NW, Calgary, AB T2N 1N4','gslowski@gmail.com','91238649823','906','1226');
 
 DROP TABLE IF EXISTS THEATRES;
 CREATE TABLE THEATRES (
