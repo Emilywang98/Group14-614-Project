@@ -59,11 +59,9 @@ public class SqlDatabaseConnection {
             		   
             		   for (int j = 1; j < rsmd.getColumnCount()+1; j++) {
             			   tempRow.add(resultSet.getString(j));
-            			   System.out.print("" + tempRow.get(j-1) + " ");
             		   }
             		   
             		   matrix.add(tempRow);
-            		   System.out.println();
             		   i++;
             		   
             	   } while (resultSet.next());
@@ -76,7 +74,7 @@ public class SqlDatabaseConnection {
                return matrix;
            }
 	       catch (SQLException e) {
-	           e.printStackTrace();
+	           System.err.println("Your query didn't return anything: " + e.getMessage());;
 	       }
 
         
@@ -107,7 +105,7 @@ public class SqlDatabaseConnection {
            
            return true;
     	}catch (SQLException e) {
-           e.printStackTrace();
+    		System.err.println("Touple not inserted into " + tableName +  ": " + e.getMessage());;
            return false;
        }
 
