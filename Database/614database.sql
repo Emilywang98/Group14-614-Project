@@ -87,10 +87,11 @@ INSERT INTO Seat (SeatID, ShowtimeID, SeatRow, SeatColumn) VALUES
 
 DROP TABLE IF EXISTS TICKET;
 CREATE TABLE TICKET (
-	TicketID integer,
+	TicketID INTEGER,
     SeatID integer,
     `Status` VARCHAR(100),
     Email VARCHAR(100),
+    primary key (TicketID),
     foreign key (SeatID) references SEAT(SeatID)
 );
 
