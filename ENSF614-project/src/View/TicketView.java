@@ -15,7 +15,7 @@ public class TicketView extends JFrame{
 	
 		// Editing GUI window settings
 		int width = 600;
-		setSize(width,600);
+		setSize(width,1000);
 		setTitle("Movie Ticket Viewer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
@@ -35,20 +35,20 @@ public class TicketView extends JFrame{
 	
 		add(emailPanel);
 		
-		// Card number prompt and field
-		
-		JPanel cardNumberPanel = new JPanel();
-		cardNumberPanel.setLayout(new GridLayout(1,2));
-		
-		cardNumPrompt = new JLabel("***MAYBE*** Credit card number used to purchase tickets: ");
-		cardNumField = new JTextField(100);
-		
-		cardNumberPanel.add(cardNumPrompt);
-		cardNumberPanel.add(cardNumField);
-		cardNumberPanel.setPreferredSize(new Dimension(width,40));
-		cardNumberPanel.setMaximumSize(new Dimension(width,40));
-	
-		add(cardNumberPanel);
+//		// Card number prompt and field
+//		
+//		JPanel cardNumberPanel = new JPanel();
+//		cardNumberPanel.setLayout(new GridLayout(1,2));
+//		
+//		cardNumPrompt = new JLabel("***MAYBE*** Credit card number used to purchase tickets: ");
+//		cardNumField = new JTextField(100);
+//		
+//		cardNumberPanel.add(cardNumPrompt);
+//		cardNumberPanel.add(cardNumField);
+//		cardNumberPanel.setPreferredSize(new Dimension(width,40));
+//		cardNumberPanel.setMaximumSize(new Dimension(width,40));
+//	
+//		add(cardNumberPanel);
 		
 		// get ticket button
 		
@@ -68,6 +68,7 @@ public class TicketView extends JFrame{
 		ticketDisplay = new JTextArea("", 5, 20);
 		ticketDisplay.setWrapStyleWord(true);
 		ticketDisplay.setLineWrap(true);
+		ticketDisplay.setPreferredSize(new Dimension(width,500));
 		
 		JScrollPane scroll = new JScrollPane(ticketDisplay, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	

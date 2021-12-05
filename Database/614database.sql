@@ -96,8 +96,11 @@ CREATE TABLE TICKET (
 
 INSERT INTO TICKET (TicketID, SeatID, `Status`, Email) VALUES
 (1,1, "reserved", 'hello@gmail.com'),
-(2,2, "paid", 'hello1@gmail.com'),
-(3,3, "reserved", 'hello2@gmail.com'),
-(4,4, "reserved", 'hello3@gmail.com'),
-(5,5, "reserved", 'hello4@gmail.com'),
-(6,6, "paid", 'hello5@gmail.com');
+(2,2, "paid", 'hello@gmail.com'),
+(3,3, "reserved", 'goodbye@gmail.com'),
+(4,4, "reserved", 'goodbye@gmail.com'),
+(5,5, "reserved", 'goodbye@gmail.com'),
+(6,6, "paid", 'hello@gmail.com'),
+(7,7, "paid", 'welcome@gmail.com'),
+(8,8, "paid", 'welcome@gmail.com'),
+(9,9, "paid", 'welcome@gmail.com');

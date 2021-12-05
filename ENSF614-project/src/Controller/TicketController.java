@@ -3,22 +3,29 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.TicketModel;
 import View.PaymentView;
 import View.TicketView;
 
 public class TicketController {
 
 	private TicketView ticketView;
+	private TicketModel ticketModel;
 	private PaymentController paymentController;
 	private TicketController thisTicketController;
 	
 	public TicketController(){
 		ticketView = new TicketView();
+		try {
+			ticketModel = new TicketModel();
+		} catch (ClassNotFoundException e) {
+			ticketView.setTicketDisplay("Sorry, we can't connect you to the database right now!");
+		}
 		thisTicketController = this;
 		
 		ticketView.setVisible(true);
 		
-		ticketView.getTicketActionListener(new GetTicketListener());
+		ticketView.getTicketActionListener(new GetTicketsListener());
 		ticketView.goToPaymentActionListener(new GoToPaymentListener());
 		ticketView.cancelTicketActionListener(new CancelTicketListener());
 		ticketView.returnActionListener(new ReturnListener());
@@ -28,27 +35,24 @@ public class TicketController {
 		return ticketView;
 	}
 	
-	class GetTicketListener implements ActionListener{
+	class GetTicketsListener implements ActionListener{
 		
 		@Override
 		public void actionPerformed (ActionEvent e) {
 			
-			// cardNumField, cardCVVField, cardNameField, cardDateYearField, cardDateMonthField, cardPostalCodeField;
-			
-			int cardNum;
+//			int cardNum;
 			String email;
 			
-
 			try {
 				// We are reading data from the view
 				email = ticketView.getEmail();
-				cardNum = ticketView.getCardNumber();
+//				cardNum = ticketView.getCardNumber();
 				
 				// Invoking the model
-				ticketView.setTicketDisplay("Here are your tickets:\n");
+				ticketView.setTicketDisplay(ticketModel.getTicketInfo(email));
 				
 			}catch(Exception ex) {
-				ticketView.setTicketDisplay("Error!");
+				ticketView.setTicketDisplay("There are no tickets matching the entered email.");
 			}
 		
 		}
