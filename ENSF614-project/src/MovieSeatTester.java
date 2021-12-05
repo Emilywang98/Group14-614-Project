@@ -1,5 +1,3 @@
-
-
 import Controller.MovieController;
 import Controller.SeatController;
 import Model.MovieModel;
