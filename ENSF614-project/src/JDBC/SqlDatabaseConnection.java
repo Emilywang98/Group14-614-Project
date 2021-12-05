@@ -41,7 +41,7 @@ public class SqlDatabaseConnection {
 			ArrayList<ArrayList<String>> matrix = new ArrayList<ArrayList<String>>();
 
 			if (!resultSet.next()) {
-				System.out.println("No records found");
+//				System.out.println("No records found");
 
 			}
                else {
@@ -114,8 +114,6 @@ public class SqlDatabaseConnection {
 	public boolean doDeleteQuery(String tableName, String conditionColumnName, String condition) {
 
 		String queryString = "DELETE FROM " + tableName + " WHERE " + conditionColumnName + "=" + condition + ";";
-
-		System.out.println(queryString);
 
 		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
 
