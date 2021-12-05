@@ -4,10 +4,12 @@ import Model.RegistrationModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class RegistrationController {
     Registration register;
     RegistrationModel model;
+    ArrayList<String> registrationInfo;
 
     public RegistrationController(Registration r, RegistrationModel m){
         this.register = r;
@@ -18,6 +20,7 @@ public class RegistrationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println(register.getCardExp());
 
             try {
                 String name = register.getFirstName();
@@ -27,10 +30,11 @@ public class RegistrationController {
                 String email = register.getEmail();
                 String address = register.getAddress();
                 String cardNo = register.getCardNo();
-                String cardExp = register.getCardExp();
                 String cardCvv = register.getCardCvv();
+                String cardExp = register.getCardExp();
 
 
+                registrationInfo = model.addNewUser(name, lastName, username, password, email, address, cardNo, cardCvv, cardExp);
                 register.displayPlainMessage("Registration", "Registration Successful");
             } // Login was not successful
             catch (NumberFormatException e1){
@@ -41,6 +45,10 @@ public class RegistrationController {
             }
         }
 
+    }
+
+    public ArrayList<String> getRegistrationInfo(){
+        return registrationInfo;
     }
 
 }

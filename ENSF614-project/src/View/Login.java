@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Model.RegistrationModel;
+import Controller.RegistrationController;
 
 /**
  * View for logging in
@@ -16,6 +18,9 @@ public class Login extends JFrame implements ActionListener{
     private JTextField nameText = new JTextField();
 //    private JPasswordField passwordField = new JPasswordField();
     private Registration registerPage;
+    private RegistrationController registerController;
+    private RegistrationModel registerModel;
+
     private UserView userPage;
     private JTextField passwordText = new JPasswordField();
 
@@ -77,6 +82,13 @@ public class Login extends JFrame implements ActionListener{
         if (e.getSource() == registerButton) {
             registerPage = new Registration();
             registerPage.displayGUI();
+            try {
+                registerModel = new RegistrationModel();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            registerController = new RegistrationController(registerPage, registerModel);
+
         }
     }
 
