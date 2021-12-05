@@ -12,6 +12,14 @@ public class TicketModel {
 		myConnection = new SqlDatabaseConnection();
 	}
 	
+	public void getTicket(String email) {
+		
+	}
+	
+	public void retrieveTicket(SeatModel seat) {
+		
+	}
+	
 	public void addTicket() {
 		
 	}

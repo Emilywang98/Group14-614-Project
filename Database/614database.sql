@@ -67,37 +67,37 @@ VALUES
 DROP TABLE IF EXISTS SEAT;
 CREATE TABLE Seat (
 	SeatID integer,
+    ShowtimeID integer,
     SeatRow integer,
     SeatColumn integer,
-	primary key (SeatID)
+	primary key (SeatID),
+    foreign key (ShowTimeID) references SHOWTIME(ShowTimeID)
 );
 
-INSERT INTO Seat (SeatID, SeatRow, SeatColumn) VALUES
-(1,7,7),
-(2,7,8),
-(3,7,9),
-(4,8,7),
-(5,8,8),
-(6,8,9),
-(7,9,7),
-(8,9,8),
-(9,9,9);
+INSERT INTO Seat (SeatID, ShowtimeID, SeatRow, SeatColumn) VALUES
+(1,1,7,7),
+(2,1,7,8),
+(3,1,7,9),
+(4,2,8,7),
+(5,3,8,8),
+(6,3,8,9),
+(7,4,9,7),
+(8,4,9,8),
+(9,5,9,9);
 
 DROP TABLE IF EXISTS TICKET;
 CREATE TABLE TICKET (
 	TicketID integer,
-    ShowTimeID integer,
     SeatID integer,
     `Status` VARCHAR(100),
     Email VARCHAR(100),
-    foreign key (ShowTimeID) references SHOWTIME(ShowTimeID),
     foreign key (SeatID) references SEAT(SeatID)
 );
 
-INSERT INTO TICKET (TicketID, ShowTimeID, SeatID, `Status`, Email) VALUES
-(1,1,1, "reserved", 'hello@gmail.com'),
-(2,1,2, "paid", 'hello1@gmail.com'),
-(3,2,3, "reserved", 'hello2@gmail.com'),
-(4,3,4, "reserved", 'hello3@gmail.com'),
-(5,4,5, "reserved", 'hello4@gmail.com'),
-(6,5,6, "paid", 'hello5@gmail.com');
+INSERT INTO TICKET (TicketID, SeatID, `Status`, Email) VALUES
+(1,1, "reserved", 'hello@gmail.com'),
+(2,2, "paid", 'hello1@gmail.com'),
+(3,3, "reserved", 'hello2@gmail.com'),
+(4,4, "reserved", 'hello3@gmail.com'),
+(5,5, "reserved", 'hello4@gmail.com'),
+(6,6, "paid", 'hello5@gmail.com');
