@@ -1,10 +1,13 @@
+
 package JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -27,15 +30,17 @@ public class SqlDatabaseConnection {
 		}
     }
     
-    public ArrayList<ArrayList<String>> doQuery(String query) {
+    public ArrayList<ArrayList<String>> doRetrievalQuery(String query) {
     	
     	ResultSet resultSet = null;
     	
         try (
-                Statement statement = connection.createStatement();) {
+        		PreparedStatement pStat = connection.prepareStatement(query);
+        		) {
 
                // Create and execute a SELECT SQL statement
-               resultSet = statement.executeQuery(query);
+        		
+               resultSet = pStat.executeQuery();
                
 
                ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -79,6 +84,35 @@ public class SqlDatabaseConnection {
         return null;
 
     }
+    
+  public boolean doInsertQuery(String tableName, ArrayList<String> touple) {
+	
+	ResultSet columnNameSet = null;
+	ResultSet resultSet = null;
+	
+	String queryString = "INSERT INTO " + tableName + " VALUES ('" + touple.get(0);
+	
+	for (int i = 1; i < touple.size(); i++) {
+		queryString += "', '" + touple.get(i);
+	}
+	
+	queryString += "');";
+	
+	System.out.println(queryString);
+	
+    try (
+    		PreparedStatement pStat = connection.prepareStatement(queryString);
+    		) {
+
+           pStat.executeUpdate();
+           
+           return true;
+    	}catch (SQLException e) {
+           e.printStackTrace();
+           return false;
+       }
+
+}
 
 
 }

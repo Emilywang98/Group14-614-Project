@@ -13,27 +13,60 @@ public class MovieModel {
 	
 	SqlDatabaseConnection myConnection;
 	private String movieName;
+	String showtime;
+	
+	ArrayList<String> availableShowtimesForMovie;
 
-//	public MovieModel(String movieName) {
-//		this.setMovieName(movieName);
+//	public void selectMovie(String movieName) {
+//
 //	}
 //
-//	private void setMovieName(String movieName) {
-//		this.movieName = movieName;
+	 public MovieModel() throws ClassNotFoundException {
+	    	myConnection = new SqlDatabaseConnection();
+	    }
+//
+//	public void selectShowtime(String showtime) {
+//
 //	}
 
-	private ArrayList<SeatModel> seats;
-
-	public void selectMovie(String movieName) {
-
+	public ArrayList<String> getMovieVerification(String movieName) {
+//		System.out.println(myConnection.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \""+movieName+"\""));
+		ArrayList<ArrayList<String>> movies = myConnection.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \""+movieName+"\""); 
+//		"SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\""
+		if(movies.get(0).get(0).equals(movieName)){
+//			System.out.println("Login Successful!");
+			ArrayList<String> moviesList = new ArrayList();
+			moviesList.add(movieName);
+			return moviesList;
+		}
+		else {
+			throw new NullPointerException();
+		}
 	}
 
-	public void displayShowtimes() {
+	public ArrayList<String> getShowtimeVerification(String showtime_selected) {
 
+		ArrayList<ArrayList<String>> showtimes = myConnection.doRetrievalQuery("SELECT Showtime FROM SHOWTIME WHERE ShowTime=\""+showtime_selected+"\""); 
+		if(showtimes.get(0).get(0).equals(showtime_selected)){
+//			System.out.println("Login Successful!");
+			ArrayList<String> showtimeList = new ArrayList();
+			showtimeList.add(showtime_selected);
+			return showtimeList;
+		}
+		else {
+			throw new NullPointerException();
+		}
 	}
 
-	public void selectShowtime(String showtime) {
-
+	public ArrayList<String> returnShowtimesForMovie() {
+		
+		    	ArrayList<ArrayList<String>> showtimes = myConnection.doRetrievalQuery("SELECT ShowTime FROM SHOWTIME WHERE ShowTime");
+		    	ArrayList<String> showtimesForMovie = new ArrayList();
+		    	for(ArrayList<String>s:showtimes) {
+		    	showtimesForMovie.addAll(s);
+		    	}
+		    	return showtimesForMovie;
+		
 	}
 
 }

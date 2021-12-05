@@ -13,7 +13,7 @@ public class SeatView extends JFrame {
 	private JTextArea availableSeatsDisplay;
 	private JLabel availableSeatsLabel,seatRowLabel;
 	private JTextField seatColumnInput;
-	public SeatView() {
+	public void displayGUI() {
 
         setTitle("Seat Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

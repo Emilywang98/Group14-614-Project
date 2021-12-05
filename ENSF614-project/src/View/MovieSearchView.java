@@ -7,11 +7,11 @@ import java.awt.event.*;
 
 public class MovieSearchView extends JFrame{
 	
-	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
+	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton,searchSeatsButton;
 	private JLabel movieNameLabel,showtimesLabel,enterShowtimeLabel;
 	private JTextField movieName, movieSuccessDisplay, showtimeSeleted, showtimeSuccessDisplay;
 	private JTextArea showtimesDisplay;
-	
+	private SeatView seatPage;
 	public MovieSearchView() {
 
 		// Creating the Frame
@@ -71,10 +71,23 @@ public class MovieSearchView extends JFrame{
 		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
 		panel.add(showtimeSuccessDisplay);
 
-		add(panel);
+		
+		searchSeatsButton = new JButton("Search Seats");
+		searchSeatsButton.setBounds(368, 432, 108, 21);
+		panel.add(searchSeatsButton);
+		
+		getContentPane().add(panel);
+		
+		
 //		frame.getContentPane().add(BorderLayout.CENTER, panel);
 //
 		setVisible(true);
+	}
+	
+	
+	public void addSearchSeatsActionListener(ActionListener listen) {
+		
+		searchSeatsButton.addActionListener(listen);
 	}
 	public void addSearchMovieActionListener(ActionListener listen) {
 		
@@ -99,10 +112,6 @@ public class MovieSearchView extends JFrame{
 		return showtimeSeleted.getText();
 	}
 	
-	public String getShowtimesForMovie() {
-		
-		return "17:00\n18:00\n19:00";
-	}
 
 	public void setMovieSuccessDisplay(String message) {
 		

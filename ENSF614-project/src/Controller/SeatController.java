@@ -10,40 +10,42 @@ import java.util.ArrayList;
 public class SeatController {
 	SeatView seatView;
 	SeatModel seatModel;
+	MovieController movieController;
 	ArrayList<String> seatInfo;
 
 	public SeatController(SeatView seatView, SeatModel seatModel) {
 		this.seatView = new SeatView();
 		this.seatModel = seatModel;
+//		this.movieController = movieController;
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
-//		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
+		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
 
 	public SeatView getView() {
 		return seatView;
 	}
 
-//	class SearchSeatsListener implements ActionListener {
+	class SearchSeatsListener implements ActionListener {
 
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			ArrayList<String> availableSeats;
-//			try {
-//				availableSeats=seatModel.returnSeats();
-//				StringBuffer sb = new StringBuffer();
-//			      
-//			      for (String s : availableSeats) {
-//			         sb.append(s);
-//			         sb.append("\n");
-//			      }
-//			      String availableSeatsString = sb.toString();
-//				
-//				seatView.setAvailableSeatsDisplay(availableSeatsString);
-//			}catch(NumberFormatException ex) {
-//				seatView.setAvailableSeatsDisplay("Error!");
-//			}
-//		}
-//	}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ArrayList<String> availableSeats;
+			try {
+				availableSeats=seatModel.returnSeats();
+				StringBuffer sb = new StringBuffer();
+			      
+			      for (String s : availableSeats) {
+			         sb.append(s);
+			         sb.append("\n");
+			      }
+			      String availableSeatsString = sb.toString();
+				
+				seatView.setAvailableSeatsDisplay(availableSeatsString);
+			}catch(NullPointerException ex) {
+				seatView.setAvailableSeatsDisplay("Error!");
+			}
+		}
+	}
 
 	class SelectSeatListener implements ActionListener {
 
