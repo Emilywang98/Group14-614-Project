@@ -22,14 +22,14 @@ public class LoginModel {
     	myConnection = new SqlDatabaseConnection();
     }
     
-    public ArrayList<String> getVerification(String username, String password) {
+    public ArrayList<String> getVerification(String username, String password) throws Exception {
 
 		//query the username and password
-		System.out.println(myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\""));
+//		System.out.println("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
     	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
 
 		if(matrix.get(0).get(0).equals(username) && matrix.get(0).get(1).equals(password)){
-			System.out.println("Login Successful!");
+//			System.out.println("Login Successful!");
 			ArrayList<String> loginInfo = new ArrayList();
 			loginInfo.add(username);
 			loginInfo.add(password);
@@ -38,6 +38,7 @@ public class LoginModel {
 		else{
 			throw new NullPointerException();
 		}
+
 
     }
 }

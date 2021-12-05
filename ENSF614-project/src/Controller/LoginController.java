@@ -11,6 +11,7 @@ public class LoginController {
     Login login;
     LoginModel model;
     ArrayList<String> loginInfo;
+    UserController userController;
 
     public LoginController(Login login, LoginModel model){
         this.login = login;
@@ -30,15 +31,17 @@ public class LoginController {
                 loginInfo = model.getVerification(username, password);
 
                 login.displayPlainMessage("Login", "Login Successful");
+                userController = new UserController(loginInfo);
+                userController.getView().setVisible(true);
+                login.setVisible(false);
 
-//                else{
-//                    login.displayPlainMessage("Login", "Login Unsuccessful");
-//                }
             } // Login was not successful
             catch (NumberFormatException e1){
                 login.displayErrorMessage("ERROR!");
             }
             catch(NullPointerException e2){
+                login.displayErrorMessage("ERROR!");
+            } catch (Exception exception) {
                 login.displayErrorMessage("ERROR!");
             }
         }

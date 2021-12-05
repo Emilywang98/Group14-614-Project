@@ -7,15 +7,15 @@ import javax.swing.*;
 public class TicketView extends JFrame{
 	
 	private JButton getTicketButton, goToPaymentButton, cancelTicketButton, returnButton;
-	private JTextField emailField, cardNumField;
-	private JLabel emailPrompt, cardNumPrompt;
+	private JTextField emailField, ticketIDField;
+	private JLabel emailPrompt, ticketIDPrompt;
 	private JTextArea ticketDisplay;
 	
 	public TicketView() {
 	
 		// Editing GUI window settings
 		int width = 600;
-		setSize(width,600);
+		setSize(width,1000);
 		setTitle("Movie Ticket Viewer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
@@ -35,16 +35,16 @@ public class TicketView extends JFrame{
 	
 		add(emailPanel);
 		
-		// Card number prompt and field
+		// TicketID prompt and field
 		
 		JPanel cardNumberPanel = new JPanel();
 		cardNumberPanel.setLayout(new GridLayout(1,2));
 		
-		cardNumPrompt = new JLabel("***MAYBE*** Credit card number used to purchase tickets: ");
-		cardNumField = new JTextField(100);
+		ticketIDPrompt = new JLabel("Ticket ID# (leave blank to see all): ");
+		ticketIDField = new JTextField(100);
 		
-		cardNumberPanel.add(cardNumPrompt);
-		cardNumberPanel.add(cardNumField);
+		cardNumberPanel.add(ticketIDPrompt);
+		cardNumberPanel.add(ticketIDField);
 		cardNumberPanel.setPreferredSize(new Dimension(width,40));
 		cardNumberPanel.setMaximumSize(new Dimension(width,40));
 	
@@ -68,6 +68,7 @@ public class TicketView extends JFrame{
 		ticketDisplay = new JTextArea("", 5, 20);
 		ticketDisplay.setWrapStyleWord(true);
 		ticketDisplay.setLineWrap(true);
+		ticketDisplay.setPreferredSize(new Dimension(width,500));
 		
 		JScrollPane scroll = new JScrollPane(ticketDisplay, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	
@@ -127,7 +128,7 @@ public class TicketView extends JFrame{
 		return emailField.getText();
 	}
 	
-	public int getCardNumber () {
-		return Integer.parseInt(cardNumField.getText());
+	public String getTicketIDNumber () {
+		return ticketIDField.getText();
 	}
 }

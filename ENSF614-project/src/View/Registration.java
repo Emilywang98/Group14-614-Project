@@ -11,8 +11,9 @@ public class Registration extends JFrame{
     private JLabel username = new JLabel("Username: ");
     private JLabel password = new JLabel("Password: ");
     private JLabel email = new JLabel("Email: ");
-    private JLabel cardNo = new JLabel("Card Number: ");
-    private JLabel cardExp = new JLabel("Card Exp Date: ");
+    private JLabel cardNo = new JLabel("Number: ");
+    private JLabel cardExp = new JLabel("Exp Date: ");
+    String getCardExp;
 
 
 
@@ -31,6 +32,7 @@ public class Registration extends JFrame{
     private Container c;
     private JLabel title;
     private JLabel cardTitle;
+    private JLabel paymentText;
     private JComboBox month;
     private JComboBox year;
     private JButton submit;
@@ -119,11 +121,14 @@ public class Registration extends JFrame{
 
 
         //card info
-        cardTitle = new JLabel("Card Information");
-        cardTitle.setFont(new Font("Arial", Font.PLAIN, 23));
-        cardTitle.setSize(300, 30);
-        cardTitle.setLocation(230, 400);
+        cardTitle = new JLabel(String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>","Enter Card Information to Pay the $20 Annual Registration Fee:"));
+
+//                ("</html>"+ "Enter Card Information to Pay the $20 Annual Registration Fee:"+ "</html>");
+        cardTitle.setFont(new Font("Arial", Font.PLAIN, 18));
+        cardTitle.setSize(300, 50);
+        cardTitle.setLocation(150, 400);
         c.add(cardTitle);
+
 
         cardNo.setFont(new Font("Arial", Font.PLAIN, 15));
         cardNo.setSize(120, 20);
@@ -141,24 +146,26 @@ public class Registration extends JFrame{
 
         month = new JComboBox(months);
         month.setFont(new Font("Arial", Font.PLAIN, 15));
-        month.setSize(60, 20);
-        month.setLocation(230, 500);
+        month.setSize(90, 20);
+        month.setLocation(200, 500);
         c.add(month);
 
         year = new JComboBox(years);
         year.setFont(new Font("Arial", Font.PLAIN, 15));
-        year.setSize(60, 20);
-        year.setLocation(280, 500);
+        year.setSize(90, 20);
+        year.setLocation(290, 500);
         c.add(year);
+
+       getCardExp = year.getSelectedItem().toString() + month.getSelectedItem().toString();
 
 
         cardCvv.setFont(new Font("Arial", Font.PLAIN, 15));
         cardCvv.setSize(120, 20);
-        cardCvv.setLocation(350, 500);
+        cardCvv.setLocation(380, 500);
         c.add(cardCvv);
         cardCvvText.setFont(new Font("Arial", Font.PLAIN, 15));
         cardCvvText.setSize(60, 20);
-        cardCvvText.setLocation(420, 500);
+        cardCvvText.setLocation(460, 500);
         c.add(cardCvvText);
 
         submit = new JButton("Submit");
@@ -171,39 +178,39 @@ public class Registration extends JFrame{
     }
 
     public String getFirstName() {
-        return firstName.getText();
+        return firstNameText.getText();
     }
 
     public String getLastName() {
-        return lastName.getText();
+        return lastNameText.getText();
     }
 
     public String getAddress() {
-        return address.getText();
+        return addressText.getText();
     }
 
     public String getUsername() {
-        return username.getText();
+        return usernameText.getText();
     }
 
     public String getPassword() {
-        return password.getText();
+        return passwordText.getText();
     }
 
     public String getEmail() {
-        return email.getText();
+        return emailText.getText();
     }
 
     public String getCardNo() {
-        return cardNo.getText();
+        return cardNoText.getText();
     }
 
     public String getCardExp() {
-        return cardExp.getText();
+        return getCardExp;
     }
 
     public String getCardCvv() {
-        return cardCvv.getText();
+        return cardCvvText.getText();
     }
 
     public void addRegistrationListener(ActionListener listenForRegister){
