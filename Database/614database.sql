@@ -64,28 +64,12 @@ VALUES
 (4, "Dune", "Ciniplex Crowfoot", 1, '2020-12-15', '10:00', 20),
 (5, "Spider-Man: No Way Home", "Ciniplex Sunridge", 1, '2020-12-18', '10:00', 25);
 
-DROP TABLE IF EXISTS TICKET;
-CREATE TABLE TICKET (
-	TicketID integer,
-    ShowTimeID integer,
-    SeatRow integer,
-    SeatColumn integer,
-    foreign key (ShowTimeID) references SHOWTIME(ShowTimeID)
-);
-
-INSERT INTO TICKET (TicketID, ShowTimeID, SeatRow, SeatColumn) VALUES
-(1,1,7,8),
-(2,1,8,9),
-(3,2,7,8),
-(4,3,8,9),
-(5,4,7,8),
-(6,5,8,9);
-
 DROP TABLE IF EXISTS SEAT;
 CREATE TABLE Seat (
 	SeatID integer,
     SeatRow integer,
-    SeatColumn integer
+    SeatColumn integer,
+	primary key (SeatID)
 );
 
 INSERT INTO Seat (SeatID, SeatRow, SeatColumn) VALUES
@@ -98,3 +82,22 @@ INSERT INTO Seat (SeatID, SeatRow, SeatColumn) VALUES
 (7,9,7),
 (8,9,8),
 (9,9,9);
+
+DROP TABLE IF EXISTS TICKET;
+CREATE TABLE TICKET (
+	TicketID integer,
+    ShowTimeID integer,
+    SeatID integer,
+    `Status` VARCHAR(100),
+    Email VARCHAR(100),
+    foreign key (ShowTimeID) references SHOWTIME(ShowTimeID),
+    foreign key (SeatID) references SEAT(SeatID)
+);
+
+INSERT INTO TICKET (TicketID, ShowTimeID, SeatID, `Status`, Email) VALUES
+(1,1,1, "reserved", 'hello@gmail.com'),
+(2,1,2, "paid", 'hello1@gmail.com'),
+(3,2,3, "reserved", 'hello2@gmail.com'),
+(4,3,4, "reserved", 'hello3@gmail.com'),
+(5,4,5, "reserved", 'hello4@gmail.com'),
+(6,5,6, "paid", 'hello5@gmail.com');
