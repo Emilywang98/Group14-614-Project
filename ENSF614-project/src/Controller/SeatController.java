@@ -36,7 +36,7 @@ public class SeatController {
 			      
 				for(int i = 0; i < availableSeats.size(); i++) {
 			        for(int j = 0; j < availableSeats.get(i).size(); j++){
-			            sb.append(availableSeats.get(i).get(j) + ",");
+			            sb.append("" + availableSeats.get(i).get(j) + "          ");
 			        }
 			        sb.append("\n" );
 			    }
@@ -46,7 +46,7 @@ public class SeatController {
 //			      }
 			      String availableSeatsString = sb.toString();
 				
-				seatView.setAvailableSeatsDisplay(availableSeatsString);
+				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
 			}catch(NullPointerException ex) {
 				seatView.setAvailableSeatsDisplay("Error!");
 			}

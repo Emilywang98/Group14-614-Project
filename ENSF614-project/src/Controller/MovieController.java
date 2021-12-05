@@ -47,7 +47,8 @@ public class MovieController {
                 movieName = movieSearchView.getMovie();
                 
                 movies = movieModel.getMovieVerification(movieName);
-                movieSearchView.setMovieSuccessDisplay(movieName + " was found");
+                
+                movieSearchView.setMovieSuccessDisplay("Movie " + '"'+ movieName+ '"' + " was found" );
 
             } catch (NullPointerException ex) {
                 movieSearchView.setMovieSuccessDisplay("Error!");
