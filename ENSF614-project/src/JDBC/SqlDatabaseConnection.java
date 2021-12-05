@@ -58,8 +58,7 @@ public class SqlDatabaseConnection {
 
 			} while (resultSet.next());
                }
-
-
+			
 			return matrix;
 		} catch (SQLException e) {
 			System.err.println("Your query didn't return anything: " + e.getMessage());
@@ -99,8 +98,6 @@ public class SqlDatabaseConnection {
 								"\nSET " + columnName + "=" + replacement +
 									"\nWHERE " + conditionColumnName + "=" + condition + ";";
 
-		System.out.println(queryString);
-
 		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
 
 			pStat.executeUpdate();
@@ -108,6 +105,25 @@ public class SqlDatabaseConnection {
 			return true;
 		} catch (SQLException e) {
 			System.err.println("Touple not updated in " + tableName + ": " + e.getMessage());
+			;
+			return false;
+		}
+
+	}
+	
+	public boolean doDeleteQuery(String tableName, String conditionColumnName, String condition) {
+
+		String queryString = "DELETE FROM " + tableName + " WHERE " + conditionColumnName + "=" + condition + ";";
+
+		System.out.println(queryString);
+
+		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
+
+			pStat.execute();
+
+			return true;
+		} catch (SQLException e) {
+			System.err.println("Touple not deleted in " + tableName + ": " + e.getMessage());
 			;
 			return false;
 		}
