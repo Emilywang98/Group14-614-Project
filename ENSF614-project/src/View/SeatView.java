@@ -76,8 +76,12 @@ public class SeatView extends JFrame {
 		searchSeatsButton.addActionListener(listen);
 	}
 
-	public int getSeatNumber() {
+	public int getSeatRow() {
 		return Integer.parseInt(seatRowInput.getText());
+	}
+	
+	public int getSeatColumn() {
+		return Integer.parseInt(seatColumnInput.getText());
 	}
 	
 //	public String getAvailableSeats() {

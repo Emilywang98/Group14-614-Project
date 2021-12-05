@@ -16,7 +16,7 @@ public class MovieSeatTester {
 			MovieSearchView movieSearchView = new MovieSearchView();
 			MovieController movieController = new MovieController(movieSearchView, movieModel);
 
-			movieController.getView().setVisible(true);
+//			movieController.getView().setVisible(true);
 			
 			
 			SeatModel seatModel = new SeatModel();
@@ -24,7 +24,7 @@ public class MovieSeatTester {
 
 			SeatController seatController = new SeatController(seatView, seatModel);
 
-			seatController.getView().setVisible(true);
+//			seatController.getView().setVisible(true);
 			
 //			Login app = new Login();
 //			LoginModel model = new LoginModel();
