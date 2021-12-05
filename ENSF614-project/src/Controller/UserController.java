@@ -5,6 +5,8 @@ import Model.UserModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 public class UserController {
@@ -12,12 +14,14 @@ public class UserController {
 	 private UserView view;
 	 private UserModel model;
 	 private TheatreController theatreController;
+	 private ArrayList<String> loginInfo;
 
-	 public UserController(UserView view, UserModel model){
-		 this.view = view;
-	     this.model = model;
-	     
-	     
+	 public UserController(ArrayList<String> loginInfo){
+
+		 this.loginInfo = loginInfo;
+
+		 this.view = new UserView();
+	     this.model = new UserModel();
 	     
 	     view.addBookListener(new BookListener());
 	     view.addCancelListener(new CancelListener());

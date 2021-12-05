@@ -22,7 +22,7 @@ public class LoginModel {
     	myConnection = new SqlDatabaseConnection();
     }
     
-    public ArrayList<String> getVerification(String username, String password) {
+    public ArrayList<String> getVerification(String username, String password) throws Exception {
 
 		//query the username and password
 //		System.out.println("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
@@ -38,6 +38,7 @@ public class LoginModel {
 		else{
 			throw new NullPointerException();
 		}
+
 
     }
 }
