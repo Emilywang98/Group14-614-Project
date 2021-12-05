@@ -40,33 +40,33 @@ public class SeatView extends JFrame {
         panel.add(seatRowLabel);
         
         seatRowInput = new JTextField(10);
-        seatRowInput.setBounds(149, 307, 124, 19);
+        seatRowInput.setBounds(133, 307, 54, 19);
         panel.add(seatRowInput);
         
         selectSeatButton = new JButton("Select Seat");
-        selectSeatButton.setBounds(338, 336, 106, 21);
+        selectSeatButton.setBounds(365, 406, 106, 21);
         panel.add(selectSeatButton);
         
         display = new JTextField();
-        display.setBounds(15, 367, 456, 19);
+        display.setBounds(15, 433, 456, 19);
         panel.add(display);
         display.setColumns(10);
 
         seatColumnLabel = new JLabel("Enter a seat column:");
-        seatColumnLabel.setBounds(15, 340, 138, 13);
+        seatColumnLabel.setBounds(247, 310, 138, 13);
         panel.add(seatColumnLabel);
         
         seatColumnInput = new JTextField();
-        seatColumnInput.setBounds(149, 336, 124, 19);
+        seatColumnInput.setBounds(370, 307, 54, 19);
         panel.add(seatColumnInput);
         seatColumnInput.setColumns(10);
         
         emailLabel = new JLabel("Enter the email you want to receive the ticket for the seat:");
-        emailLabel.setBounds(15, 412, 456, 13);
+        emailLabel.setBounds(15, 354, 456, 13);
         panel.add(emailLabel);
         
         emailInput = new JTextField();
-        emailInput.setBounds(15, 434, 456, 19);
+        emailInput.setBounds(15, 377, 456, 19);
         panel.add(emailInput);
         emailInput.setColumns(10);
         
