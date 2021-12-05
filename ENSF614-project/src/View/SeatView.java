@@ -94,7 +94,10 @@ public class SeatView extends JFrame {
 	public int getSeatColumn() {
 		return Integer.parseInt(seatColumnInput.getText());
 	}
-
+	
+	public String getEmailInput() {
+		return emailInput.getText();
+	}
 
 
 	public void setTheDisplay(String message) {

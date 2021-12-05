@@ -11,7 +11,8 @@ public class SeatController {
 	SeatView seatView;
 	SeatModel seatModel;
 	MovieController movieController;
-	ArrayList<String> seats;
+	String seatID;
+	TicketController ticketController;
 
 	public SeatController(SeatView seatView, SeatModel seatModel) {
 		this.seatView = seatView;
@@ -61,10 +62,16 @@ public class SeatController {
 			try {
 				int seatRow = seatView.getSeatRow();
 				int seatColumn = seatView.getSeatColumn();
+				String email = seatView.getEmailInput();
 
-				seats = seatModel.getVerification(seatRow, seatColumn);
+				seatID = seatModel.getVerification(seatRow, seatColumn, email);
 
 				seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
+				
+				ticketController = new TicketController();
+				
+				ticketController.getView().setVisible(true);
+				seatView.setVisible(false);
 
 			} catch (NumberFormatException ex1) {
 				seatView.setTheDisplay("Error!");
