@@ -1,16 +1,20 @@
 package Controller;
 
 import View.MovieSearchView;
+import View.SeatView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Model.SeatModel;
+import Model.MovieModel;
 
 public class MovieController {
     private MovieSearchView movieSearchView;
     private SeatController seatController;
     private MovieController thisMovieController;
 
-    public MovieController() {
+    public MovieController(MovieSearchView movieSearchView, MovieModel movieModel) {
         movieSearchView = new MovieSearchView();
         thisMovieController = this;
 

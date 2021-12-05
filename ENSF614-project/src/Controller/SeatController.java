@@ -1,17 +1,19 @@
 package Controller;
 import View.SeatView;
-
+import Model.SeatModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SeatController {
 	SeatView seatView;
+	SeatModel seatModel;
 	
 	
-	public SeatController(MovieController thisMovieController) {
+	public SeatController(SeatView seatView, SeatModel seatModel) {
 		this.seatView = new SeatView();
-		
+		this.seatModel = seatModel;
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
 		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
@@ -24,11 +26,18 @@ public class SeatController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String availableSeats;
+			ArrayList<String> availableSeats;
 			try {
-				availableSeats=seatView.getAvailableSeats();
-				seatView.setAvailableSeatsDisplay(availableSeats);
-
+				availableSeats=seatModel.returnSeats();
+				StringBuffer sb = new StringBuffer();
+			      
+			      for (String s : availableSeats) {
+			         sb.append(s);
+			         sb.append("\n");
+			      }
+			      String availableSeatsString = sb.toString();
+				
+				seatView.setAvailableSeatsDisplay(availableSeatsString);
 			}catch(NumberFormatException ex) {
 				seatView.setAvailableSeatsDisplay("Error!");
 			}

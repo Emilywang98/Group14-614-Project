@@ -3,13 +3,16 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
+import Model.SeatModel;
 public class SeatView extends JFrame {
 	
 	private JButton searchSeatsButton, selectSeatButton;
-	private JTextField seat, display;
+	private JTextField seatRowInput, display;
 	private JTextArea availableSeatsDisplay;
-	private JLabel availableSeatsLabel,seatLabel;
+	private JLabel availableSeatsLabel,seatRowLabel;
+	private JTextField seatColumnInput;
 	public SeatView() {
 
         setTitle("Seat Page");
@@ -25,23 +28,23 @@ public class SeatView extends JFrame {
         panel.add(searchSeatsButton);
         
         availableSeatsLabel = new JLabel("Available seats for the movie:");
-        availableSeatsLabel.setBounds(15, 77, 456, 13);
+        availableSeatsLabel.setBounds(15, 60, 456, 13);
         panel.add(availableSeatsLabel); 
         
         availableSeatsDisplay = new JTextArea();
-        availableSeatsDisplay.setBounds(15, 100, 456, 282);
+        availableSeatsDisplay.setBounds(15, 83, 456, 240);
         panel.add(availableSeatsDisplay);
        
-        seatLabel = new JLabel("Enter a seat number:");
-        seatLabel.setBounds(15, 409, 124, 13);
-        panel.add(seatLabel);
+        seatRowLabel = new JLabel("Enter a seat row:");
+        seatRowLabel.setBounds(15, 343, 124, 13);
+        panel.add(seatRowLabel);
         
-        seat = new JTextField(10);
-        seat.setBounds(141, 406, 124, 19);
-        panel.add(seat);
+        seatRowInput = new JTextField(10);
+        seatRowInput.setBounds(149, 340, 124, 19);
+        panel.add(seatRowInput);
         
         selectSeatButton = new JButton("Select Seat");
-        selectSeatButton.setBounds(365, 405, 106, 21);
+        selectSeatButton.setBounds(341, 387, 106, 21);
         panel.add(selectSeatButton);
         
         display = new JTextField();
@@ -49,7 +52,16 @@ public class SeatView extends JFrame {
         panel.add(display);
         display.setColumns(10);
 
-        add(panel);
+        JLabel seatColumnLabel = new JLabel("Enter a seat column:");
+        seatColumnLabel.setBounds(15, 391, 138, 13);
+        panel.add(seatColumnLabel);
+        
+        seatColumnInput = new JTextField();
+        seatColumnInput.setBounds(149, 388, 124, 19);
+        panel.add(seatColumnInput);
+        seatColumnInput.setColumns(10);
+        
+        getContentPane().add(panel);
 //        frame.getContentPane().add(BorderLayout.CENTER, panel);
         setVisible(true);
     }
@@ -65,13 +77,13 @@ public class SeatView extends JFrame {
 	}
 
 	public int getSeatNumber() {
-		return Integer.parseInt(seat.getText());
+		return Integer.parseInt(seatRowInput.getText());
 	}
 	
-	public String getAvailableSeats() {
-		return "1\n2\n3\n4\n5";
-		// return a list of seats
-	}
+//	public String getAvailableSeats() {
+//		return seatModel.returnSeats();
+//		// return a list of seats
+//	}
 
 
 
@@ -80,8 +92,8 @@ public class SeatView extends JFrame {
 		
 	}
 	
-	public void setAvailableSeatsDisplay(String message) {
-		availableSeatsDisplay.setText(message);
+	public void setAvailableSeatsDisplay(String availableSeats) {
+		availableSeatsDisplay.setText(availableSeats);
 		
 	}
 }
