@@ -11,106 +11,111 @@ import Model.SeatModel;
 import Model.MovieModel;
 
 public class MovieController {
-    MovieSearchView movieSearchView;
-    SeatView seatView;
-    SeatModel seatModel;
-    SeatController seatController;
-    MovieController thisMovieController;
-    MovieModel movieModel;
-    ArrayList<String > movies;
-    ArrayList<String > showtimes;
+	MovieSearchView movieSearchView;
+	SeatView seatView;
+	SeatModel seatModel;
+	SeatController seatController;
+	MovieController thisMovieController;
+	MovieModel movieModel;
+	ArrayList<String> movies;
+	ArrayList<String> showtimes;
 
-    public MovieController() {
-        movieSearchView = new MovieSearchView();
-        try {
+	public MovieController() {
+		movieSearchView = new MovieSearchView();
+		try {
 			movieModel = new MovieModel();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-        thisMovieController = this;
+		thisMovieController = this;
 
-        movieSearchView.setVisible(true);
+		movieSearchView.setVisible(true);
 
-        movieSearchView.addSearchMovieActionListener(new SearchMovieListener());
-        movieSearchView.addSelectShowtimeActionListener(new SelectShowtimeListener());
-        movieSearchView.addSearchShowtimesActionListener(new SearchShowtimesListener());
-        movieSearchView.addSearchSeatsActionListener(new SearchSeatsListener());
-    }
+		movieSearchView.addSearchMovieActionListener(new SearchMovieListener());
+		movieSearchView.addSelectShowtimeActionListener(new SelectShowtimeListener());
+		movieSearchView.addSearchShowtimesActionListener(new SearchShowtimesListener());
+		movieSearchView.addSearchSeatsActionListener(new SearchSeatsListener());
+	}
 
-    public MovieSearchView getView() {
-        return movieSearchView;
-    }
+	public MovieSearchView getView() {
+		return movieSearchView;
+	}
 
-    class SearchMovieListener implements ActionListener {
+	class SearchMovieListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
+		@Override
+		public void actionPerformed(ActionEvent e) {
 
-            String movieName;
-            try {
-                movieName = movieSearchView.getMovie();
-                
-                movies = movieModel.getMovieVerification(movieName);
-                
-                movieSearchView.setMovieSuccessDisplay("Movie " + '"'+ movieName+ '"' + " was found" );
+			String movieName;
+			try {
+				movieName = movieSearchView.getMovie();
+				if (!movieName.isEmpty()) {
 
-            } catch (NullPointerException ex) {
-                movieSearchView.setMovieSuccessDisplay("Error!");
-            }
-        }
-    }
+					movies = movieModel.getMovieVerification(movieName);
 
-    class SelectShowtimeListener implements ActionListener {
+					movieSearchView.setMovieSuccessDisplay("Movie " + '"' + movieName + '"' + " was found");
+				} else {
+					movieSearchView.setMovieSuccessDisplay("You must enter a movie name!");
+				}
+			} catch (NullPointerException ex) {
+				movieSearchView.setMovieSuccessDisplay("Error!");
+			}
+		}
+	}
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String showtime_selected;
+	class SelectShowtimeListener implements ActionListener {
 
-            try {
-                showtime_selected = movieSearchView.getShowtime();
-                showtimes = movieModel.getShowtimeVerification(showtime_selected);
-                
-                movieSearchView.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
-            
-            } catch (NullPointerException ex) {
-                movieSearchView.setShowtimeSuccessDisplay("Error!");
-            }
-        }
-    }
-    class SearchShowtimesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String showtime_selected;
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
+			try {
+				showtime_selected = movieSearchView.getShowtime();
+				if (!showtime_selected.isEmpty()) {
+					showtimes = movieModel.getShowtimeVerification(showtime_selected);
+
+					movieSearchView
+							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
+				} else {
+					movieSearchView.setShowtimeSuccessDisplay("You must enter a showtime!");
+				}
+			} catch (NullPointerException ex) {
+				movieSearchView.setShowtimeSuccessDisplay("Error!");
+			}
+		}
+	}
+
+	class SearchShowtimesListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
 //        	String showtime_selected;
-            ArrayList<String> availableShowtimes;
-            try {
-            	availableShowtimes = movieModel.returnShowtimesForMovie();
-            	
-                StringBuffer sb = new StringBuffer();
-			      
-			      for (String s : availableShowtimes) {
-			         sb.append(s);
-			         sb.append("\n");
-			      }
-			      String availableShowtimesString = sb.toString();
-                movieSearchView.setShowtimesDisplay(availableShowtimesString);
+			ArrayList<String> availableShowtimes;
+			try {
+				availableShowtimes = movieModel.returnShowtimesForMovie();
 
-            } catch (NullPointerException ex) {
-                movieSearchView.setShowtimesDisplay("Error!");
-            }
-        }
-    }
+				StringBuffer sb = new StringBuffer();
 
-    
-    
-    class SearchSeatsListener implements ActionListener{
-    	 @Override
-         public void actionPerformed(ActionEvent e) {
-    		 seatController = new SeatController();
-    		 
-			 seatController.getView().setVisible(true);
-			 movieSearchView.setVisible(false);
-    	 }
-    }
+				for (String s : availableShowtimes) {
+					sb.append(s);
+					sb.append("\n");
+				}
+				String availableShowtimesString = sb.toString();
+				movieSearchView.setShowtimesDisplay(availableShowtimesString);
+
+			} catch (NullPointerException ex) {
+				movieSearchView.setShowtimesDisplay("Error!");
+			}
+		}
+	}
+
+	class SearchSeatsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			seatController = new SeatController();
+
+			seatController.getView().setVisible(true);
+			movieSearchView.setVisible(false);
+		}
+	}
 }
-

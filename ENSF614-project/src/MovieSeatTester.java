@@ -24,9 +24,6 @@ public class MovieSeatTester {
 
 //			seatController.getView().setVisible(true);
 			
-//			Login app = new Login();
-//			LoginModel model = new LoginModel();
-//			LoginController controller = new LoginController(app, model);
 		}
 
 	}
