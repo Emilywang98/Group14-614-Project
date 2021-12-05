@@ -59,10 +59,10 @@ CREATE TABLE SHOWTIME (
 INSERT INTO SHOWTIME (ShowTimeID, MovieName, TheatreName, TheatreRoomNumber, ShowDate, ShowTime, price)
 VALUES
 (1, "No Time To Die", "Ciniplex Chinook", 1, '2021-12-01', '10:00', 15),
-(2, "No Time To Die", "Ciniplex Chinook", 1, '2020-12-02', '10:00', 15),
-(3, "Dune", "Ciniplex Crowfoot", 1, '2020-12-10', '10:00', 20),
-(4, "Dune", "Ciniplex Crowfoot", 1, '2020-12-15', '10:00', 20),
-(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", 1, '2020-12-18', '10:00', 25);
+(2, "No Time To Die", "Ciniplex Chinook", 1, '2021-12-01', '12:00', 15),
+(3, "Dune", "Ciniplex Crowfoot", 1, '2021-12-01', '14:00', 20),
+(4, "Dune", "Ciniplex Crowfoot", 1, '2021-12-01', '16:00', 20),
+(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", 1, '2021-12-01', '18:00', 25);
 
 DROP TABLE IF EXISTS SEAT;
 CREATE TABLE Seat (
