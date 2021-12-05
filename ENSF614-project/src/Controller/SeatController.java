@@ -11,10 +11,10 @@ public class SeatController {
 	SeatView seatView;
 	SeatModel seatModel;
 	MovieController movieController;
-	ArrayList<String> seatInfo;
+	ArrayList<String> seats;
 
 	public SeatController(SeatView seatView, SeatModel seatModel) {
-		this.seatView = new SeatView();
+		this.seatView = seatView;
 		this.seatModel = seatModel;
 //		this.movieController = movieController;
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
@@ -29,15 +29,21 @@ public class SeatController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ArrayList<String> availableSeats;
+			ArrayList<ArrayList<String>> availableSeats;
 			try {
 				availableSeats=seatModel.returnSeats();
 				StringBuffer sb = new StringBuffer();
 			      
-			      for (String s : availableSeats) {
-			         sb.append(s);
-			         sb.append("\n");
-			      }
+				for(int i = 0; i < availableSeats.size(); i++) {
+			        for(int j = 0; j < availableSeats.get(i).size(); j++){
+			            sb.append(availableSeats.get(i).get(j) + ",");
+			        }
+			        sb.append("\n" );
+			    }
+//			      for (String s : availableSeats) {
+//			         sb.append(s);
+//			         sb.append("\n");
+//			      }
 			      String availableSeatsString = sb.toString();
 				
 				seatView.setAvailableSeatsDisplay(availableSeatsString);
@@ -55,11 +61,10 @@ public class SeatController {
 			try {
 				int seatRow = seatView.getSeatRow();
 				int seatColumn = seatView.getSeatColumn();
-				// still need to check if seatnumber is valid/ in database
 
-				seatInfo = seatModel.getVerification(seatRow, seatColumn);
+				seats = seatModel.getVerification(seatRow, seatColumn);
 
-				seatView.setTheDisplay("Seat was successfully selected");
+				seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
 
 			} catch (NumberFormatException ex1) {
 				seatView.setTheDisplay("Error!");
@@ -69,7 +74,5 @@ public class SeatController {
 		}
 	}
 
-	public ArrayList<String> getSeatInfo() {
-		return seatInfo;
-	}
+	
 }

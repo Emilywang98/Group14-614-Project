@@ -9,11 +9,11 @@ import Model.SeatModel;
 public class SeatView extends JFrame {
 	
 	private JButton searchSeatsButton, selectSeatButton;
-	private JTextField seatRowInput, display;
+	private JTextField seatRowInput,seatColumnInput, display;
 	private JTextArea availableSeatsDisplay;
-	private JLabel availableSeatsLabel,seatRowLabel;
-	private JTextField seatColumnInput;
-	public void displayGUI() {
+	private JLabel availableSeatsLabel,seatRowLabel, seatColumnLabel;
+	
+	public SeatView() {
 
         setTitle("Seat Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class SeatView extends JFrame {
         panel.add(display);
         display.setColumns(10);
 
-        JLabel seatColumnLabel = new JLabel("Enter a seat column:");
+        seatColumnLabel = new JLabel("Enter a seat column:");
         seatColumnLabel.setBounds(15, 391, 138, 13);
         panel.add(seatColumnLabel);
         
@@ -83,11 +83,6 @@ public class SeatView extends JFrame {
 	public int getSeatColumn() {
 		return Integer.parseInt(seatColumnInput.getText());
 	}
-	
-//	public String getAvailableSeats() {
-//		return seatModel.returnSeats();
-//		// return a list of seats
-//	}
 
 
 

@@ -15,24 +15,15 @@ public class MovieModel {
 	private String movieName;
 	String showtime;
 	
-	ArrayList<String> availableShowtimesForMovie;
 
-//	public void selectMovie(String movieName) {
-//
-//	}
-//
 	 public MovieModel() throws ClassNotFoundException {
 	    	myConnection = new SqlDatabaseConnection();
 	    }
-//
-//	public void selectShowtime(String showtime) {
-//
-//	}
+
 
 	public ArrayList<String> getMovieVerification(String movieName) {
 //		System.out.println(myConnection.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \""+movieName+"\""));
 		ArrayList<ArrayList<String>> movies = myConnection.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \""+movieName+"\""); 
-//		"SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\""
 		if(movies.get(0).get(0).equals(movieName)){
 //			System.out.println("Login Successful!");
 			ArrayList<String> moviesList = new ArrayList();
