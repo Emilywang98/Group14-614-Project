@@ -84,7 +84,7 @@ public class SqlDatabaseConnection {
 
     }
     
-  public String doInsertQuery(String tableName, ArrayList<String> touple) {
+  public boolean doInsertQuery(String tableName, ArrayList<String> touple) {
 	
 	ResultSet columnNameSet = null;
 	ResultSet resultSet = null;
@@ -105,14 +105,10 @@ public class SqlDatabaseConnection {
 
            pStat.executeUpdate();
            
-           return "Entry added.";
-       }catch (SQLIntegrityConstraintViolationException e) {
-    	   e.printStackTrace();
-    	   return "Unable to add duplicate entry.";
-       }
-       catch (SQLException e) {
+           return true;
+    	}catch (SQLException e) {
            e.printStackTrace();
-           return "Unable to add entry.";
+           return false;
        }
 
 }
