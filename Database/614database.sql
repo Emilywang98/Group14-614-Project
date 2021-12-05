@@ -87,7 +87,7 @@ INSERT INTO Seat (SeatID, ShowtimeID, SeatRow, SeatColumn) VALUES
 
 DROP TABLE IF EXISTS TICKET;
 CREATE TABLE TICKET (
-	TicketID INTEGER,
+	TicketID INTEGER NOT NULL AUTO_INCREMENT,
     SeatID integer,
     `Status` VARCHAR(100),
     Email VARCHAR(100),
@@ -95,13 +95,13 @@ CREATE TABLE TICKET (
     foreign key (SeatID) references SEAT(SeatID)
 );
 
-INSERT INTO TICKET (TicketID, SeatID, `Status`, Email) VALUES
-(1,1, "reserved", 'hello@gmail.com'),
-(2,2, "paid", 'hello@gmail.com'),
-(3,3, "reserved", 'goodbye@gmail.com'),
-(4,4, "reserved", 'goodbye@gmail.com'),
-(5,5, "reserved", 'goodbye@gmail.com'),
-(6,6, "paid", 'hello@gmail.com'),
-(7,7, "paid", 'welcome@gmail.com'),
-(8,8, "paid", 'welcome@gmail.com'),
-(9,9, "paid", 'welcome@gmail.com');
+INSERT INTO TICKET (SeatID, `Status`, Email) VALUES
+(1, "reserved", 'hello@gmail.com'),
+(2, "paid", 'hello@gmail.com'),
+(3, "reserved", 'goodbye@gmail.com'),
+(4, "reserved", 'goodbye@gmail.com'),
+(5, "reserved", 'goodbye@gmail.com'),
+(6, "paid", 'hello@gmail.com'),
+(7, "paid", 'welcome@gmail.com'),
+(8, "paid", 'welcome@gmail.com'),
+(9, "paid", 'welcome@gmail.com');
