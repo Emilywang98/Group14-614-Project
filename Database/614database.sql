@@ -48,7 +48,6 @@ CREATE TABLE SHOWTIME (
 	ShowTimeID integer not null,
 	MovieName varchar(50) not null,
     TheatreName varchar(50) not null,
-    TheatreRoomNumber integer, 
     ShowDate Date,
     ShowTime time,
     price integer,
@@ -56,13 +55,14 @@ CREATE TABLE SHOWTIME (
     foreign key (MovieName) references MOVIES(Name),
     foreign key (TheatreName) references THEATRES(Name)
 );
-INSERT INTO SHOWTIME (ShowTimeID, MovieName, TheatreName, TheatreRoomNumber, ShowDate, ShowTime, price)
+INSERT INTO SHOWTIME (ShowTimeID, MovieName, TheatreName, ShowDate, ShowTime, price)
 VALUES
-(1, "No Time To Die", "Ciniplex Chinook", 1, '2021-12-01', '10:00', 15),
-(2, "No Time To Die", "Ciniplex Chinook", 1, '2021-12-01', '12:00', 15),
-(3, "Dune", "Ciniplex Crowfoot", 1, '2021-12-01', '14:00', 20),
-(4, "Dune", "Ciniplex Crowfoot", 1, '2021-12-01', '16:00', 20),
-(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", 1, '2021-12-01', '18:00', 25);
+(1, "No Time To Die", "Ciniplex Chinook", '2021-12-01', '10:00', 15),
+(2, "No Time To Die", "Ciniplex Chinook", '2021-12-01', '12:00', 15),
+(3, "Dune", "Ciniplex Crowfoot", '2021-12-01', '14:00', 20),
+(4, "Dune", "Ciniplex Crowfoot", '2021-12-01', '16:00', 20),
+(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '18:00', 25),
+(6, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '20:00', 25);
 
 DROP TABLE IF EXISTS SEAT;
 CREATE TABLE Seat (
