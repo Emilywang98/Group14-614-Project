@@ -70,14 +70,15 @@ CREATE TABLE TICKET (
     ShowTimeID integer,
     SeatRow integer,
     SeatColumn integer,
+    `Status` VARCHAR(100),
+    Email VARCHAR(100),
     foreign key (ShowTimeID) references SHOWTIME(ShowTimeID)
 );
 
 INSERT INTO TICKET (TicketID, ShowTimeID, SeatRow, SeatColumn) VALUES
-(1,1,7,8),
-(2,1,8,9),
-(3,2,7,8),
-(4,3,8,9),
-(5,4,7,8),
-(6,5,8,9);
-
+(1,1,7,8, "reserved", 'hello@gmail.com'),
+(2,1,8,9, "paid", 'hello1@gmail.com'),
+(3,2,7,8, "reserved", 'hello2@gmail.com'),
+(4,3,8,9, "reserved", 'hello3@gmail.com'),
+(5,4,7,8, "reserved", 'hello4@gmail.com'),
+(6,5,8,9, "paid", 'hello5@gmail.com');
