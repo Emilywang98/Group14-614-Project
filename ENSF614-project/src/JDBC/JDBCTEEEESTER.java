@@ -20,7 +20,7 @@ public class JDBCTEEEESTER {
 
 		try {
 			SqlDatabaseConnection myConnection = new SqlDatabaseConnection();
-			myConnection.doInsertQuery(testTableName, testTouple);
+			myConnection.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \""  + "Dune" + "\"");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
