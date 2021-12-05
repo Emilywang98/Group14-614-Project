@@ -32,6 +32,7 @@ public class Registration extends JFrame{
     private Container c;
     private JLabel title;
     private JLabel cardTitle;
+    private JLabel paymentText;
     private JComboBox month;
     private JComboBox year;
     private JButton submit;
@@ -120,11 +121,14 @@ public class Registration extends JFrame{
 
 
         //card info
-        cardTitle = new JLabel("Card Information");
-        cardTitle.setFont(new Font("Arial", Font.PLAIN, 23));
-        cardTitle.setSize(300, 30);
-        cardTitle.setLocation(230, 400);
+        cardTitle = new JLabel(String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>","Enter Card Information to Pay the $20 Annual Registration Fee:"));
+
+//                ("</html>"+ "Enter Card Information to Pay the $20 Annual Registration Fee:"+ "</html>");
+        cardTitle.setFont(new Font("Arial", Font.PLAIN, 18));
+        cardTitle.setSize(300, 50);
+        cardTitle.setLocation(150, 400);
         c.add(cardTitle);
+
 
         cardNo.setFont(new Font("Arial", Font.PLAIN, 15));
         cardNo.setSize(120, 20);
