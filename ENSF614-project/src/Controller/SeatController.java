@@ -60,23 +60,27 @@ public class SeatController {
 		public void actionPerformed(ActionEvent e) {
 
 			try {
-				int seatRow = seatView.getSeatRow();
-				int seatColumn = seatView.getSeatColumn();
+				String seatRow = seatView.getSeatRow();
+				String seatColumn = seatView.getSeatColumn();
 				String email = seatView.getEmailInput();
-
-				seatID = seatModel.getVerification(seatRow, seatColumn, email);
-
-				seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
 				
-				ticketController = new TicketController();
-				
-				ticketController.getView().setVisible(true);
-				seatView.setVisible(false);
+				if (!email.isEmpty()) {
+					seatID = seatModel.getVerification(seatRow, seatColumn, email);
+	
+					seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
+					
+					ticketController = new TicketController();
+					
+					ticketController.getView().setVisible(true);
+					seatView.setVisible(false);
+				}else {
+					seatView.setTheDisplay("You must enter a seat and email.");
+				}
 
 			} catch (NumberFormatException ex1) {
 				seatView.setTheDisplay("Error!");
 			} catch (NullPointerException ex2) {
-				seatView.setTheDisplay("Error!");
+				seatView.setTheDisplay("You must choose an available seat.");
 			}
 		}
 	}

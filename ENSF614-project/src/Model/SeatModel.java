@@ -37,27 +37,22 @@ public class SeatModel {
 	    }
 
 	
-		 public String getVerification(int seatRow, int seatColumn, String email) {
+		 public String getVerification(String seatRow, String seatColumn, String email) {
 
 				//query the seatrow and seatcolumn
 //				System.out.println(myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\""));
 		    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\"");
-		    	ArrayList<String> ticket = new ArrayList<String>();
-		    	ticket.add(matrix.get(0).get(0));
-		    	ticket.add("reserved");
-		    	ticket.add(email);
-		    	myConnection.doInsertQuery("TICKET (SeatID, `Status`, Email)", ticket);
+			    if (!matrix.isEmpty()){
+		    		ArrayList<String> ticket = new ArrayList<String>();
+			    	ticket.add(matrix.get(0).get(0));
+			    	ticket.add("reserved");
+			    	ticket.add(email);
+			    	myConnection.doInsertQuery("TICKET (SeatID, `Status`, Email)", ticket);
+			    } else {
+			    	throw new NullPointerException();
+			    }
 		    	
 		    	return matrix.get(0).get(0);
-//				if(matrix.get(0).get(0).equals(Integer.toString(seatRow)) && matrix.get(0).get(1).equals(Integer.toString(seatColumn))){
-//					ArrayList<String> seats = new ArrayList();
-//					seats.add(Integer.toString(seatRow));
-//					seats.add(Integer.toString(seatColumn));
-//					return seats;
-//				}
-//				else{
-//					throw new NullPointerException();
-//				}
 
 		    }
 		}
