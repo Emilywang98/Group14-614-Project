@@ -7,8 +7,8 @@ import javax.swing.*;
 public class TicketView extends JFrame{
 	
 	private JButton getTicketButton, goToPaymentButton, cancelTicketButton, returnButton;
-	private JTextField emailField, cardNumField;
-	private JLabel emailPrompt, cardNumPrompt;
+	private JTextField emailField, ticketIDField;
+	private JLabel emailPrompt, ticketIDPrompt;
 	private JTextArea ticketDisplay;
 	
 	public TicketView() {
@@ -35,20 +35,20 @@ public class TicketView extends JFrame{
 	
 		add(emailPanel);
 		
-//		// Card number prompt and field
-//		
-//		JPanel cardNumberPanel = new JPanel();
-//		cardNumberPanel.setLayout(new GridLayout(1,2));
-//		
-//		cardNumPrompt = new JLabel("***MAYBE*** Credit card number used to purchase tickets: ");
-//		cardNumField = new JTextField(100);
-//		
-//		cardNumberPanel.add(cardNumPrompt);
-//		cardNumberPanel.add(cardNumField);
-//		cardNumberPanel.setPreferredSize(new Dimension(width,40));
-//		cardNumberPanel.setMaximumSize(new Dimension(width,40));
-//	
-//		add(cardNumberPanel);
+		// TicketID prompt and field
+		
+		JPanel cardNumberPanel = new JPanel();
+		cardNumberPanel.setLayout(new GridLayout(1,2));
+		
+		ticketIDPrompt = new JLabel("Ticket ID# (leave blank to see all): ");
+		ticketIDField = new JTextField(100);
+		
+		cardNumberPanel.add(ticketIDPrompt);
+		cardNumberPanel.add(ticketIDField);
+		cardNumberPanel.setPreferredSize(new Dimension(width,40));
+		cardNumberPanel.setMaximumSize(new Dimension(width,40));
+	
+		add(cardNumberPanel);
 		
 		// get ticket button
 		
@@ -128,7 +128,7 @@ public class TicketView extends JFrame{
 		return emailField.getText();
 	}
 	
-	public int getCardNumber () {
-		return Integer.parseInt(cardNumField.getText());
+	public String getTicketIDNumber () {
+		return ticketIDField.getText();
 	}
 }

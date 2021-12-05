@@ -40,19 +40,19 @@ public class TicketController {
 		@Override
 		public void actionPerformed (ActionEvent e) {
 			
-//			int cardNum;
+			String ticketID;
 			String email;
 			
 			try {
 				// We are reading data from the view
 				email = ticketView.getEmail();
-//				cardNum = ticketView.getCardNumber();
+				ticketID = ticketView.getTicketIDNumber();
 				
 				// Invoking the model
-				ticketView.setTicketDisplay(ticketModel.getTicketInfo(email));
+				ticketView.setTicketDisplay(ticketModel.getTicketInfo(email, ticketID));
 				
 			}catch(Exception ex) {
-				ticketView.setTicketDisplay("There are no tickets matching the entered email.");
+				ticketView.setTicketDisplay("There are no tickets matching your search criteria.");
 			}
 		
 		}
@@ -84,14 +84,14 @@ public class TicketController {
 			
 			// cardNumField, cardCVVField, cardNameField, cardDateYearField, cardDateMonthField, cardPostalCodeField;
 			
-			int cardNum;
+			String TicketID;
 			String email;
 			
 
 			try {
 				// We are reading data from the view
 				email = ticketView.getEmail();
-				cardNum = ticketView.getCardNumber();
+				TicketID = ticketView.getTicketIDNumber();
 				
 				// Invoking the model
 				ticketView.setTicketDisplay("The following tickets have been cancelled:\n");
