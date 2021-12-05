@@ -65,7 +65,30 @@ public class TicketModel {
 //		
 //	}
 
-	public void cancelTicket() {
+	public String cancelTicket(String email, String ticketId) {
+		String message = "";
 
+		if (email.isEmpty() || ticketId.isEmpty()) {
+			message = "Please enter both your email and an individual ticket ID";
+		}
+		else {
+			ArrayList<ArrayList<String>> emailTickets = myConnection
+					.doRetrievalQuery("SELECT * FROM TICKET WHERE TicketID = \"" + ticketId + "\"");
+			if (emailTickets.isEmpty()) {
+				return "Ticket ID# " + ticketId + " does not exist.";
+			}
+			boolean cancelledTicket = myConnection.doDeleteQuery("TICKET", "TicketID", ticketId);
+			if (cancelledTicket && emailTickets.get(0).get(2).equals("paid")) {
+				message = "Ticket ID #" + ticketId + " has been cancelled.";
+				message += "\nEmail: " + email + " has been credited.";
+			}else if (cancelledTicket && !emailTickets.get(0).get(2).equals("paid")) {
+				message = "Ticket ID #" + ticketId + " has been cancelled.";
+			}
+			else {
+				message = "Unable to cancel ticket ID #" + ticketId;
+			}
+		}
+		
+		return message;
 	}
 }

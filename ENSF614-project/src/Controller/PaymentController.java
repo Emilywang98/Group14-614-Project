@@ -3,16 +3,24 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.PaymentModel;
 import View.PaymentView;
 
 
 public class PaymentController {
 	
 	private PaymentView paymentView;
+	private PaymentModel paymentModel;
 	private TicketController ticketController;
 	
-	public PaymentController(TicketController ticketController){
+	public PaymentController(TicketController ticketController, String email, String ticketID){
 		this.paymentView = new PaymentView();
+		try {
+			this.paymentModel = new PaymentModel(email, ticketID);
+			paymentView.setTheDisplay(paymentModel.calculateTotalBill());
+		} catch (ClassNotFoundException e) {
+			paymentView.setTheDisplay("Sorry, we can't connect you to the database right now!");
+		}
 		this.ticketController = ticketController;
 		
 		ticketController.getView().setVisible(false);
@@ -20,6 +28,7 @@ public class PaymentController {
 		
 		paymentView.addPayActionListener(new PayListener());
 		paymentView.addCancelActionListener(new CancelListener());
+		
 	}
 	
 	public PaymentView getView() {
@@ -43,17 +52,18 @@ public class PaymentController {
 
 			try {
 				// We are reading data from the view
-				cardNum = paymentView.getCardNumber();
-				cardCVV = paymentView.getCardCVV();
-				cardName = paymentView.getCardName();
-				expYear = paymentView.getCardYear();
-				expMonth = paymentView.getCardMonth();
-				postalCode = paymentView.getCardPostalCode();
+//				cardNum = paymentView.getCardNumber();
+//				cardCVV = paymentView.getCardCVV();
+//				cardName = paymentView.getCardName();
+//				expYear = paymentView.getCardYear();
+//				expMonth = paymentView.getCardMonth();
+//				postalCode = paymentView.getCardPostalCode();
 				
 				// Invoking the model
-				paymentView.setTheDisplay("Tickets purchased, please check your email for tickets.");
+				paymentView.setTheDisplay(paymentModel.payBill());
 				
 			}catch(NumberFormatException ex) {
+				ex.printStackTrace();
 				paymentView.setTheDisplay("Error!");
 			}
 		

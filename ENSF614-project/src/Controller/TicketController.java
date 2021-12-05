@@ -62,12 +62,26 @@ public class TicketController {
 		
 		@Override
 		public void actionPerformed (ActionEvent e) {
+			
+			String ticketID;
+			String email;
 
 			try {
-				paymentController = new PaymentController(thisTicketController);
 				
-				paymentController.getView().setVisible(true);
-				ticketView.setVisible(false);
+				email = ticketView.getEmail();
+				ticketID = ticketView.getTicketIDNumber();
+				
+				
+				if (email.isEmpty()) {
+					ticketView.setTicketDisplay("Please enter your email to pay for specified (or all) ticket(s).");
+				}
+				else {
+					paymentController = new PaymentController(thisTicketController, email, ticketID);
+					
+					paymentController.getView().setVisible(true);
+					ticketView.setVisible(false);
+				}
+				
 				
 			}catch(Exception ex) {
 				ticketView.setTicketDisplay("Error!");
@@ -84,19 +98,20 @@ public class TicketController {
 			
 			// cardNumField, cardCVVField, cardNameField, cardDateYearField, cardDateMonthField, cardPostalCodeField;
 			
-			String TicketID;
+			String ticketID;
 			String email;
 			
 
 			try {
 				// We are reading data from the view
 				email = ticketView.getEmail();
-				TicketID = ticketView.getTicketIDNumber();
+				ticketID = ticketView.getTicketIDNumber();
 				
 				// Invoking the model
-				ticketView.setTicketDisplay("The following tickets have been cancelled:\n");
+				ticketView.setTicketDisplay(ticketModel.cancelTicket(email, ticketID));
 				
 			}catch(Exception ex) {
+				ex.printStackTrace();
 				ticketView.setTicketDisplay("Error!");
 			}
 		
