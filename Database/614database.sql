@@ -4,15 +4,15 @@ USE MOVIETHEATRE;
 
 DROP TABLE IF EXISTS REGISTEREDUSER;
 CREATE TABLE REGISTEREDUSER (
-  Username				varchar(15) NOT NULL,
-  Password				varchar(15) NOT NULL,
-  FName					varchar(50),
-  LName					varchar(50),
-  Address		        varchar(50),
-  Email					varchar(50),
-  Card_no			    varchar(16),
-  Card_cvv				varchar(4),
-  Card_exp				varchar(10),
+  Username				varchar(100) NOT NULL,
+  Password				varchar(100) NOT NULL,
+  FName					varchar(100),
+  LName					varchar(100),
+  Address		        varchar(100),
+  Email					varchar(100),
+  Card_no			    varchar(100),
+  Card_cvv				varchar(100),
+  Card_exp				varchar(100),
   PRIMARY key (Username)
 );
 INSERT INTO REGISTEREDUSER VALUES
