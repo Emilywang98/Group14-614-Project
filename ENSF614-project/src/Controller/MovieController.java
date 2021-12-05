@@ -20,12 +20,16 @@ public class MovieController {
     ArrayList<String > movies;
     ArrayList<String > showtimes;
 
-    public MovieController(MovieSearchView movieSearchView, MovieModel movieModel) {
-        this.movieSearchView = movieSearchView;
-        this.movieModel = movieModel;
+    public MovieController() {
+        movieSearchView = new MovieSearchView();
+        try {
+			movieModel = new MovieModel();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
         thisMovieController = this;
 
-//        movieSearchView.setVisible(true);
+        movieSearchView.setVisible(true);
 
         movieSearchView.addSearchMovieActionListener(new SearchMovieListener());
         movieSearchView.addSelectShowtimeActionListener(new SelectShowtimeListener());
@@ -102,11 +106,10 @@ public class MovieController {
     class SearchSeatsListener implements ActionListener{
     	 @Override
          public void actionPerformed(ActionEvent e) {
-    		 seatView = new SeatView();
-//    		 seatController = new SeatController(null, null, thisMovieController);
-    		 seatView.setVisible(true);
-//				seatController.getView().setVisible(true);
-//				movieSearchView.setVisible(false);
+    		 seatController = new SeatController();
+    		 
+			 seatController.getView().setVisible(true);
+			 movieSearchView.setVisible(false);
     	 }
     }
 }

@@ -8,16 +8,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class SeatController {
-	SeatView seatView;
-	SeatModel seatModel;
-	MovieController movieController;
+	private SeatView seatView;
+	private SeatModel seatModel;
+	private SeatController thisSeatController;
 	String seatID;
-	TicketController ticketController;
+	private TicketController ticketController;
 
-	public SeatController(SeatView seatView, SeatModel seatModel) {
-		this.seatView = seatView;
-		this.seatModel = seatModel;
-//		this.movieController = movieController;
+	public SeatController() {
+		seatView = new SeatView();
+		try {
+			seatModel = new SeatModel();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		thisSeatController = this;
+		
+		seatView.setVisible(true);
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
 		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
@@ -41,10 +47,6 @@ public class SeatController {
 			        }
 			        sb.append("\n" );
 			    }
-//			      for (String s : availableSeats) {
-//			         sb.append(s);
-//			         sb.append("\n");
-//			      }
 			      String availableSeatsString = sb.toString();
 				
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
@@ -74,7 +76,7 @@ public class SeatController {
 					ticketController.getView().setVisible(true);
 					seatView.setVisible(false);
 				}else {
-					seatView.setTheDisplay("You must enter a seat and email.");
+					seatView.setTheDisplay("You must enter email and choose an available seat.");
 				}
 
 			} catch (NumberFormatException ex1) {

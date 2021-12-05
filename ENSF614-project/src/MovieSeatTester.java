@@ -10,17 +10,17 @@ public class MovieSeatTester {
 
 		public static void main(String[] args) throws ClassNotFoundException {
 			
-			MovieModel movieModel = new MovieModel();
-			MovieSearchView movieSearchView = new MovieSearchView();
-			MovieController movieController = new MovieController(movieSearchView, movieModel);
+//			MovieModel movieModel = new MovieModel();
+//			MovieSearchView movieSearchView = new MovieSearchView();
+			MovieController movieController = new MovieController();
 
 //			movieController.getView().setVisible(true);
 			
 			
-			SeatModel seatModel = new SeatModel();
-			SeatView seatView = new SeatView();
-
-			SeatController seatController = new SeatController(seatView, seatModel);
+//			SeatModel seatModel = new SeatModel();
+//			SeatView seatView = new SeatView();
+//
+//			SeatController seatController = new SeatController();
 
 //			seatController.getView().setVisible(true);
 			
