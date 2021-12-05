@@ -10,8 +10,8 @@ CREATE TABLE REGISTEREDUSER (
   Address		        varchar(50),
   Email					varchar(50),
   Card_no			    varchar(16),
-  Card_cvv				int(3),
-  Card_exp				int(4),
+  Card_cvv				int(4),
+  Card_exp				varchar(10),
   PRIMARY key (Username)
 );
 INSERT INTO REGISTEREDUSER VALUES
