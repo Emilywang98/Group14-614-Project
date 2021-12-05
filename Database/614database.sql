@@ -81,3 +81,20 @@ INSERT INTO TICKET (TicketID, ShowTimeID, SeatRow, SeatColumn) VALUES
 (5,4,7,8),
 (6,5,8,9);
 
+DROP TABLE IF EXISTS SEAT;
+CREATE TABLE Seat (
+	SeatID integer,
+    SeatRow integer,
+    SeatColumn integer
+);
+
+INSERT INTO Seat (SeatID, SeatRow, SeatColumn) VALUES
+(1,7,7),
+(2,7,8),
+(3,7,9),
+(4,8,7),
+(5,8,8),
+(6,8,9),
+(7,9,7),
+(8,9,8),
+(9,9,9);
