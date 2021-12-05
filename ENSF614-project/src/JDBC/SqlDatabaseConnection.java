@@ -72,9 +72,6 @@ public class SqlDatabaseConnection {
 
 	public boolean doInsertQuery(String tableName, ArrayList<String> touple) {
 
-		ResultSet columnNameSet = null;
-		ResultSet resultSet = null;
-
 		String queryString = "INSERT INTO " + tableName + " VALUES ('" + touple.get(0);
 
 		for (int i = 1; i < touple.size(); i++) {
@@ -82,6 +79,25 @@ public class SqlDatabaseConnection {
 		}
 
 		queryString += "');";
+
+		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
+
+			pStat.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			System.err.println("Touple not inserted into " + tableName + ": " + e.getMessage());
+			;
+			return false;
+		}
+
+	}
+	
+	public boolean doUpdateQuery(String tableName, String columnName, String replacement, String conditionColumnName, String condition) {
+
+		String queryString = "UPDATE " + tableName + 
+								"\nSET " + columnName + "=" + replacement +
+									"\nWHERE " + conditionColumnName + "=" + condition + ";";
 
 		System.out.println(queryString);
 
@@ -91,7 +107,7 @@ public class SqlDatabaseConnection {
 
 			return true;
 		} catch (SQLException e) {
-			System.err.println("Touple not inserted into " + tableName + ": " + e.getMessage());
+			System.err.println("Touple not updated in " + tableName + ": " + e.getMessage());
 			;
 			return false;
 		}
