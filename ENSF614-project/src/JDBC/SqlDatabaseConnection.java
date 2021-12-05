@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class SqlDatabaseConnection {
 
                // Create and execute a SELECT SQL statement
         		
-               resultSet = pStat.executeQuery(query);
+               resultSet = pStat.executeQuery();
                
 
                ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -83,57 +84,38 @@ public class SqlDatabaseConnection {
 
     }
     
-//  public boolean doUpdateQuery(String query) {
-//	
-//	ResultSet resultSet = null;
-//	
-//    try (
-//            Statement statement = connection.createStatement();) {
-//
-//           // Create and execute a SELECT SQL statement
-//           resultSet = statement.executeQuery(query);
-//           
-//
-//           ResultSetMetaData rsmd = resultSet.getMetaData();
-//           
-//           ArrayList<ArrayList<String>> matrix = new ArrayList<ArrayList<String>>();
-//           
-//           // Print results from select statement
-//           
-//           if (!resultSet.next()) {
-//        	   System.out.println("No records found");
-//
-//           }
-//           else {
-//        	   int i = 0;
-//        	   do {
-//        		   ArrayList<String> tempRow = new ArrayList<String>();
-//        		   
-//        		   for (int j = 1; j < rsmd.getColumnCount()+1; j++) {
-//        			   tempRow.add(resultSet.getString(j));
-//        			   System.out.print("" + tempRow.get(j-1) + " ");
-//        		   }
-//        		   
-//        		   matrix.add(tempRow);
-//        		   System.out.println();
-//        		   i++;
-//        		   
-//        	   } while (resultSet.next());
-//           }
-//           
-////           System.out.println();
-////           System.out.println(matrix.get(1).get(2));
-//      
-//           
-//           return matrix;
-//       }
-//       catch (SQLException e) {
-//           e.printStackTrace();
-//       }
-//    
-//    return null;
-//
-//}
+  public String doInsertQuery(String tableName, ArrayList<String> touple) {
+	
+	ResultSet columnNameSet = null;
+	ResultSet resultSet = null;
+	
+	String queryString = "INSERT INTO " + tableName + " VALUES ('" + touple.get(0);
+	
+	for (int i = 1; i < touple.size(); i++) {
+		queryString += "', '" + touple.get(i);
+	}
+	
+	queryString += "');";
+	
+	System.out.println(queryString);
+	
+    try (
+    		PreparedStatement pStat = connection.prepareStatement(queryString);
+    		) {
+
+           pStat.executeUpdate();
+           
+           return "Entry added.";
+       }catch (SQLIntegrityConstraintViolationException e) {
+    	   e.printStackTrace();
+    	   return "Unable to add duplicate entry.";
+       }
+       catch (SQLException e) {
+           e.printStackTrace();
+           return "Unable to add entry.";
+       }
+
+}
 
 
 }
