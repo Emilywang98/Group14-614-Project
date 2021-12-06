@@ -43,7 +43,7 @@ public class SeatController {
 //			System.out.println(movieSearchView.getShowtime());
 			try {
 				availableSeats = seatModel.returnSeats();
-				System.out.println("fasfdafd");
+//				System.out.println("fasfdafd");
 				StringBuffer sb = new StringBuffer();
 
 				for (int i = 0; i < availableSeats.size(); i++) {
@@ -56,7 +56,7 @@ public class SeatController {
 
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
 			} catch (NullPointerException ex) {
-				System.out.println("fsafdfas");
+//				System.out.println("fsafdfas");
 				seatView.setAvailableSeatsDisplay("Error!");
 			}
 		}

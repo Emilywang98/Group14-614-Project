@@ -1,19 +1,34 @@
 package View;
 
 import javax.swing.*;
+
+import Controller.LoginController;
+import Controller.MovieController;
+import Controller.TheatreController;
+import Model.LoginModel;
+import Model.TheatreModel;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TheatreView extends JFrame implements ActionListener {
 
-    private JButton theatre1 = null;
-    private JButton theatre2 = null;
-    private JButton theatre3 = null;
+    private JButton theatre1;
+    private JButton theatre2;
+    private JButton theatre3;
     
-    private MovieSearchView movieSearch = null;
+    public void runApp(){
 
-    public void displayGUI(){
+    	theatre1.addActionListener(this);
+    	theatre2.addActionListener(this);
+    	theatre3.addActionListener(this);
+
+        
+    }
+    private MovieSearchView movieSearch;
+
+    public TheatreView(){
         this.setTitle("Theatre view Page");
         this.setSize(600, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,15 +72,19 @@ public class TheatreView extends JFrame implements ActionListener {
         theatre3.addActionListener(listenForTheatre);
     }
 
-    public static void main(String[] args) {
-       TheatreView theatreView = new TheatreView();
-        theatreView.displayGUI();
-    }
+//    public static void main(String[] args) {
+//       TheatreView theatreView = new TheatreView();
+//       TheatreModel model = new TheatreModel();
+//		TheatreController controller = new TheatreController(theatreView, model);
+//		theatreView.runApp();
+//    }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == theatre1 || e.getSource() == theatre2 ||  e.getSource() == theatre3) {
-			movieSearch = new MovieSearchView();
+			
+//			movieSearch = new MovieSearchView();
+			MovieController movieController = new MovieController();
 		}
 		
 	}
