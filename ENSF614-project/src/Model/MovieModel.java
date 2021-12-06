@@ -57,5 +57,12 @@ public class MovieModel {
 		return showtimesForMovie;
 
 	}
+	
+//	public ArrayList<ArrayList<String>> returnShowtimeID(String showtime_selected){
+//		ArrayList<ArrayList<String>> showtimeID =myConnection
+//		.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
+//		
+//		return showtimeID;
+//	}
 
 }

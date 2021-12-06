@@ -22,11 +22,11 @@ public class SeatModel {
 //	    private boolean ifReserved;
 
 	public ArrayList<ArrayList<String>> returnSeats(String showtime_selected) {
-		System.out.println(myConnection
-				.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\""));
+//		System.out.println(myConnection
+//				.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\""));
 		ArrayList<ArrayList<String>> showtimeID = myConnection
 				.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-		System.out.println(showtimeID.get(0).get(0));
+//		System.out.println(showtimeID.get(0).get(0));
 		ArrayList<ArrayList<String>> seatMatrix = myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE ShowtimeID=\"" + showtimeID.get(0).get(0) + "\"");
 //	    	ArrayList<String> availableSeats = new ArrayList();
 //	    	for(ArrayList<String>s:seatMatrix) {

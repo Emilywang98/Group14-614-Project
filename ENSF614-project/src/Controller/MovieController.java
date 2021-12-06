@@ -95,6 +95,7 @@ public class MovieController {
 		public void actionPerformed(ActionEvent e) {
 //        	String showtime_selected;
 			ArrayList<String> availableShowtimes;
+			System.out.println(movieSearchView.getMovie());
 			try {
 				availableShowtimes = movieModel.returnShowtimesForMovie(movieSearchView.getMovie());
 

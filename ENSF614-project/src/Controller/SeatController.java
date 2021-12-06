@@ -40,7 +40,7 @@ public class SeatController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<ArrayList<String>> availableSeats;
-//			System.out.println(movieController.getView().getShowtime());
+//			System.out.println(movieSearchView.getShowtime());
 			try {
 				availableSeats = seatModel.returnSeats(movieSearchView.getShowtime());
 				System.out.println("fasfdafd");
