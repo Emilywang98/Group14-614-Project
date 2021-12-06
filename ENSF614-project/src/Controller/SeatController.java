@@ -42,7 +42,7 @@ public class SeatController {
 			ArrayList<ArrayList<String>> availableSeats;
 //			System.out.println(movieSearchView.getShowtime());
 			try {
-				availableSeats = seatModel.returnSeats(movieSearchView.getShowtime());
+				availableSeats = seatModel.returnSeats();
 				System.out.println("fasfdafd");
 				StringBuffer sb = new StringBuffer();
 
