@@ -22,6 +22,7 @@ public class MovieController {
 
 	public MovieController() {
 		movieSearchView = new MovieSearchView();
+		movieSearchView.getContentPane().setLayout(null);
 		try {
 			movieModel = new MovieModel();
 		} catch (ClassNotFoundException e) {
@@ -34,7 +35,6 @@ public class MovieController {
 		movieSearchView.addSearchMovieActionListener(new SearchMovieListener());
 		movieSearchView.addSelectShowtimeActionListener(new SelectShowtimeListener());
 		movieSearchView.addSearchShowtimesActionListener(new SearchShowtimesListener());
-		movieSearchView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
 
 	public MovieSearchView getView() {
@@ -58,7 +58,7 @@ public class MovieController {
 					movieSearchView.setMovieSuccessDisplay("You must enter a movie name!");
 				}
 			} catch (NullPointerException ex) {
-				movieSearchView.setMovieSuccessDisplay("Error!");
+				movieSearchView.setMovieSuccessDisplay("Movie was not found!");
 			}
 		}
 	}
@@ -76,15 +76,19 @@ public class MovieController {
 
 					movieSearchView
 							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
+					seatController = new SeatController();
+
+					seatController.getView().setVisible(true);
+					movieSearchView.setVisible(false);
 				} else {
 					movieSearchView.setShowtimeSuccessDisplay("You must enter a showtime!");
 				}
 			} catch (NullPointerException ex) {
-				movieSearchView.setShowtimeSuccessDisplay("Error!");
+				movieSearchView.setShowtimeSuccessDisplay("You must enter an available showtime!");
 			}
 		}
 	}
-
+	
 	class SearchShowtimesListener implements ActionListener {
 
 		@Override
@@ -92,7 +96,7 @@ public class MovieController {
 //        	String showtime_selected;
 			ArrayList<String> availableShowtimes;
 			try {
-				availableShowtimes = movieModel.returnShowtimesForMovie();
+				availableShowtimes = movieModel.returnShowtimesForMovie(movieSearchView.getMovie());
 
 				StringBuffer sb = new StringBuffer();
 
@@ -102,6 +106,7 @@ public class MovieController {
 				}
 				String availableShowtimesString = sb.toString();
 				movieSearchView.setShowtimesDisplay(availableShowtimesString);
+				
 
 			} catch (NullPointerException ex) {
 				movieSearchView.setShowtimesDisplay("Error!");
@@ -109,13 +114,5 @@ public class MovieController {
 		}
 	}
 
-	class SearchSeatsListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			seatController = new SeatController();
-
-			seatController.getView().setVisible(true);
-			movieSearchView.setVisible(false);
-		}
-	}
+	
 }

@@ -1,5 +1,6 @@
 package Controller;
 
+import View.MovieSearchView;
 import View.SeatView;
 import Model.SeatModel;
 
@@ -8,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class SeatController {
+	private MovieSearchView movieSearchView;
+	private MovieController movieController;
 	private SeatView seatView;
 	private SeatModel seatModel;
 	private SeatController thisSeatController;
@@ -37,8 +40,10 @@ public class SeatController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<ArrayList<String>> availableSeats;
+//			System.out.println(movieController.getView().getShowtime());
 			try {
-				availableSeats = seatModel.returnSeats();
+				availableSeats = seatModel.returnSeats(movieSearchView.getShowtime());
+				System.out.println("fasfdafd");
 				StringBuffer sb = new StringBuffer();
 
 				for (int i = 0; i < availableSeats.size(); i++) {
@@ -51,6 +56,7 @@ public class SeatController {
 
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
 			} catch (NullPointerException ex) {
+				System.out.println("fsafdfas");
 				seatView.setAvailableSeatsDisplay("Error!");
 			}
 		}

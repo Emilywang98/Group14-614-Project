@@ -22,7 +22,7 @@ public class MovieModel {
 	public ArrayList<String> getMovieVerification(String movieName) {
 		ArrayList<ArrayList<String>> movies = myConnection
 				.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \"" + movieName + "\"");
-		if (movies.get(0).get(0).equals(movieName)) {
+		if (!movies.isEmpty()) {
 //			System.out.println("Successful!");
 			ArrayList<String> moviesList = new ArrayList();
 			moviesList.add(movieName);
@@ -36,7 +36,7 @@ public class MovieModel {
 
 		ArrayList<ArrayList<String>> showtimes = myConnection
 				.doRetrievalQuery("SELECT Showtime FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-		if (showtimes.get(0).get(0).equals(showtime_selected)) {
+		if (!showtimes.isEmpty()) {
 //			System.out.println("Successful!");
 			ArrayList<String> showtimeList = new ArrayList();
 			showtimeList.add(showtime_selected);
@@ -46,10 +46,10 @@ public class MovieModel {
 		}
 	}
 
-	public ArrayList<String> returnShowtimesForMovie() {
+	public ArrayList<String> returnShowtimesForMovie(String movie_selected) {
 
 		ArrayList<ArrayList<String>> showtimes = myConnection
-				.doRetrievalQuery("SELECT ShowTime FROM SHOWTIME WHERE ShowTime");
+				.doRetrievalQuery("SELECT ShowTime FROM SHOWTIME WHERE MovieName=\"" + movie_selected + "\"");
 		ArrayList<String> showtimesForMovie = new ArrayList();
 		for (ArrayList<String> s : showtimes) {
 			showtimesForMovie.addAll(s);

@@ -1,11 +1,8 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
-import Model.SeatModel;
 public class SeatView extends JFrame {
 	
 	private JButton searchSeatsButton, selectSeatButton;
@@ -72,8 +69,6 @@ public class SeatView extends JFrame {
         
         getContentPane().add(panel);
         
-       
-//        frame.getContentPane().add(BorderLayout.CENTER, panel);
         setVisible(true);
     }
 

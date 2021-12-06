@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 public class MovieSearchView extends JFrame {
 
-	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton, searchSeatsButton;
+	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
 	private JLabel movieNameLabel, showtimesLabel, enterShowtimeLabel;
 	private JTextField movieName, movieSuccessDisplay, showtimeSeleted, showtimeSuccessDisplay;
 	private JTextArea showtimesDisplay;
@@ -69,21 +69,20 @@ public class MovieSearchView extends JFrame {
 		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
 		panel.add(showtimeSuccessDisplay);
 
-		searchSeatsButton = new JButton("Search Seats");
-		searchSeatsButton.setBounds(368, 432, 108, 21);
-		panel.add(searchSeatsButton);
-
+//		JButton searchSeatsButton = new JButton("Search Seats");
+//		searchSeatsButton.setBounds(355, 432, 121, 21);
+//		panel.add(searchSeatsButton);
+		
 		getContentPane().add(panel);
+		
+		
 
-//		frame.getContentPane().add(BorderLayout.CENTER, panel);
-//
 		setVisible(true);
 	}
-
-	public void addSearchSeatsActionListener(ActionListener listen) {
-
-		searchSeatsButton.addActionListener(listen);
-	}
+//	public void addSearchSeatsActionListener(ActionListener listen) {
+//
+//		searchSeatsButton.addActionListener(listen);
+//	}
 
 	public void addSearchMovieActionListener(ActionListener listen) {
 
