@@ -76,6 +76,7 @@ public class MovieController {
 
 					movieSearchView
 							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
+					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
 					seatController = new SeatController();
 
 					seatController.getView().setVisible(true);

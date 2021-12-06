@@ -125,4 +125,9 @@ public class MovieSearchView extends JFrame {
 
 		showtimesDisplay.setText(message);
 	}
+
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
+		
+	}
 }

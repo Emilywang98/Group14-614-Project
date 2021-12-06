@@ -104,6 +104,13 @@ public class SeatView extends JFrame {
 		availableSeatsDisplay.setText(availableSeats);
 		
 	}
+
+
+
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
+		
+	}
 }
 
    
