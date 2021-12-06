@@ -39,7 +39,7 @@ public class SeatModel {
 	public String getVerification(String seatRow, String seatColumn, String email) {
 
 		ArrayList<ArrayList<String>> matrix = myConnection
-				.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\"" + seatRow
+				.doRetrievalQuery("SELECT SeatID, SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\"" + seatRow
 						+ "\" AND SeatColumn =\"" + seatColumn + "\"");
 		if (!matrix.isEmpty()) {
 			ArrayList<String> ticket = new ArrayList<String>();
