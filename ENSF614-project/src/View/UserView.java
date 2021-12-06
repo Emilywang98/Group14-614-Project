@@ -4,34 +4,38 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import View.Login;
+import Controller.UserController;
+import Model.UserModel;
 
 public class UserView extends JFrame implements ActionListener{
-
-    private JLabel userName = null;
-    private JLabel userPwd = null;
-    private JLabel FName = null;
-    private JLabel LName = null;
-    private JLabel Email = null;
-    private JLabel Address= null;
-    private JLabel cardNo = null;
-    private JLabel cvv = null;
-    private JLabel expDate = null;
+    
+    private JLabel userName;
+    private JLabel userPwd;
+    private JLabel FName;
+    private JLabel LName;
+    private JLabel Email;
+    private JLabel Address;
+    private JLabel cardNo;
+    private JLabel cvv;
+    private JLabel expDate;
 
     private JButton bookBtn =  new JButton("Book ticket");
     private JButton cancelBtn = new JButton("Cancel ticket");
+    private JButton payFeeBtn = new JButton("Pay Annual Fee");
     
     private TheatreView theatre;
     private PaymentView payment;
 
-    public UserView(){
-        bookBtn.addActionListener(this);
-        cancelBtn.addActionListener(this);
-
-        displayGUI();
+    public void runApp() {
+    	bookBtn.addActionListener(this);
+    	cancelBtn.addActionListener(this);
+    	payFeeBtn.addActionListener(this);
     }
-
     
-    public void displayGUI() {
+    public void displayGUI(String username, String password, String firstName, 
+    						String lastName, String homeAddress, String emailAdd, 
+    						String cardNumb, String cardCvv, String cardExpDate) {
         this.setTitle("Registered User Info Page");
         this.setSize(600, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +53,8 @@ public class UserView extends JFrame implements ActionListener{
         userTip.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(userTip);
 
-        userName = new JLabel ("Erika97");
+        userName = setUserName(username);
+        
         userName.setBounds(170, 100, 250, 25);
         userName.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(userName);
@@ -59,7 +64,7 @@ public class UserView extends JFrame implements ActionListener{
         pwdTip.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(pwdTip);
 
-        userPwd = new JLabel ("123456");
+        userPwd = setUserPwd(password);
         userPwd.setBounds(170, 120, 250, 25);
         userPwd.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(userPwd);
@@ -70,7 +75,8 @@ public class UserView extends JFrame implements ActionListener{
         fName.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(fName);
 
-        FName = new JLabel ("Erika");
+//        FName = setFName(controller.getFName());
+        FName = setFName(firstName);
         FName.setBounds(170, 140, 250, 25);
         FName.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(FName);
@@ -80,7 +86,8 @@ public class UserView extends JFrame implements ActionListener{
         lName.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(lName);
 
-        LName = new JLabel ("Wang");
+//        LName = setLName(controller.getLName());
+        LName = setLName(lastName);
         LName.setBounds(170, 160, 250, 25);
         LName.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(LName);
@@ -90,7 +97,8 @@ public class UserView extends JFrame implements ActionListener{
         email.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(email);
 
-        Email = new JLabel ("erikawang97@gmail.com");
+//        Email = setEmail(controller.getEmail());
+        Email = setEmail(emailAdd);
         Email.setBounds(170, 180, 250, 25);
         Email.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(Email);
@@ -100,7 +108,8 @@ public class UserView extends JFrame implements ActionListener{
         address.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(address);
 
-        Address = new JLabel ("2500 University Dr NW, Calgary, AB T2N 1N4");
+//        Address = setAddress(controller.getAddress());
+        Address = setAddress(homeAddress);
         Address.setBounds(170, 200, 400, 25);
         Address.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(Address);
@@ -110,7 +119,8 @@ public class UserView extends JFrame implements ActionListener{
         creditNo.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(creditNo);
 
-        cardNo = new JLabel ("4485144470717028");
+        cardNo = setCardNo(cardNumb);
+//        cardNo = setCardNo(controller.getCardNumber());
         cardNo.setBounds(200, 220, 400, 25);
         cardNo.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(cardNo);
@@ -120,7 +130,8 @@ public class UserView extends JFrame implements ActionListener{
         creditCVV.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(creditCVV);
 
-        cvv = new JLabel ("905");
+//        cvv = setCvv(controller.getCardCvv());
+        cvv = setCvv(cardCvv);
         cvv.setBounds(200, 240, 400, 25);
         cvv.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(cvv);
@@ -130,18 +141,22 @@ public class UserView extends JFrame implements ActionListener{
         creditDate.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(creditDate);
 
-        expDate = new JLabel ("2025/12/31");
+        
+//        expDate = setExpDate(controller.getCardExp());
+        expDate = setExpDate(cardExpDate);
         expDate.setBounds(250, 260, 400, 25);
         expDate.setFont(new Font("Courier New", Font.BOLD, 12));
         this.add(expDate);
 
 
-        bookBtn.setBounds(100, 300, 180, 25);
+        bookBtn.setBounds(100, 280, 180, 25);
         this.add(bookBtn);
 
-        cancelBtn.setBounds(300, 300, 180, 25);
+        cancelBtn.setBounds(300, 280, 180, 25);
         this.add(cancelBtn);
-
+        
+        payFeeBtn.setBounds(100, 300, 180, 25);
+        this.add(payFeeBtn);
 
         JLabel announcement = new JLabel ("*Pre-public announcements will be sent to your email address.");
         announcement.setBounds(50,330,450,25);
@@ -150,58 +165,62 @@ public class UserView extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
-    public String getUserName() {
-        return userName.getText();
+
+    public JLabel setUserName(String str) {
+        return userName = new JLabel(str);
     }
 
 
-    public String getUserPwd() {
-        return userPwd.getText();
+    public JLabel setUserPwd(String str) {
+        return userPwd= new JLabel(str);
     }
 
 
-    public String getFName() {
-        return FName.getText();
+    public JLabel setFName(String str) {
+        return FName = new JLabel(str);
     }
 
 
-    public String getLName() {
-        return LName.getText();
+    public JLabel setLName(String str) {
+        return LName= new JLabel(str);
     }
 
-    public String getEmail() {
-        return Email.getText();
+    public JLabel setEmail(String str) {
+        return Email = new JLabel(str);
     }
 
-    public String getAddress() {
-        return Address.getText();
+    public JLabel setAddress(String str) {
+        return Address = new JLabel(str);
     }
 
-    public String getCardNo() {
-        return cardNo.getText();
+    public JLabel setCardNo(String str) {
+        return cardNo = new JLabel(str);
     }
 
 
-    public String getCvv() {
-        return cvv.getText();
+    public JLabel setCvv(String str) {
+        return cvv = new JLabel(str);
     }
 
-    public String getExpDate() {
-        return expDate.getText();
+    public JLabel setExpDate(String str) {
+    	return expDate = new JLabel(str);
     }
 
-    public void displayMessage(String errorMessage) {
-        JOptionPane.showMessageDialog(this, errorMessage);
+    public void displayMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 
     public void addBookListener (ActionListener listenForBookButton) {
         bookBtn.addActionListener(listenForBookButton);
     }
 
+    public void addPayFeeListener(ActionListener listenForPayFeeButton) {
+    	payFeeBtn.addActionListener(listenForPayFeeButton);
+    }
+    
     public void addCancelListener (ActionListener listenForCancelButton) {
         cancelBtn.addActionListener(listenForCancelButton);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -213,14 +232,11 @@ public class UserView extends JFrame implements ActionListener{
 
         if (e.getSource() == cancelBtn) {
             payment = new PaymentView();
+            payment.setVisible(true);
         }
     }
-//
-//    public static void main(String[] args) {
-//    	UserView userview = new UserView();
-//    	userview.runApp();
-//	}
-//
+
+
 
 }
 
