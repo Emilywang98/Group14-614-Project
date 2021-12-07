@@ -74,9 +74,6 @@ public class MovieSearchView extends JFrame {
 //		panel.add(searchSeatsButton);
 		
 		getContentPane().add(panel);
-		
-		
-
 		setVisible(true);
 	}
 //	public void addSearchSeatsActionListener(ActionListener listen) {

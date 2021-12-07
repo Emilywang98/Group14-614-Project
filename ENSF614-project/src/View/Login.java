@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Model.RegistrationModel;
 import Controller.RegistrationController;
+import View.NavigationView;
 
 /**
  * View for logging in
@@ -20,6 +21,7 @@ public class Login extends JFrame implements ActionListener{
     private Registration registerPage;
     private RegistrationController registerController;
     private RegistrationModel registerModel;
+    private NavigationView navigationPage;
 
     private UserView userPage;
     private JTextField passwordText = new JPasswordField();
@@ -80,15 +82,13 @@ public class Login extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // register pressed
         if (e.getSource() == registerButton) {
-            registerPage = new Registration();
-            registerPage.displayGUI();
-            try {
-                registerModel = new RegistrationModel();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-            registerController = new RegistrationController(registerPage, registerModel);
+            registerController = new RegistrationController();
+        }
 
+        // register pressed
+        if (e.getSource() == guestButton) {
+            navigationPage = new NavigationView();
+            navigationPage.displayGUI();
         }
     }
 

@@ -20,10 +20,10 @@ public class NavigationView extends JFrame implements ActionListener {
         //Set the layout
         panel.setLayout(null);
 
-        bookTicketButton.setBounds(40, 120, 100, 25);
+        bookTicketButton.setBounds(80, 50, 150, 25);
         panel.add(bookTicketButton);
 
-        cancelButton.setBounds(140, 120, 150, 25);
+        cancelButton.setBounds(80, 100, 150, 25);
         panel.add(cancelButton);
 
         frame.setVisible(true);
