@@ -18,7 +18,7 @@ public class MovieController {
 	MovieController thisMovieController;
 	MovieModel movieModel;
 	ArrayList<String> movies;
-	ArrayList<String> showId;
+	ArrayList<String> showtimeId;
 
 	public MovieController() {
 		movieSearchView = new MovieSearchView();
@@ -72,12 +72,12 @@ public class MovieController {
 			try {
 				showtime_selected = movieSearchView.getShowtime();
 				if (!showtime_selected.isEmpty()) {
-					showId = movieModel.getShowtimeVerification(showtime_selected);
+					showtimeId = movieModel.getShowtimeVerification(showtime_selected);
 
 					movieSearchView
 							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
 					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
-					seatController = new SeatController(showId.get(0));
+					seatController = new SeatController(showtimeId.get(0));
 
 					seatController.getView().setVisible(true);
 					movieSearchView.setVisible(false);
