@@ -41,7 +41,7 @@ public class SeatModel {
 
 				//query the seatrow and seatcolumn
 //				System.out.println(myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\""));
-		    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\"");
+		    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\"");
 			    if (!matrix.isEmpty()){
 		    		ArrayList<String> ticket = new ArrayList<String>();
 			    	ticket.add(matrix.get(0).get(0));
