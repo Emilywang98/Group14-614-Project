@@ -23,15 +23,17 @@ public class TheatreController {
 	
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-	
-	        try {
-	        } // Login was not successful
-	        catch (NumberFormatException e1){
-	        	view.displayMessage("ERROR!");
-	        }
-	        catch(NullPointerException e2){
-	        	view.displayMessage("ERROR!");
-	        }
+	    	MovieController movieController = new MovieController();
+	    	movieController.getView().setVisible(true);
+	    	view.setVisible(false);
+//	        try {
+//	        } // Login was not successful
+//	        catch (NumberFormatException e1){
+//	        	view.displayMessage("ERROR!");
+//	        }
+//	        catch(NullPointerException e2){
+//	        	view.displayMessage("ERROR!");
+//	        }
 	    }
 	
 	}
@@ -39,15 +41,17 @@ public class TheatreController {
 	
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-	
-	        try {
-	        } // Login was not successful
-	        catch (NumberFormatException e1){
-	        	view.displayMessage("ERROR!");
-	        }
-	        catch(NullPointerException e2){
-	        	view.displayMessage("ERROR!");
-	        }
+	    	MovieController movieController = new MovieController();
+	    	movieController.getView().setVisible(true);
+	    	view.setVisible(false);
+//	        try {
+//	        } // Login was not successful
+//	        catch (NumberFormatException e1){
+//	        	view.displayMessage("ERROR!");
+//	        }
+//	        catch(NullPointerException e2){
+//	        	view.displayMessage("ERROR!");
+//	        }
 	    }
 	
 	}
@@ -55,15 +59,17 @@ public class TheatreController {
 	
 	    @Override
 	    public void actionPerformed(ActionEvent e) {
-	
-	        try {
-	        } // Login was not successful
-	        catch (NumberFormatException e1){
-	        	view.displayMessage("ERROR!");
-	        }
-	        catch(NullPointerException e2){
-	        	view.displayMessage("ERROR!");
-	        }
+	    	MovieController movieController = new MovieController();
+	    	movieController.getView().setVisible(true);
+	    	view.setVisible(false);
+//	        try {
+//	        } // Login was not successful
+//	        catch (NumberFormatException e1){
+//	        	view.displayMessage("ERROR!");
+//	        }
+//	        catch(NullPointerException e2){
+//	        	view.displayMessage("ERROR!");
+//	        }
 	    }
 	
 	}

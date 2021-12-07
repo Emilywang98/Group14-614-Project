@@ -222,7 +222,7 @@ public class UserView extends JFrame implements ActionListener {
 			TheatreView theatreView = new TheatreView();
 			TheatreModel model = new TheatreModel();
 			TheatreController controller = new TheatreController(theatreView, model);
-			theatreView.runApp();
+			theatreView.setVisible(true);
 		}
 
 		if (e.getSource() == cancelBtn) {
