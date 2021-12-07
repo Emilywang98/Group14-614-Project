@@ -13,7 +13,7 @@ public class MovieSearchView extends JFrame {
 	public MovieSearchView() {
 
 		// Creating the Frame
-		setSize(500, 500);
+		setSize(500, 700);
 		setTitle("Movie Search Page");
 //		JFrame frame = new JFrame("Movie Search Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,20 +48,20 @@ public class MovieSearchView extends JFrame {
 		panel.add(showtimesLabel);
 
 		showtimesDisplay = new JTextArea();
-		showtimesDisplay.setBounds(70, 240, 336, 148);
+		showtimesDisplay.setBounds(70, 240, 336, 351);
 		panel.add(showtimesDisplay);
 
 		enterShowtimeLabel = new JLabel("Enter showtime:");
-		enterShowtimeLabel.setBounds(72, 398, 108, 13);
+		enterShowtimeLabel.setBounds(69, 601, 108, 13);
 		panel.add(enterShowtimeLabel);
 
 		showtimeSeleted = new JTextField();
-		showtimeSeleted.setBounds(188, 395, 96, 19);
+		showtimeSeleted.setBounds(188, 598, 96, 19);
 		panel.add(showtimeSeleted);
 		showtimeSeleted.setColumns(10);
 
 		selectShowtimeButton = new JButton("Select");
-		selectShowtimeButton.setBounds(321, 394, 85, 21);
+		selectShowtimeButton.setBounds(321, 597, 85, 21);
 		panel.add(selectShowtimeButton);
 
 //		JButton searchSeatsButton = new JButton("Search Seats");

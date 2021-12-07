@@ -14,7 +14,7 @@ public class SeatView extends JFrame {
 
         setTitle("Seat Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(500, 700);
 
         JPanel panel = new JPanel(); 
         panel.setLayout(null);
@@ -29,36 +29,36 @@ public class SeatView extends JFrame {
         panel.add(availableSeatsLabel); 
         
         availableSeatsDisplay = new JTextArea();
-        availableSeatsDisplay.setBounds(15, 83, 456, 264);
+        availableSeatsDisplay.setBounds(15, 83, 456, 464);
         panel.add(availableSeatsDisplay);
        
         seatRowLabel = new JLabel("Enter a seat row:");
-        seatRowLabel.setBounds(15, 357, 124, 13);
+        seatRowLabel.setBounds(15, 557, 124, 13);
         panel.add(seatRowLabel);
         
         seatRowInput = new JTextField(10);
-        seatRowInput.setBounds(133, 354, 54, 19);
+        seatRowInput.setBounds(136, 554, 54, 19);
         panel.add(seatRowInput);
         
         selectSeatButton = new JButton("Select Seat");
-        selectSeatButton.setBounds(370, 432, 106, 21);
+        selectSeatButton.setBounds(365, 632, 106, 21);
         panel.add(selectSeatButton);
 
         seatColumnLabel = new JLabel("Enter a seat column:");
-        seatColumnLabel.setBounds(243, 357, 138, 13);
+        seatColumnLabel.setBounds(244, 557, 138, 13);
         panel.add(seatColumnLabel);
         
         seatColumnInput = new JTextField();
-        seatColumnInput.setBounds(370, 354, 54, 19);
+        seatColumnInput.setBounds(369, 554, 54, 19);
         panel.add(seatColumnInput);
         seatColumnInput.setColumns(10);
         
         emailLabel = new JLabel("Enter the email you want to receive the ticket for the seat:");
-        emailLabel.setBounds(15, 380, 456, 13);
+        emailLabel.setBounds(15, 580, 456, 13);
         panel.add(emailLabel);
         
         emailInput = new JTextField();
-        emailInput.setBounds(15, 403, 456, 19);
+        emailInput.setBounds(15, 603, 456, 19);
         panel.add(emailInput);
         emailInput.setColumns(10);
         
