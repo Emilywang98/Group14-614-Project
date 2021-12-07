@@ -43,14 +43,15 @@ public class SeatController {
 				StringBuffer sb = new StringBuffer();
 
 				for (int i = 0; i < availableSeats.size(); i++) {
-					for (int j = 0; j < availableSeats.get(i).size(); j++) {
+					for (int j = 1; j < availableSeats.get(i).size(); j++) {
 						sb.append("" + availableSeats.get(i).get(j) + "          ");
 					}
 					sb.append("\n");
 				}
 				String availableSeatsString = sb.toString();
-
+//				String output = "Avaiable seats: o       Occupied seats: x  \n";
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
+//				seatView.setAvailableSeatsDisplay(output);
 			} catch (NullPointerException ex) {
 				seatView.setAvailableSeatsDisplay("Error!");
 			}

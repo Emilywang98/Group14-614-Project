@@ -13,15 +13,15 @@ public class MovieSeatTester {
 
 		public static void main(String[] args) throws ClassNotFoundException {
 			
-//			MovieController movieController = new MovieController();
+			MovieController movieController = new MovieController();
 //			seatController.getView().setVisible(true);
 			
 //			SeatController seatController = new SeatController();
 //			seatController.getView().setVisible(true);
 			
-			TheatreModel theatreModel = new TheatreModel();
-			TheatreView theatreView = new TheatreView();
-			TheatreController theatreController = new TheatreController(theatreView,theatreModel);
+//			TheatreModel theatreModel = new TheatreModel();
+//			TheatreView theatreView = new TheatreView();
+//			TheatreController theatreController = new TheatreController(theatreView,theatreModel);
 			
 			
 
