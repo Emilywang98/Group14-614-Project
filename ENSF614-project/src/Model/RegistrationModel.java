@@ -5,17 +5,17 @@ import JDBC.SqlDatabaseConnection;
 import java.util.ArrayList;
 
 public class RegistrationModel {
-    SqlDatabaseConnection myConnection;
-    String firstName;
-    String lastName;
-    String address;
-    String username;
-    String password;
-    String email;
-    String cardNumber;
-    String cardCvv;
-    String cardExp;
-    ArrayList<String> newRegistration = new ArrayList<String>();
+    private SqlDatabaseConnection myConnection;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String username;
+    private String password;
+    private String email;
+    private String cardNumber;
+    private String cardCvv;
+    private String cardExp;
+    private ArrayList<String> newRegistration = new ArrayList<String>();
 
     public RegistrationModel() throws ClassNotFoundException {
         myConnection = new SqlDatabaseConnection();
@@ -23,7 +23,6 @@ public class RegistrationModel {
     }
     public ArrayList<String> addNewUser(String firstName, String lastName, String username, String password, String email, String address, String cardNumber, String cardCvv, String cardExp){
         //add info to arraylist
-
         newRegistration.add(username);
         newRegistration.add(password);
         newRegistration.add(firstName);

@@ -232,3 +232,21 @@ INSERT INTO MOVIECREDIT (Email, Amount) VALUES
 ('hello@gmail.com', 8.50),
 ('hello@gmail.com', 17.00),
 ('welcome@gmail.com', 8.50);
+
+DROP TABLE IF EXISTS ANNOUNCEMENTS;
+CREATE TABLE ANNOUNCEMENTS (
+	AnnouncementId integer,
+    Announcement varchar(100),
+	PRIMARY KEY(AnnouncementId)
+);
+
+INSERT INTO ANNOUNCEMENTS(AnnouncementId, Announcement) VALUES
+(1, 'New movie Starwars in theatres 12-12-21 on Presale NOW for 10% of reserved seats!'),
+(2, 'New movie Juno in theatres 12-15-21 on Presale NOW for 10% of reserved seats!'),
+(3, 'New movie Avatar in theatres 12-17-21 on Presale NOW for 10% of reserved seats'),
+(4, 'New movie Star in theatres 12-19-21 on Presale NOW for 10% of reserved seats'),
+(5, 'New movie wars in theatres 12-12-21 on Presale NOW for 10% of reserved seats!'),
+(6, 'New movie Hairspray in theatres 12-15-21 on Presale NOW for 10% of reserved seats!'),
+(7, 'New movie harry potter in theatres 12-17-21 on Presale NOW for 10% of reserved seats'),
+(8, 'New movie home alone in theatres 12-19-21 on Presale NOW for 10% of reserved seats');
+

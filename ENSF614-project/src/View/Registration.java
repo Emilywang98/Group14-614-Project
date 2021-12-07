@@ -13,12 +13,7 @@ public class Registration extends JFrame{
     private JLabel email = new JLabel("Email: ");
     private JLabel cardNo = new JLabel("Number: ");
     private JLabel cardExp = new JLabel("Exp Date: ");
-    String getCardExp;
-
-
-
     private JLabel cardCvv = new JLabel("Card CVV: ");
-
     private JTextField firstNameText = new JTextField(10);
     private JTextField lastNameText = new JTextField(10);
     private JTextField addressText = new JTextField(10);
@@ -32,10 +27,10 @@ public class Registration extends JFrame{
     private Container c;
     private JLabel title;
     private JLabel cardTitle;
-    private JLabel paymentText;
     private JComboBox month;
     private JComboBox year;
     private JButton submit;
+    private String getCardExp;
 
     private String months[]
             = { "Jan", "feb", "Mar", "Apr",

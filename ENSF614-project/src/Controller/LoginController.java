@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class LoginController {
 
-    Login login;
-    LoginModel model;
-    ArrayList<String> loginInfo;
-    UserController userController;
+    private Login login;
+    private LoginModel model;
+    private ArrayList<String> loginInfo;
+    private UserController userController;
 
     public LoginController(Login login, LoginModel model){
         this.login = login;
@@ -32,17 +32,16 @@ public class LoginController {
 
                 login.displayPlainMessage("Login", "Login Successful");
                 userController = new UserController(loginInfo);
-                userController.getView().setVisible(true);
                 login.setVisible(false);
 
             } // Login was not successful
             catch (NumberFormatException e1){
-                login.displayErrorMessage("ERROR!");
+                login.displayErrorMessage("ERROR, try again!");
             }
             catch(NullPointerException e2){
-                login.displayErrorMessage("ERROR!");
+                login.displayErrorMessage("ERROR, try again!");
             } catch (Exception exception) {
-                login.displayErrorMessage("ERROR!");
+                login.displayErrorMessage("ERROR, try again!");
             }
         }
 

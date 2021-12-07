@@ -72,6 +72,7 @@ public class TheatreView extends JFrame{
         theatre3.addActionListener(listenForTheatre);
     }
 
+
 //    public static void main(String[] args) {
 //       TheatreView theatreView = new TheatreView();
 //       TheatreModel model = new TheatreModel();

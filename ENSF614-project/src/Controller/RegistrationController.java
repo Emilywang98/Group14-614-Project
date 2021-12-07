@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RegistrationController {
-    Registration register;
-    RegistrationModel model;
-    ArrayList<String> registrationInfo;
+    private Registration register;
+    private RegistrationModel model;
+    private ArrayList<String> registrationInfo;
 
     public RegistrationController(){
         this.register = new Registration();
@@ -25,8 +25,6 @@ public class RegistrationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(register.getCardExp());
-
             try {
                 String name = register.getFirstName();
                 String lastName = register.getLastName();
@@ -43,10 +41,10 @@ public class RegistrationController {
                 register.displayPlainMessage("Registration", "Registration Successful");
             } // Login was not successful
             catch (NumberFormatException e1){
-                register.displayErrorMessage("ERROR!");
+                register.displayErrorMessage("ERROR, try again!");
             }
             catch(NullPointerException e2){
-                register.displayErrorMessage("ERROR!");
+                register.displayErrorMessage("ERROR, try again!");
             }
         }
 

@@ -17,14 +17,13 @@ public class Login extends JFrame implements ActionListener{
     private JButton registerButton = new JButton("Register");
     private JButton guestButton = new JButton("Continue as Guest");
     private JTextField nameText = new JTextField();
-//    private JPasswordField passwordField = new JPasswordField();
+    private JTextField passwordText = new JPasswordField();
+
     private Registration registerPage;
     private RegistrationController registerController;
     private RegistrationModel registerModel;
     private NavigationView navigationPage;
-
     private UserView userPage;
-    private JTextField passwordText = new JPasswordField();
 
     public void runApp(){
 

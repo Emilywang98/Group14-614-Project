@@ -4,11 +4,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import Controller.TicketController;
 import View.Login;
 import Controller.TheatreController;
 import Controller.UserController;
 import Model.TheatreModel;
 import Model.UserModel;
+import Controller.AnnouncementsController;
 
 public class UserView extends JFrame implements ActionListener {
 
@@ -27,17 +30,19 @@ public class UserView extends JFrame implements ActionListener {
 	private JButton payFeeBtn = new JButton("Pay Annual Fee");
 	private JButton announcementBtn = new JButton("Announcements");
 
-	private TheatreView theatre;
-	private PaymentView payment;
+	private TicketController ticketController;
+	private AnnouncementsController announcement;
+	private TheatreController controller;
 
-	public void runApp() {
+	public UserView() {
 		bookBtn.addActionListener(this);
 		cancelBtn.addActionListener(this);
 		payFeeBtn.addActionListener(this);
+		announcementBtn.addActionListener(this);
 	}
 
 	public void displayGUI(String username, String password, String firstName, String lastName, String homeAddress,
-			String emailAdd, String cardNumb, String cardCvv, String cardExpDate) {
+		String emailAdd, String cardNumb, String cardCvv, String cardExpDate) {
 		this.setTitle("Registered User Info Page");
 		this.setSize(600, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -223,16 +228,16 @@ public class UserView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == bookBtn) {
-//			TheatreView theatreView = new TheatreView();
-//			TheatreModel model = new TheatreModel();
-//			TheatreController controller = new TheatreController(theatreView, model);
-//			theatreView.setVisible(true);
-			TheatreController controller = new TheatreController();
+			controller = new TheatreController();
 		}
 
-		if (e.getSource() == cancelBtn) {
-			payment = new PaymentView();
-			payment.setVisible(true);
+		if(e.getSource() == cancelBtn){
+			ticketController = new TicketController();
+			ticketController.getView().setVisible(true);
+		}
+
+		if(e.getSource() == announcementBtn){
+			announcement = new AnnouncementsController();
 		}
 	}
 
