@@ -43,14 +43,4 @@ public class Announcements extends JFrame {
 
         frame.setVisible(true);
     }
-
-
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//
-//    }
-
-//    public void addAnnouncementListener(ActionListener listenForRegister){
-//        submit.addActionListener(listenForRegister);
-//    }
 }
