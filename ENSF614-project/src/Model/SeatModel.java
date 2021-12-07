@@ -24,9 +24,9 @@ public class SeatModel {
 	    
 
 	    
-	    public ArrayList<ArrayList<String>> returnSeats(){
+	    public ArrayList<ArrayList<String>> returnSeats(String showtimeID){
 //	    	System.out.println(myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT"));
-	    	ArrayList<ArrayList<String>> seatMatrix = myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT");
+	    	ArrayList<ArrayList<String>> seatMatrix = myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE ShowtimeID = \""+showtimeID+ "\"");
 //	    	System.out.println("Login Successful!");
 //	    	ArrayList<String> availableSeats = new ArrayList();
 //	    	for(ArrayList<String>s:seatMatrix) {
@@ -37,11 +37,11 @@ public class SeatModel {
 	    }
 
 	
-		 public String getVerification(String seatRow, String seatColumn, String email) {
+		 public String getVerification(String seatRow, String seatColumn, String email, String showtimeID) {
 
 				//query the seatrow and seatcolumn
 //				System.out.println(myConnection.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\""));
-		    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\"");
+		    	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatRow=\""+seatRow+"\" AND SeatColumn =\""+seatColumn+"\" AND ShowtimeID =\""+showtimeID+"\"");
 			    if (!matrix.isEmpty()){
 		    		ArrayList<String> ticket = new ArrayList<String>();
 			    	ticket.add(matrix.get(0).get(0));

@@ -13,7 +13,7 @@ public class MovieSeatTester {
 			
 //			MovieModel movieModel = new MovieModel();
 //			MovieSearchView movieSearchView = new MovieSearchView();
-//			MovieController movieController = new MovieController();
+			MovieController movieController = new MovieController();
 //
 //			movieController.getView().setVisible(true);
 			
@@ -21,7 +21,7 @@ public class MovieSeatTester {
 //			SeatModel seatModel = new SeatModel();
 //			SeatView seatView = new SeatView();
 //
-//			TheatreController theatreController = new TheatreController(null, null);
+			TheatreController theatreController = new TheatreController(null, null);
 //			SeatController seatController = new SeatController();
 
 //			seatController.getView().setVisible(true);

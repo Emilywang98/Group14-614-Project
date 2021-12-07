@@ -15,11 +15,11 @@ public class SeatController {
 	private SeatModel seatModel;
 	private SeatController thisSeatController;
 	String seatID;
-	String showID;
+	String showtimeID;
 	private TicketController ticketController;
 
-	public SeatController(String showId) {
-		this.showID = showId;
+	public SeatController(String showtimeId) {
+		this.showtimeID = showtimeId;
 		seatView = new SeatView();
 		try {
 			seatModel = new SeatModel();
@@ -44,7 +44,7 @@ public class SeatController {
 			ArrayList<ArrayList<String>> availableSeats;
 //			System.out.println(movieSearchView.getShowtime());
 			try {
-				availableSeats = seatModel.returnSeats();
+				availableSeats = seatModel.returnSeats(showtimeID);
 //				System.out.println("fasfdafd");
 				StringBuffer sb = new StringBuffer();
 
@@ -75,7 +75,7 @@ public class SeatController {
 				String email = seatView.getEmailInput();
 
 				if (!email.isEmpty()) {
-					seatID = seatModel.getVerification(seatRow, seatColumn, email);
+					seatID = seatModel.getVerification(seatRow, seatColumn, email, showtimeID);
 
 					seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
 					seatView.displayMessage("Email sent.");
