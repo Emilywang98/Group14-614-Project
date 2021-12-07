@@ -25,6 +25,7 @@ public class UserView extends JFrame implements ActionListener {
 	private JButton bookBtn = new JButton("Book ticket");
 	private JButton cancelBtn = new JButton("Cancel ticket");
 	private JButton payFeeBtn = new JButton("Pay Annual Fee");
+	private JButton announcementBtn = new JButton("Announcements");
 
 	private TheatreView theatre;
 	private PaymentView payment;
@@ -156,6 +157,9 @@ public class UserView extends JFrame implements ActionListener {
 		payFeeBtn.setBounds(100, 300, 180, 25);
 		this.add(payFeeBtn);
 
+		announcementBtn.setBounds(300, 300, 180, 25);
+		this.add(announcementBtn);
+
 		JLabel announcement = new JLabel("*Pre-public announcements will be sent to your email address.");
 		announcement.setBounds(50, 330, 450, 25);
 		this.add(announcement);
@@ -219,10 +223,11 @@ public class UserView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == bookBtn) {
-			TheatreView theatreView = new TheatreView();
-			TheatreModel model = new TheatreModel();
-			TheatreController controller = new TheatreController(theatreView, model);
-			theatreView.setVisible(true);
+//			TheatreView theatreView = new TheatreView();
+//			TheatreModel model = new TheatreModel();
+//			TheatreController controller = new TheatreController(theatreView, model);
+//			theatreView.setVisible(true);
+			TheatreController controller = new TheatreController();
 		}
 
 		if (e.getSource() == cancelBtn) {

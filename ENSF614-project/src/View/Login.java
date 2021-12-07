@@ -74,7 +74,6 @@ public class Login extends JFrame implements ActionListener{
         guestButton.setBounds(140, 120, 150, 25);
         panel.add(guestButton);
 
-
         frame.setVisible(true);
     }
 

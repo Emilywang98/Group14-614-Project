@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class NavigationView extends JFrame implements ActionListener {
     private JButton cancelButton = new JButton("Cancel Ticket");
     private JButton bookTicketButton = new JButton("Book Ticket");
+    PaymentView payment;
+    TheatreView theatreView;
 
     public void displayGUI(){
         setTitle("Navigation Portal");
@@ -31,12 +33,16 @@ public class NavigationView extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //cancel button pressed
         if(e.getSource() == cancelButton){
-            //navigate to ticket page
+            payment = new PaymentView();
+            payment.setVisible(true);
         }
 
+        //book ticket pressed
         if(e.getSource() == bookTicketButton){
-            //navigate to ticket page
+            theatreView = new TheatreView();
+            theatreView.setVisible(true);
         }
     }
 }
