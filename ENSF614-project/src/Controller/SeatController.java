@@ -43,14 +43,15 @@ public class SeatController {
 				StringBuffer sb = new StringBuffer();
 
 				for (int i = 0; i < availableSeats.size(); i++) {
-					for (int j = 0; j < availableSeats.get(i).size(); j++) {
+					for (int j = 1; j < availableSeats.get(i).size(); j++) {
 						sb.append("" + availableSeats.get(i).get(j) + "          ");
 					}
 					sb.append("\n");
 				}
 				String availableSeatsString = sb.toString();
-
+//				String output = "Avaiable seats: o       Occupied seats: x  \n";
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
+//				seatView.setAvailableSeatsDisplay(output);
 			} catch (NullPointerException ex) {
 				seatView.setAvailableSeatsDisplay("Error!");
 			}
@@ -70,20 +71,20 @@ public class SeatController {
 				if (!email.isEmpty()) {
 					seatID = seatModel.getVerification(seatRow, seatColumn, email, showtimeID);
 
-					seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
-					seatView.displayMessage("Email sent.");
+//					seatView.setTheDisplay("");
+					seatView.displayMessage("Email sent. Seat: Row " + seatRow + " - " + "Column "+ seatColumn + " was successfully selected");
 					ticketController = new TicketController();
 
 					ticketController.getView().setVisible(true);
 					seatView.setVisible(false);
 				} else {
-					seatView.setTheDisplay("You must enter email and choose an available seat.");
+					seatView.displayMessage("You must enter email and choose an available seat.");
 				}
 
-			} catch (NumberFormatException ex1) {
-				seatView.setTheDisplay("Error!");
+//			} catch (NumberFormatException ex1) {
+//				seatView.setTheDisplay("Error!");
 			} catch (NullPointerException ex2) {
-				seatView.setTheDisplay("You must choose an available seat.");
+				seatView.displayMessage("You must choose an available seat.");
 			}
 		}
 	}

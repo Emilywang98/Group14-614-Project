@@ -42,25 +42,30 @@ public class PaymentController {
 			
 			// cardNumField, cardCVVField, cardNameField, cardDateYearField, cardDateMonthField, cardPostalCodeField;
 			
-			int cardNum;
-			int cardCVV;
+			String cardNum;
+			String cardCVV;
 			String cardName;
-			int expYear;
-			int expMonth;
+			String expYear;
+			String expMonth;
 			String postalCode;
 			
 
 			try {
 				// We are reading data from the view
-//				cardNum = paymentView.getCardNumber();
-//				cardCVV = paymentView.getCardCVV();
-//				cardName = paymentView.getCardName();
-//				expYear = paymentView.getCardYear();
-//				expMonth = paymentView.getCardMonth();
-//				postalCode = paymentView.getCardPostalCode();
+				cardNum = paymentView.getCardNumber();
+				cardCVV = paymentView.getCardCVV();
+				cardName = paymentView.getCardName();
+				expYear = paymentView.getCardYear();
+				expMonth = paymentView.getCardMonth();
+				postalCode = paymentView.getCardPostalCode();
 				
-				// Invoking the model
-				paymentView.setTheDisplay(paymentModel.payBill());
+				if (!cardNum.isBlank() && !cardCVV.isBlank() && !cardName.isBlank() && 
+						!expYear.isBlank() && !expMonth.isBlank() && !postalCode.isBlank()) {
+					// Invoking the model
+					paymentView.setTheDisplay(paymentModel.payBill());
+				}else {
+					paymentView.setTheDisplay("Please fill in all fields.\n\n" + paymentModel.calculateTotalBill());
+				}
 				
 			}catch(NumberFormatException ex) {
 				ex.printStackTrace();

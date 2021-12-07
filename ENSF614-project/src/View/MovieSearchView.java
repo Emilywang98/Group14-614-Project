@@ -7,7 +7,7 @@ public class MovieSearchView extends JFrame {
 
 	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
 	private JLabel movieNameLabel, showtimesLabel, enterShowtimeLabel;
-	private JTextField movieName, movieSuccessDisplay, showtimeSeleted, showtimeSuccessDisplay;
+	private JTextField movieName, movieSuccessDisplay, showtimeSeleted;
 	private JTextArea showtimesDisplay;
 
 	public MovieSearchView() {
@@ -48,26 +48,21 @@ public class MovieSearchView extends JFrame {
 		panel.add(showtimesLabel);
 
 		showtimesDisplay = new JTextArea();
-		showtimesDisplay.setBounds(70, 240, 336, 101);
+		showtimesDisplay.setBounds(70, 240, 336, 148);
 		panel.add(showtimesDisplay);
 
 		enterShowtimeLabel = new JLabel("Enter showtime:");
-		enterShowtimeLabel.setBounds(70, 366, 108, 13);
+		enterShowtimeLabel.setBounds(72, 398, 108, 13);
 		panel.add(enterShowtimeLabel);
 
 		showtimeSeleted = new JTextField();
-		showtimeSeleted.setBounds(188, 363, 96, 19);
+		showtimeSeleted.setBounds(188, 395, 96, 19);
 		panel.add(showtimeSeleted);
 		showtimeSeleted.setColumns(10);
 
 		selectShowtimeButton = new JButton("Select");
-		selectShowtimeButton.setBounds(321, 362, 85, 21);
+		selectShowtimeButton.setBounds(321, 394, 85, 21);
 		panel.add(selectShowtimeButton);
-
-		showtimeSuccessDisplay = new JTextField();
-		showtimeSuccessDisplay.setColumns(10);
-		showtimeSuccessDisplay.setBounds(70, 403, 336, 19);
-		panel.add(showtimeSuccessDisplay);
 
 //		JButton searchSeatsButton = new JButton("Search Seats");
 //		searchSeatsButton.setBounds(355, 432, 121, 21);
@@ -113,10 +108,6 @@ public class MovieSearchView extends JFrame {
 		movieSuccessDisplay.setText(message);
 	}
 
-	public void setShowtimeSuccessDisplay(String message) {
-
-		showtimeSuccessDisplay.setText(message);
-	}
 
 	public void setShowtimesDisplay(String message) {
 

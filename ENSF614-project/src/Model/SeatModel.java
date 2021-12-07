@@ -20,10 +20,22 @@ public class SeatModel {
 	}
 
 	public ArrayList<ArrayList<String>> returnSeats(String showtimeID) {
-		ArrayList<ArrayList<String>> seats = myConnection
-				.doRetrievalQuery("SELECT SeatRow, SeatColumn FROM SEAT WHERE ShowtimeID = \"" + showtimeID + "\"");
-
-		return seats;
+		ArrayList<ArrayList<String>> allSeatsForTheShowtime = myConnection
+				.doRetrievalQuery("SELECT SeatID, SeatRow, SeatColumn FROM SEAT WHERE ShowtimeID = \"" + showtimeID + "\"");
+		
+		ArrayList<ArrayList<String>> occupiedSeats = myConnection
+				.doRetrievalQuery("SELECT SeatID FROM TICKET WHERE Status = 'paid' OR Status = 'reserved'");
+		
+		for(int i=0; i< allSeatsForTheShowtime.size(); i++) {
+			for(int j=0; j< occupiedSeats.size();j++) {
+		
+				if(allSeatsForTheShowtime.get(i).get(0).equals(occupiedSeats.get(j).get(0)) ) {
+					allSeatsForTheShowtime.remove(allSeatsForTheShowtime.get(i));
+				}
+			}	
+		}
+		
+		return allSeatsForTheShowtime;
 	}
 
 	public String getVerification(String seatRow, String seatColumn, String email, String showtimeID) {
