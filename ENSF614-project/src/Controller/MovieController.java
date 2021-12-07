@@ -63,32 +63,6 @@ public class MovieController {
 		}
 	}
 
-	class SelectShowtimeListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String showtime_selected;
-
-			try {
-				showtime_selected = movieSearchView.getShowtime();
-				if (!showtime_selected.isEmpty()) {
-					showtimeId = movieModel.getShowtimeVerification(showtime_selected);
-
-					movieSearchView
-							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
-					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
-					seatController = new SeatController(showtimeId.get(0));
-
-					seatController.getView().setVisible(true);
-					movieSearchView.setVisible(false);
-				} else {
-					movieSearchView.setShowtimeSuccessDisplay("You must enter a showtime!");
-				}
-			} catch (NullPointerException ex) {
-				movieSearchView.setShowtimeSuccessDisplay("You must enter an available showtime!");
-			}
-		}
-	}
 	
 	class SearchShowtimesListener implements ActionListener {
 
@@ -115,6 +89,31 @@ public class MovieController {
 			}
 		}
 	}
+	class SelectShowtimeListener implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String showtime_selected;
+
+			try {
+				showtime_selected = movieSearchView.getShowtime();
+				if (!showtime_selected.isEmpty()) {
+					showtimeId = movieModel.getShowtimeVerification(showtime_selected);
+
+//					movieSearchView
+//							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
+					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
+					seatController = new SeatController(showtimeId.get(0));
+
+					seatController.getView().setVisible(true);
+					movieSearchView.setVisible(false);
+				} else {
+					movieSearchView.displayMessage("You must enter a showtime!");
+				}
+			} catch (NullPointerException ex) {
+				movieSearchView.displayMessage("You must enter an available showtime!");
+			}
+		}
+	}
 	
 }
