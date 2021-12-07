@@ -72,7 +72,7 @@ public class SeatController {
 					seatID = seatModel.getVerification(seatRow, seatColumn, email, showtimeID);
 
 //					seatView.setTheDisplay("");
-					seatView.displayMessage("Email sent. Seat: \" + seatRow + \" - \" + seatColumn + \" was successfully selected");
+					seatView.displayMessage("Email sent. Seat: Row " + seatRow + " - " + "Column "+ seatColumn + " was successfully selected");
 					ticketController = new TicketController();
 
 					ticketController.getView().setVisible(true);
