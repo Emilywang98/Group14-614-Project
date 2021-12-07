@@ -156,3 +156,19 @@ INSERT INTO TICKET (SeatID, `Status`, Email) VALUES
 (7, "paid", 'welcome@gmail.com'),
 (8, "paid", 'welcome@gmail.com'),
 (9, "paid", 'welcome@gmail.com');
+
+DROP TABLE IF EXISTS MOVIECREDIT;
+CREATE TABLE MOVIECREDIT (
+	MovieCreditID INTEGER NOT NULL AUTO_INCREMENT,
+    Email VARCHAR(100),
+    Amount DOUBLE,
+    primary key (MovieCreditID)
+);
+
+INSERT INTO MOVIECREDIT (Email, Amount) VALUES
+('g@gmail.com', 15.00),
+('goodbye@gmail.com', 20.00),
+('goodbye@gmail.com', 17.00),
+('hello@gmail.com', 8.50),
+('hello@gmail.com', 17.00),
+('welcome@gmail.com', 8.50);

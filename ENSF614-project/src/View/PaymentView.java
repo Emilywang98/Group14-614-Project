@@ -120,13 +120,13 @@ public class PaymentView extends JFrame{
 
 		add(scroll);
 		
-		//add remove buttons
+		//pay cancel buttons
 		
 		JPanel payCancelPanel = new JPanel();
 		payCancelPanel.setLayout(new GridLayout(1,2));
 		
 		payButton = new JButton("Pay");
-		cancelButton = new JButton("Cancel");
+		cancelButton = new JButton("Return to Tickets");
 		
 		payCancelPanel.add(payButton);
 		payCancelPanel.add(cancelButton);
@@ -153,20 +153,20 @@ public class PaymentView extends JFrame{
 		return cardPostalCodeField.getText();
 	}
 	
-	public int getCardNumber () {
-		return Integer.parseInt(cardNumField.getText());
+	public String getCardNumber () {
+		return cardNumField.getText();
 	}
 	
-	public int getCardCVV () {
-		return Integer.parseInt(cardCVVField.getText());
+	public String getCardCVV () {
+		return cardCVVField.getText();
 	}
 	
-	public int getCardMonth () {
-		return Integer.parseInt(cardDateMonthField.getText());
+	public String getCardMonth () {
+		return cardDateMonthField.getText();
 	}
 	
-	public int getCardYear () {
-		return Integer.parseInt(cardDateYearField.getText());
+	public String getCardYear () {
+		return cardDateYearField.getText();
 	}
 	
 	public void setTheDisplay (String message) {

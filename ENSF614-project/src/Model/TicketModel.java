@@ -31,9 +31,9 @@ public class TicketModel {
 						.doRetrievalQuery("SELECT * FROM SHOWTIME WHERE ShowtimeId = \"" + seats.get(0).get(1) + "\"");
 
 				allTickets += movie.get(0).get(1) + "\n";
-				allTickets += movie.get(0).get(5) + " " + movie.get(0).get(2) + ", " + movie.get(0).get(4) + "\n";
+				allTickets += movie.get(0).get(4) + " " + movie.get(0).get(2) + ", " + movie.get(0).get(3) + "\n";
 				allTickets += "Row: " + seats.get(0).get(2) + "    Seat column: " + seats.get(0).get(3) + "\n\n";
-				allTickets += "Ticket Price: " + movie.get(0).get(6) + "\n";
+				allTickets += "Ticket Price: $" + movie.get(0).get(5) + "\n";
 				allTickets += "Ticket Paid: " + emailTickets.get(i).get(2) + "\n\n";
 				allTickets += "Ticket ID number: " + emailTickets.get(i).get(0) + "\n";
 				allTickets += "---------------\n\n";
@@ -49,9 +49,9 @@ public class TicketModel {
 					.doRetrievalQuery("SELECT * FROM SHOWTIME WHERE ShowtimeId = \"" + seats.get(0).get(1) + "\"");
 
 			allTickets += movie.get(0).get(1) + "\n";
-			allTickets += movie.get(0).get(5) + " " + movie.get(0).get(2) + ", " + movie.get(0).get(4) + "\n";
+			allTickets += movie.get(0).get(4) + " " + movie.get(0).get(2) + ", " + movie.get(0).get(3) + "\n";
 			allTickets += "Row: " + seats.get(0).get(2) + "    Seat column: " + seats.get(0).get(3) + "\n\n";
-			allTickets += "Ticket Price: " + movie.get(0).get(6) + "\n";
+			allTickets += "Ticket Price: " + movie.get(0).get(5) + "\n";
 			allTickets += "Ticket Paid: " + emailTickets.get(0).get(2) + "\n\n";
 			allTickets += "Ticket ID number: " + emailTickets.get(0).get(0) + "\n";
 			allTickets += "---------------\n\n";
