@@ -13,8 +13,8 @@ public class MovieSeatTester {
 			
 //			MovieModel movieModel = new MovieModel();
 //			MovieSearchView movieSearchView = new MovieSearchView();
-			MovieController movieController = new MovieController();
-
+//			MovieController movieController = new MovieController();
+//
 //			movieController.getView().setVisible(true);
 			
 			

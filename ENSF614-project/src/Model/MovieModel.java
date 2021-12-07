@@ -34,13 +34,13 @@ public class MovieModel {
 
 	public ArrayList<String> getShowtimeVerification(String showtime_selected) {
 
-		ArrayList<ArrayList<String>> showtimes = myConnection
-				.doRetrievalQuery("SELECT Showtime FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-		if (!showtimes.isEmpty()) {
+		ArrayList<ArrayList<String>> showId = myConnection
+				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
+		if (!showId.isEmpty()) {
 //			System.out.println("Successful!");
-			ArrayList<String> showtimeList = new ArrayList();
-			showtimeList.add(showtime_selected);
-			return showtimeList;
+			ArrayList<String> showtimeIdList = new ArrayList();
+			showtimeIdList.add(showId.get(0).get(0));
+			return showtimeIdList;
 		} else {
 			throw new NullPointerException();
 		}

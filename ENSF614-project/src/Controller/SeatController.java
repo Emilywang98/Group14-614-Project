@@ -15,9 +15,11 @@ public class SeatController {
 	private SeatModel seatModel;
 	private SeatController thisSeatController;
 	String seatID;
+	String showID;
 	private TicketController ticketController;
 
-	public SeatController() {
+	public SeatController(String showId) {
+		this.showID = showId;
 		seatView = new SeatView();
 		try {
 			seatModel = new SeatModel();
