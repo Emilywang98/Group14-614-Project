@@ -28,7 +28,6 @@ public class TicketController {
 		ticketView.getTicketActionListener(new GetTicketsListener());
 		ticketView.goToPaymentActionListener(new GoToPaymentListener());
 		ticketView.cancelTicketActionListener(new CancelTicketListener());
-		ticketView.returnActionListener(new ReturnListener());
 	}
 	
 	public TicketView getView() {
@@ -51,9 +50,11 @@ public class TicketController {
 				// Invoking the model
 				ticketView.setTicketDisplay(ticketModel.getTicketInfo(email, ticketID));
 				
+			}catch(IndexOutOfBoundsException ex) {
+				ticketView.setTicketDisplay("That ticket does not exist!");
 			}catch(Exception ex) {
 				ex.printStackTrace();
-				ticketView.setTicketDisplay("There are no tickets matching your search criteria.");
+				ticketView.setTicketDisplay("Error!");
 			}
 		
 		}
@@ -84,6 +85,8 @@ public class TicketController {
 				}
 				
 				
+			}catch(IndexOutOfBoundsException ex) {
+				ticketView.setTicketDisplay("That ticket does not exist!");
 			}catch(Exception ex) {
 				ex.printStackTrace();;
 				ticketView.setTicketDisplay("Error!");
@@ -112,28 +115,14 @@ public class TicketController {
 				// Invoking the model
 				ticketView.setTicketDisplay(ticketModel.cancelTicket(email, ticketID));
 				
+			}catch(IndexOutOfBoundsException ex) {
+				ticketView.setTicketDisplay("That ticket does not exist!");
 			}catch(Exception ex) {
 				ex.printStackTrace();
 				ticketView.setTicketDisplay("Error!");
 			}
 		
 		}
-	}
-	
-	class ReturnListener implements ActionListener{
-		
-		@Override
-		public void actionPerformed (ActionEvent e) {
-
-			try {
-				
-				
-			}catch(Exception ex) {
-				
-			}
-		
-		}
-		
 	}
 	
 }
