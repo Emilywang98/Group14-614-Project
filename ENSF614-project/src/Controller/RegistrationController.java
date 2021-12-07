@@ -11,9 +11,14 @@ public class RegistrationController {
     RegistrationModel model;
     ArrayList<String> registrationInfo;
 
-    public RegistrationController(Registration r, RegistrationModel m){
-        this.register = r;
-        this.model = m;
+    public RegistrationController(){
+        this.register = new Registration();
+        register.displayGUI();
+        try {
+            this.model = new RegistrationModel();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         register.addRegistrationListener(new RegistrationListener());
     }
     class RegistrationListener implements ActionListener {
