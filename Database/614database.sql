@@ -62,7 +62,8 @@ VALUES
 (3, "Dune", "Ciniplex Crowfoot", '2021-12-01', '14:00', 20),
 (4, "Dune", "Ciniplex Crowfoot", '2021-12-01', '16:00', 20),
 (5, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '18:00', 25),
-(6, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '20:00', 25);
+(6, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '20:00', 25),
+(7, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-15', '22:00', 25);
 
 DROP TABLE IF EXISTS SEAT;
 CREATE TABLE Seat (
@@ -134,7 +135,12 @@ INSERT INTO Seat (SeatID, ShowtimeID, SeatRow, SeatColumn) VALUES
 (57,3,4,2),
 (58,4,4,2),
 (59,5,4,2),
-(60,6,4,2);
+(60,6,4,2),
+(61,7,4,2),
+(62,7,5,2),
+(63,7,6,2),
+(64,7,7,2),
+(65,7,8,2);
 
 DROP TABLE IF EXISTS TICKET;
 CREATE TABLE TICKET (
@@ -147,15 +153,18 @@ CREATE TABLE TICKET (
 );
 
 INSERT INTO TICKET (SeatID, `Status`, Email) VALUES
-(1, "reserved", 'hello@gmail.com'),
-(2, "paid", 'hello@gmail.com'),
+(63, "reserved", 'hello@gmail.com'),
+(64, "paid", 'hello@gmail.com'),
 (3, "reserved", 'goodbye@gmail.com'),
 (4, "reserved", 'goodbye@gmail.com'),
 (5, "reserved", 'goodbye@gmail.com'),
-(6, "paid", 'hello@gmail.com'),
+(65, "paid", 'hello@gmail.com'),
 (7, "paid", 'welcome@gmail.com'),
 (8, "paid", 'welcome@gmail.com'),
-(9, "paid", 'welcome@gmail.com');
+(9, "paid", 'welcome@gmail.com'),
+(10, "reserved", 'gslowski@gmail.com'),
+(11, "reserved", 'gslowski@gmail.com'),
+(61, "reserved", 'gslowski@gmail.com');
 
 DROP TABLE IF EXISTS MOVIECREDIT;
 CREATE TABLE MOVIECREDIT (
@@ -166,9 +175,4 @@ CREATE TABLE MOVIECREDIT (
 );
 
 INSERT INTO MOVIECREDIT (Email, Amount) VALUES
-('g@gmail.com', 15.00),
-('goodbye@gmail.com', 20.00),
-('goodbye@gmail.com', 17.00),
-('hello@gmail.com', 8.50),
-('hello@gmail.com', 17.00),
-('welcome@gmail.com', 8.50);
+('g@gmail.com', 15.00);
