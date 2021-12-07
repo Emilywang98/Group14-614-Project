@@ -7,13 +7,12 @@ import Model.TheatreModel;
 
 
 public class TheatreController {
-
 	TheatreView view;
 	TheatreModel model;
 
-	public TheatreController(TheatreView view, TheatreModel model){
-	    this.view = view;
-	    this.model = model;
+	public TheatreController(){
+	    view = new TheatreView();
+	    model = new TheatreModel();
 	    view.addTheatreListener1(new TheatreListener1());
 	    view.addTheatreListener2(new TheatreListener2());
 	    view.addTheatreListener3(new TheatreListener3());

@@ -1,5 +1,8 @@
 package View;
 
+import Controller.TheatreController;
+import Controller.TicketController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +10,14 @@ import java.awt.event.ActionListener;
 public class NavigationView extends JFrame implements ActionListener {
     private JButton cancelButton = new JButton("Cancel Ticket");
     private JButton bookTicketButton = new JButton("Book Ticket");
+//    PaymentView payment;
+    private TicketController ticketController;
+    private TheatreController theatreController;
+
+    public NavigationView(){
+        cancelButton.addActionListener(this);
+        bookTicketButton.addActionListener(this);
+    }
 
     public void displayGUI(){
         setTitle("Navigation Portal");
@@ -31,12 +42,15 @@ public class NavigationView extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //cancel button pressed
         if(e.getSource() == cancelButton){
-            //navigate to ticket page
+            ticketController = new TicketController();
+            ticketController.getView().setVisible(true);
         }
 
+        //book ticket pressed
         if(e.getSource() == bookTicketButton){
-            //navigate to ticket page
+            theatreController = new TheatreController();
         }
     }
 }

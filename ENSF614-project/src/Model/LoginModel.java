@@ -11,12 +11,7 @@ import JDBC.SqlDatabaseConnection;
 
 public class LoginModel {
 	
-	SqlDatabaseConnection myConnection;
-	String username;
-	String password;
-
-	//our database should be in RegisteredUser class
-	ArrayList<String> info;
+	private SqlDatabaseConnection myConnection;
 
     public LoginModel() throws ClassNotFoundException {
     	myConnection = new SqlDatabaseConnection();
@@ -25,11 +20,9 @@ public class LoginModel {
     public ArrayList<String> getVerification(String username, String password) throws Exception {
 
 		//query the username and password
-//		System.out.println("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
     	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
 
 		if(matrix.get(0).get(0).equals(username) && matrix.get(0).get(1).equals(password)){
-//			System.out.println("Login Successful!");
 			ArrayList<String> loginInfo = new ArrayList();
 			loginInfo.add(username);
 			loginInfo.add(password);
@@ -38,7 +31,5 @@ public class LoginModel {
 		else{
 			throw new NullPointerException();
 		}
-
-
     }
 }

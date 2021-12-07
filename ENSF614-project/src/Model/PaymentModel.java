@@ -74,7 +74,7 @@ public class PaymentModel {
 				myConnection.doUpdateQuery("TICKET", "`Status`", "'paid'", "TicketID", ticketID);
 			}
 			
-			
+			this.applyCredit();
 
 			return "Tickets and receipt have been sent to your email.";
 		}else {

@@ -44,7 +44,6 @@ public class UserController {
 			this.view = new UserView();
 			this.setAll(matrix);
 			view.displayGUI(username, userPwd, fName,lName, address, email,creditNo,cvv, expDate);
-			view.runApp();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
