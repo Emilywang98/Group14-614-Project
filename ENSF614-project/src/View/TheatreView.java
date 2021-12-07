@@ -12,20 +12,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TheatreView extends JFrame implements ActionListener {
+public class TheatreView extends JFrame{
 
     private JButton theatre1;
     private JButton theatre2;
     private JButton theatre3;
     
-    public void runApp(){
-
-    	theatre1.addActionListener(this);
-    	theatre2.addActionListener(this);
-    	theatre3.addActionListener(this);
-
-        
-    }
+//    public void runApp(){
+//
+//    	theatre1.addActionListener(this);
+//    	theatre2.addActionListener(this);
+//    	theatre3.addActionListener(this);
+//
+//        
+//    }
     private MovieSearchView movieSearch;
 
     public TheatreView(){
@@ -79,15 +79,15 @@ public class TheatreView extends JFrame implements ActionListener {
 //		theatreView.runApp();
 //    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == theatre1 || e.getSource() == theatre2 ||  e.getSource() == theatre3) {
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		if (e.getSource() == theatre1 || e.getSource() == theatre2 ||  e.getSource() == theatre3) {
 			
 //			movieSearch = new MovieSearchView();
-			MovieController movieController = new MovieController();
-		}
-		
-	}
+//			MovieController movieController = new MovieController();
+//		}
+//		
+//	}
 
 
 }

@@ -9,22 +9,20 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class SeatController {
-	private MovieSearchView movieSearchView;
-	private MovieController movieController;
 	private SeatView seatView;
 	private SeatModel seatModel;
-	private SeatController thisSeatController;
 	String seatID;
+	String showtimeID;
 	private TicketController ticketController;
 
-	public SeatController() {
+	public SeatController(String showtimeId) {
+		this.showtimeID = showtimeId;
 		seatView = new SeatView();
 		try {
 			seatModel = new SeatModel();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		thisSeatController = this;
 
 		seatView.setVisible(true);
 		seatView.addSelectSeatActionListener(new SelectSeatListener());
@@ -40,10 +38,8 @@ public class SeatController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<ArrayList<String>> availableSeats;
-//			System.out.println(movieSearchView.getShowtime());
 			try {
-				availableSeats = seatModel.returnSeats();
-//				System.out.println("fasfdafd");
+				availableSeats = seatModel.returnSeats(showtimeID);
 				StringBuffer sb = new StringBuffer();
 
 				for (int i = 0; i < availableSeats.size(); i++) {
@@ -56,7 +52,6 @@ public class SeatController {
 
 				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
 			} catch (NullPointerException ex) {
-//				System.out.println("fsafdfas");
 				seatView.setAvailableSeatsDisplay("Error!");
 			}
 		}
@@ -73,7 +68,7 @@ public class SeatController {
 				String email = seatView.getEmailInput();
 
 				if (!email.isEmpty()) {
-					seatID = seatModel.getVerification(seatRow, seatColumn, email);
+					seatID = seatModel.getVerification(seatRow, seatColumn, email, showtimeID);
 
 					seatView.setTheDisplay("Seat: " + seatRow + " - " + seatColumn + " was successfully selected");
 					seatView.displayMessage("Email sent.");

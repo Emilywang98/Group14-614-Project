@@ -23,7 +23,6 @@ public class MovieModel {
 		ArrayList<ArrayList<String>> movies = myConnection
 				.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \"" + movieName + "\"");
 		if (!movies.isEmpty()) {
-//			System.out.println("Successful!");
 			ArrayList<String> moviesList = new ArrayList();
 			moviesList.add(movieName);
 			return moviesList;
@@ -34,13 +33,12 @@ public class MovieModel {
 
 	public ArrayList<String> getShowtimeVerification(String showtime_selected) {
 
-		ArrayList<ArrayList<String>> showtimes = myConnection
-				.doRetrievalQuery("SELECT Showtime FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-		if (!showtimes.isEmpty()) {
-//			System.out.println("Successful!");
-			ArrayList<String> showtimeList = new ArrayList();
-			showtimeList.add(showtime_selected);
-			return showtimeList;
+		ArrayList<ArrayList<String>> showId = myConnection
+				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
+		if (!showId.isEmpty()) {
+			ArrayList<String> showtimeIdList = new ArrayList();
+			showtimeIdList.add(showId.get(0).get(0));
+			return showtimeIdList;
 		} else {
 			throw new NullPointerException();
 		}
@@ -58,11 +56,5 @@ public class MovieModel {
 
 	}
 	
-//	public ArrayList<ArrayList<String>> returnShowtimeID(String showtime_selected){
-//		ArrayList<ArrayList<String>> showtimeID =myConnection
-//		.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-//		
-//		return showtimeID;
-//	}
 
 }
