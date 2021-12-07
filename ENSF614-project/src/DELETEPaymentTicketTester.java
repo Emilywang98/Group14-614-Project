@@ -1,6 +1,6 @@
 import Controller.TicketController;
 
-public class PaymentTicketTester {
+public class DELETEPaymentTicketTester {
 
 	public static void main(String[] args) {
 

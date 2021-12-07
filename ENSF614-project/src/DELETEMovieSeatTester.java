@@ -8,7 +8,7 @@ import View.MovieSearchView;
 import View.SeatView;
 import View.TheatreView;
 
-public class MovieSeatTester {
+public class DELETEMovieSeatTester {
 	
 
 		public static void main(String[] args) throws ClassNotFoundException {
