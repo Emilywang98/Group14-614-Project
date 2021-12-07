@@ -52,6 +52,7 @@ public class TicketController {
 				ticketView.setTicketDisplay(ticketModel.getTicketInfo(email, ticketID));
 				
 			}catch(Exception ex) {
+				ex.printStackTrace();
 				ticketView.setTicketDisplay("There are no tickets matching your search criteria.");
 			}
 		
@@ -84,6 +85,7 @@ public class TicketController {
 				
 				
 			}catch(Exception ex) {
+				ex.printStackTrace();;
 				ticketView.setTicketDisplay("Error!");
 			}
 		
