@@ -114,7 +114,7 @@ public class SqlDatabaseConnection {
 	public boolean doDeleteQuery(String tableName, String conditionColumnName, String condition) {
 
 		String queryString = "DELETE FROM " + tableName + " WHERE " + conditionColumnName + "=" + condition + ";";
-
+		
 		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
 
 			pStat.execute();
