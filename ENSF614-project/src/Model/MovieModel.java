@@ -23,7 +23,6 @@ public class MovieModel {
 		ArrayList<ArrayList<String>> movies = myConnection
 				.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \"" + movieName + "\"");
 		if (!movies.isEmpty()) {
-//			System.out.println("Successful!");
 			ArrayList<String> moviesList = new ArrayList();
 			moviesList.add(movieName);
 			return moviesList;
@@ -37,7 +36,6 @@ public class MovieModel {
 		ArrayList<ArrayList<String>> showId = myConnection
 				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
 		if (!showId.isEmpty()) {
-//			System.out.println("Successful!");
 			ArrayList<String> showtimeIdList = new ArrayList();
 			showtimeIdList.add(showId.get(0).get(0));
 			return showtimeIdList;
@@ -58,11 +56,5 @@ public class MovieModel {
 
 	}
 	
-//	public ArrayList<ArrayList<String>> returnShowtimeID(String showtime_selected){
-//		ArrayList<ArrayList<String>> showtimeID =myConnection
-//		.doRetrievalQuery("SELECT ShowtimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-//		
-//		return showtimeID;
-//	}
 
 }
