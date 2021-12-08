@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Connects the login view to login model
+ */
 public class LoginController {
 
     private Login login;
@@ -33,8 +36,7 @@ public class LoginController {
                 login.displayPlainMessage("Login", "Login Successful");
                 userController = new UserController(loginInfo);
                 login.setVisible(false);
-
-            } // Login was not successful
+            } // Login was not successful, catches the error and displays error message
             catch (NumberFormatException e1){
                 login.displayErrorMessage("ERROR, try again!");
             }
@@ -44,7 +46,6 @@ public class LoginController {
                 login.displayErrorMessage("ERROR, try again!");
             }
         }
-
     }
     public ArrayList<String> getLoginInfo(){
         return loginInfo;

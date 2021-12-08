@@ -2,15 +2,16 @@ package View;
 
 import Controller.TheatreController;
 import Controller.TicketController;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Navigation view provides a navigation page for cancel button and book ticket
+ */
 public class NavigationView extends JFrame implements ActionListener {
     private JButton cancelButton = new JButton("Cancel Ticket");
     private JButton bookTicketButton = new JButton("Book Ticket");
-//    PaymentView payment;
     private TicketController ticketController;
     private TheatreController theatreController;
 

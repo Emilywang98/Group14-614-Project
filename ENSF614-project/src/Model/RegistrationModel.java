@@ -4,17 +4,11 @@ import JDBC.SqlDatabaseConnection;
 
 import java.util.ArrayList;
 
+/**
+ * Registration model that adds the new user's information to the database
+ */
 public class RegistrationModel {
     private SqlDatabaseConnection myConnection;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String username;
-    private String password;
-    private String email;
-    private String cardNumber;
-    private String cardCvv;
-    private String cardExp;
     private ArrayList<String> newRegistration = new ArrayList<String>();
 
     public RegistrationModel() throws ClassNotFoundException {

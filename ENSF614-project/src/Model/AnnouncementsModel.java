@@ -4,6 +4,9 @@ import JDBC.SqlDatabaseConnection;
 
 import java.util.ArrayList;
 
+/**
+ * Announcement model that retrieves the announcements from the database
+ */
 public class AnnouncementsModel {
     SqlDatabaseConnection myConnection;
     ArrayList<ArrayList<String>> getQuery;

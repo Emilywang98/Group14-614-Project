@@ -3,10 +3,11 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Displays the announcements on the GUI
+ */
 public class Announcements extends JFrame {
     private ArrayList<String> announcements;
     private JLabel title;
@@ -15,6 +16,7 @@ public class Announcements extends JFrame {
         this.announcements = announcements;
         displayGUI();
     }
+
     public void displayGUI(){
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -30,6 +32,8 @@ public class Announcements extends JFrame {
         frame.add(title);
 
         int j = 50;
+
+        //dynamically rendering the announcements onto the frame
         for(int i = 0; i<announcements.size(); i++){
             j+=30;
             JLabel label = new JLabel(announcements.get(i));

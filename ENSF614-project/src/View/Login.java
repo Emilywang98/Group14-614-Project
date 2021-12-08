@@ -7,10 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Model.RegistrationModel;
 import Controller.RegistrationController;
-import View.NavigationView;
 
 /**
- * View for logging in
+ * Initiating the login for GUI
  */
 public class Login extends JFrame implements ActionListener{
     private JButton loginButton = new JButton("Login");
