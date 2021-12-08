@@ -10,11 +10,23 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * SqlDatabaseConnection class helps us connect to the database with generic selection, insert, update, and delete
+ * statements. All model classes take advantage of this class.
+ *
+ */
+
 public class SqlDatabaseConnection {
 
 	private Connection connection;
 
 	public SqlDatabaseConnection() throws ClassNotFoundException {
+		
+		//connection is established with JDBC
+		
+		// ***** ALL USERS MUST CREATE AN SQL PROFILE WITH USERNAME: "user" AND PASSWORD: "12345"
+		// see README for further mySQL instructions.
+		
 		String connectionUrl = "jdbc:mysql://127.0.0.1:3306/MOVIETHEATRE";
 		String name = "user";
 		String pass = "12345";
@@ -26,6 +38,10 @@ public class SqlDatabaseConnection {
 		}
 	}
 
+	/**
+	 * Generic retrieval query that can take any string from the model classes to be queried.
+	 * 
+	 */
 	public ArrayList<ArrayList<String>> doRetrievalQuery(String query) {
 
 		ResultSet resultSet = null;
@@ -46,6 +62,9 @@ public class SqlDatabaseConnection {
 			}
                else {
 			int i = 0;
+			
+			
+			// parsing the retrieved records into a matrix
 			do {
 				ArrayList<String> tempRow = new ArrayList<String>();
 
@@ -68,15 +87,21 @@ public class SqlDatabaseConnection {
 		return null;
 
 	}
-
+	
+	
+	/**
+	 * Generic insert query that requires a table name and the touple to be entered.
+	 * 
+	 */
 	public boolean doInsertQuery(String tableName, ArrayList<String> touple) {
-
+		
+		// Create and execute an insert SQL statement
 		String queryString = "INSERT INTO " + tableName + " VALUES ('" + touple.get(0);
 
 		for (int i = 1; i < touple.size(); i++) {
 			queryString += "', '" + touple.get(i);
 		}
-
+		
 		queryString += "');";
 
 		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {
@@ -92,8 +117,13 @@ public class SqlDatabaseConnection {
 
 	}
 	
+	/**
+	 * Generic update query that requires a table name and the update specifications.
+	 * 
+	 */
 	public boolean doUpdateQuery(String tableName, String columnName, String replacement, String conditionColumnName, String condition) {
-
+		
+		// Create and execute an update SQL statement
 		String queryString = "UPDATE " + tableName + 
 								"\nSET " + columnName + "=" + replacement +
 									"\nWHERE " + conditionColumnName + "=" + condition + ";";
@@ -105,14 +135,18 @@ public class SqlDatabaseConnection {
 			return true;
 		} catch (SQLException e) {
 			System.err.println("Touple not updated in " + tableName + ": " + e.getMessage());
-			;
 			return false;
 		}
 
 	}
 	
+	/**
+	 * Generic delete query that requires a table name and the delete specifications.
+	 * 
+	 */
 	public boolean doDeleteQuery(String tableName, String conditionColumnName, String condition) {
-
+		
+		// Create and execute a delete SQL statement
 		String queryString = "DELETE FROM " + tableName + " WHERE " + conditionColumnName + "=" + condition + ";";
 		
 		try (PreparedStatement pStat = connection.prepareStatement(queryString);) {

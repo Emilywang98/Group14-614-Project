@@ -7,6 +7,13 @@ import java.util.Date;
 
 import JDBC.SqlDatabaseConnection;
 
+/**
+ * TicketModel handles the different states of a ticket object. The class handles retrieving the ticket info and
+ * canceling tickets.
+ * 
+ * @author Greg
+ *
+ */
 public class TicketModel {
 
 	SqlDatabaseConnection myConnection;
@@ -16,7 +23,13 @@ public class TicketModel {
 	public TicketModel() throws ClassNotFoundException {
 		myConnection = new SqlDatabaseConnection();
 	}
-
+	
+	
+	/**
+	 * getTicketInfo method uses the entered emailed and optionally entered ticket ID to find the tickets 
+	 * associated with that user.
+	 * 
+	 */
 	public String getTicketInfo(String email, String ticketId) {
 
 		String allTickets = "";
@@ -26,7 +39,8 @@ public class TicketModel {
 
 			ArrayList<ArrayList<String>> emailTickets = myConnection
 					.doRetrievalQuery("SELECT * FROM TICKET WHERE Email = \"" + email + "\"");
-
+			
+			// Ticket info is pulled for each ticket associated with the current user
 			for (int i = 0; i < emailTickets.size(); i++) {
 				ArrayList<ArrayList<String>> seats = myConnection
 						.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatId = \"" + emailTickets.get(i).get(1) + "\"");
@@ -42,10 +56,14 @@ public class TicketModel {
 				allTickets += "---------------\n\n";
 			}
 		} else {
+			// Ticket info is pulled for the individual ticket
+			
 			allTickets = "Ticket ID #" + ticketId + "\n\n";
 
 			ArrayList<ArrayList<String>> emailTickets = myConnection.doRetrievalQuery(
 					"SELECT * FROM TICKET WHERE Email = \"" + email + "\" AND TicketID = \"" + ticketId + "\"");
+			
+			// here we check to see if that ticket is in the DB
 			if (!emailTickets.isEmpty()) {
 				ArrayList<ArrayList<String>> seats = myConnection
 						.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatId = \"" + emailTickets.get(0).get(1) + "\"");
@@ -72,8 +90,15 @@ public class TicketModel {
 //		
 //	}
 
+	/**
+	 * cancelTicket method handles canceling of tickets and applying credits to that user by email.
+	 * Registered users retrieve a 100% credit, ordinary users only 85%.
+	 * 
+	 */
 	public String cancelTicket(String email, String ticketId) {
 		String message = "";
+		
+		
 		
 		ArrayList<ArrayList<String>> emailTickets = myConnection
 				.doRetrievalQuery("SELECT * FROM TICKET WHERE TicketID = \"" + ticketId + "\"");
@@ -82,20 +107,23 @@ public class TicketModel {
 		ArrayList<ArrayList<String>> movie = myConnection
 				.doRetrievalQuery("SELECT * FROM SHOWTIME WHERE ShowtimeId = \"" + seats.get(0).get(1) + "\"");
 		
+		// user is only allowed to cancel if its more than 72 hours away from the current show
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date movieDateTime = new java.util.Date();
 		try {
 			movieDateTime = dateFormatter.parse(movie.get(0).get(3) + " " + movie.get(0).get(4));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			System.err.println("entered date is not in correct format yyyy-MM-dd HH:mm");
 		}
 		Date now = new java.util.Date();
 		
 		long hoursUntilMovie = (movieDateTime.getTime() - now.getTime())*3600000;
-
+		
+		// making sure both email and ticketId are entered to actually be able to cancel
 		if (email.isEmpty() || ticketId.isEmpty()) {
 			message = "Please enter both your email and an individual ticket ID";
 		}
+		// making sure they arent trying to cancel within 72 hours of the movie
 		else if(hoursUntilMovie < 72) {
 			message = "You cannot cancel your ticket within 72 hours of the showtime.";
 		}
@@ -103,13 +131,19 @@ public class TicketModel {
 			if (emailTickets.isEmpty()) {
 				return "Ticket ID# " + ticketId + " does not exist.";
 			}
+			
+			//deleting the ticket from the database
 			boolean cancelledTicket = myConnection.doDeleteQuery("TICKET", "TicketID", ticketId);
 			if (cancelledTicket && emailTickets.get(0).get(2).equals("paid")) {
+				
+				// creating credit in the database
 				
 				double creditAmount;
 				
 				ArrayList<ArrayList<String>> registeredUser = myConnection
 						.doRetrievalQuery("SELECT * FROM REGISTEREDUSER WHERE Email = \"" + email + "\"");
+				
+				// setting refund to 85% for ordinary users
 				
 				if (registeredUser.isEmpty()) {
 					creditAmount = Double.parseDouble(movie.get(0).get(5)) * 0.85;

@@ -120,6 +120,8 @@ public class TicketView extends JFrame{
 		returnButton.addActionListener(listen);
 	}
 	
+	// generic function for setting the current display
+	
 	public void setTicketDisplay (String message) {
 		ticketDisplay.setText(message);
 	}

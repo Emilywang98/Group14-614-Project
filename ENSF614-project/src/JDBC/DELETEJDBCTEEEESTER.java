@@ -2,7 +2,7 @@ package JDBC;
 
 import java.util.ArrayList;
 
-public class JDBCTEEEESTER {
+public class DELETEJDBCTEEEESTER {
 
 	public static void main(String[] args) {
 		ArrayList<String> testTouple = new ArrayList<String>();
