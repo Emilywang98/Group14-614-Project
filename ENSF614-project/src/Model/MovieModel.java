@@ -38,10 +38,9 @@ public class MovieModel {
 	 * @param showtime_selected
 	 * @return showtimeIdList
 	 */
-	public ArrayList<String> getVerifiedShowtimeId(String showtime_selected) {
-
+	public ArrayList<String> getVerifiedShowtimeId(String showtime_selected, String movieName) {
 		ArrayList<ArrayList<String>> showtimeId = myConnection
-				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
+				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\" AND MovieName=\"" + movieName + "\"");
 		if (!showtimeId.isEmpty()) {
 			ArrayList<String> showtimeIdList = new ArrayList();
 			showtimeIdList.add(showtimeId.get(0).get(0));
