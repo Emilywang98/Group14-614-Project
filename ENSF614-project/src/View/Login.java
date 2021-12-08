@@ -23,6 +23,7 @@ public class Login extends JFrame implements ActionListener{
     private RegistrationModel registerModel;
     private NavigationView navigationPage;
     private UserView userPage;
+    private JFrame frame;
 
     public void runApp(){
 
@@ -35,7 +36,7 @@ public class Login extends JFrame implements ActionListener{
 
     public void displayGUI(){
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
+        frame = new JFrame();
 
         //configure the frame
         frame.setSize(350, 200);
@@ -80,10 +81,12 @@ public class Login extends JFrame implements ActionListener{
         // register pressed
         if (e.getSource() == registerButton) {
             registerController = new RegistrationController();
+//            this.setVisible(false);
         }
 
-        // register pressed
+        // guest pressed
         if (e.getSource() == guestButton) {
+        	frame.setVisible(false);
             navigationPage = new NavigationView();
             navigationPage.displayGUI();
         }
@@ -92,6 +95,10 @@ public class Login extends JFrame implements ActionListener{
 
     public void addLoginListener(ActionListener listenForLogin){
         loginButton.addActionListener(listenForLogin);
+    }
+    
+    public JFrame getFrame() {
+    	return frame;
     }
 
     /**

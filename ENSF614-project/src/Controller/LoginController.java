@@ -34,8 +34,8 @@ public class LoginController {
                 loginInfo = model.getVerification(username, password);
 
                 login.displayPlainMessage("Login", "Login Successful");
+                login.getFrame().setVisible(false);
                 userController = new UserController(loginInfo);
-                login.setVisible(false);
             } // Login was not successful, catches the error and displays error message
             catch (NumberFormatException e1){
                 login.displayErrorMessage("ERROR, try again!");

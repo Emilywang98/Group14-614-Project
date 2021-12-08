@@ -121,19 +121,19 @@ public class PaymentModel {
 		ArrayList<ArrayList<String>> currentUserCredits = myConnection
 				.doRetrievalQuery("SELECT * FROM MOVIECREDIT WHERE Email = \"" + email + "\"");
 		
-		// getting expiry
-		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date expiryDateTime = new java.util.Date();
-		try {
-			expiryDateTime = dateTimeFormatter.parse(currentUserCredits.get(0).get(3));
-		} catch (ParseException e) {
-			System.err.println("entered date is not in correct format yyyy-MM-dd");
-		}
-		Date now = new java.util.Date();
-		
-		long expiryComparison = expiryDateTime.getTime() - now.getTime();
-		
 		if (!currentUserCredits.isEmpty()) {
+			
+			// getting expiry
+			SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date expiryDateTime = new java.util.Date();
+			try {
+				expiryDateTime = dateTimeFormatter.parse(currentUserCredits.get(0).get(3));
+			} catch (ParseException e) {
+				System.err.println("entered date is not in correct format yyyy-MM-dd");
+			}
+			Date now = new java.util.Date();
+			
+			long expiryComparison = expiryDateTime.getTime() - now.getTime();
 			
 			double billDisplay = getBillTotal();
 			

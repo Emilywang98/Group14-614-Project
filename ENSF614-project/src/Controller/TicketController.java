@@ -107,6 +107,7 @@ public class TicketController {
 				
 			}catch(IndexOutOfBoundsException ex) {
 				// specifically catching if API is returning empty sets
+				ex.printStackTrace();
 				ticketView.setTicketDisplay("That ticket does not exist!");
 			}catch(Exception ex) {
 				ex.printStackTrace();;

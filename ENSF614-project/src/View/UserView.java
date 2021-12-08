@@ -217,12 +217,13 @@ public class UserView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == bookBtn) {
+			this.setVisible(false);
 			controller = new TheatreController();
 		}
 
 		if(e.getSource() == cancelBtn){
+			this.setVisible(false);
 			ticketController = new TicketController();
-			ticketController.getView().setVisible(true);
 		}
 
 		if(e.getSource() == announcementBtn){

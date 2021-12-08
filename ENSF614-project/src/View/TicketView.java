@@ -15,7 +15,7 @@ public class TicketView extends JFrame{
 	
 		// Editing GUI window settings
 		int width = 600;
-		setSize(width,1000);
+		setSize(width,800);
 		setTitle("Movie Ticket Viewer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
@@ -88,19 +88,6 @@ public class TicketView extends JFrame{
 		payCancelButtonsPanel.setMaximumSize(new Dimension(width,75));
 		
 		add(payCancelButtonsPanel);
-		
-		// get ticket button
-		
-		JPanel returnButtonPanel = new JPanel();
-		returnButtonPanel.setLayout(new GridLayout(1,1));
-		
-		returnButton = new JButton("Return");
-		
-		returnButtonPanel.add(returnButton);
-		returnButtonPanel.setPreferredSize(new Dimension(width,75));
-		returnButtonPanel.setMaximumSize(new Dimension(width,75));
-		
-		add(returnButtonPanel);
 	
 	}
 	

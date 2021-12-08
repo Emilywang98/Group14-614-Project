@@ -14,6 +14,7 @@ public class NavigationView extends JFrame implements ActionListener {
     private JButton bookTicketButton = new JButton("Book Ticket");
     private TicketController ticketController;
     private TheatreController theatreController;
+    private JFrame frame;
 
     public NavigationView(){
         cancelButton.addActionListener(this);
@@ -23,7 +24,7 @@ public class NavigationView extends JFrame implements ActionListener {
     public void displayGUI(){
         setTitle("Navigation Portal");
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
+        frame = new JFrame();
 
         //configure the frame
         frame.setSize(350, 200);
@@ -46,12 +47,13 @@ public class NavigationView extends JFrame implements ActionListener {
         //cancel button pressed
         if(e.getSource() == cancelButton){
             ticketController = new TicketController();
-            ticketController.getView().setVisible(true);
+            frame.setVisible(false);
         }
 
         //book ticket pressed
         if(e.getSource() == bookTicketButton){
             theatreController = new TheatreController();
+            frame.setVisible(false);
         }
     }
 }
