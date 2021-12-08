@@ -171,11 +171,12 @@ CREATE TABLE MOVIECREDIT (
 	MovieCreditID INTEGER NOT NULL AUTO_INCREMENT,
     Email VARCHAR(100),
     Amount DOUBLE,
+    Expiry Datetime,
     primary key (MovieCreditID)
 );
 
-INSERT INTO MOVIECREDIT (Email, Amount) VALUES
-('g@gmail.com', 15.00);
+INSERT INTO MOVIECREDIT (Email, Amount, Expiry) VALUES
+('g@gmail.com', 15.00, "2021-12-01");
 
 DROP TABLE IF EXISTS ANNOUNCEMENTS;
 CREATE TABLE ANNOUNCEMENTS (
