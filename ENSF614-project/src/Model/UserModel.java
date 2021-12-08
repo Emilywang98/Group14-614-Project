@@ -1,17 +1,21 @@
 package Model;
-
-
 import JDBC.SqlDatabaseConnection;
-import Controller.UserController;
-
 import java.util.ArrayList;
 
+/*
+ * This class contains logic of registered user where it receives username and
+ * password from login. Then it pulls the registered user's information and display
+ * them on the screen. It also provides choices for registered user to pay their annual
+ * fee, view announcements that will be sent to their email, select theatre and cancel
+ * ticket.
+ * 
+ */
+
 public class UserModel {
-	
+	//create jdbc to database connection
     private SqlDatabaseConnection myConnection;
     
-    private UserController controller;
-    
+    //attributes for users
     private String firstName;
     private String lastName;
     private String address;
@@ -21,14 +25,16 @@ public class UserModel {
     private String cardExp;
     
   
-    
+    //connect to jdbc
     public UserModel() throws ClassNotFoundException {
     	myConnection = new SqlDatabaseConnection();
     }
     
+    //return an arraylist of registered user's information based on their information
     public ArrayList<ArrayList<String>> showUserInfo(String username, String password) {
     	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT * FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");
-		if(matrix.get(0).get(0).equals(username) && matrix.get(0).get(1).equals(password)){
+		//added all attributes to arraylist and passed this arraylist to the userview
+    	if(matrix.get(0).get(0).equals(username) && matrix.get(0).get(1).equals(password)){
 			firstName = matrix.get(0).get(2);
 			lastName = matrix.get(0).get(3);
 			address = matrix.get(0).get(4);
@@ -44,34 +50,6 @@ public class UserModel {
 
     }
     
-//	public String getFName() {
-//		return firstName;
-//	}
-//	
-//	public String getLName() {
-//		return lastName;
-//	}
-//	
-//	public String getAddress() {
-//		return address;
-//	}
-//	
-//	public String getEmail() {
-//		return email;
-//	}
-//	
-//	public String getCardNumber() {
-//		return cardNumber;
-//	}
-//	
-//	public String getCardCvv() {
-//		return cardCvv;
-//	}
-//	
-//	public String getCardExp() {
-//		return cardExp;
-//	}
-	
 }
 
 

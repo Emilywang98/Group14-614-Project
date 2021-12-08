@@ -6,11 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Controller.TicketController;
-import View.Login;
 import Controller.TheatreController;
-import Controller.UserController;
-import Model.TheatreModel;
-import Model.UserModel;
 import Controller.AnnouncementsController;
 
 public class UserView extends JFrame implements ActionListener {
@@ -81,7 +77,6 @@ public class UserView extends JFrame implements ActionListener {
 		fName.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(fName);
 
-//        FName = setFName(controller.getFName());
 		FName = setFName(firstName);
 		FName.setBounds(170, 140, 250, 25);
 		FName.setFont(new Font("Courier New", Font.BOLD, 12));
@@ -92,7 +87,6 @@ public class UserView extends JFrame implements ActionListener {
 		lName.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(lName);
 
-//        LName = setLName(controller.getLName());
 		LName = setLName(lastName);
 		LName.setBounds(170, 160, 250, 25);
 		LName.setFont(new Font("Courier New", Font.BOLD, 12));
@@ -103,7 +97,6 @@ public class UserView extends JFrame implements ActionListener {
 		email.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(email);
 
-//        Email = setEmail(controller.getEmail());
 		Email = setEmail(emailAdd);
 		Email.setBounds(170, 180, 250, 25);
 		Email.setFont(new Font("Courier New", Font.BOLD, 12));
@@ -114,7 +107,6 @@ public class UserView extends JFrame implements ActionListener {
 		address.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(address);
 
-//        Address = setAddress(controller.getAddress());
 		Address = setAddress(homeAddress);
 		Address.setBounds(170, 200, 400, 25);
 		Address.setFont(new Font("Courier New", Font.BOLD, 12));
@@ -126,7 +118,6 @@ public class UserView extends JFrame implements ActionListener {
 		this.add(creditNo);
 
 		cardNo = setCardNo(cardNumb);
-//        cardNo = setCardNo(controller.getCardNumber());
 		cardNo.setBounds(200, 220, 400, 25);
 		cardNo.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(cardNo);
@@ -136,7 +127,6 @@ public class UserView extends JFrame implements ActionListener {
 		creditCVV.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(creditCVV);
 
-//        cvv = setCvv(controller.getCardCvv());
 		cvv = setCvv(cardCvv);
 		cvv.setBounds(200, 240, 400, 25);
 		cvv.setFont(new Font("Courier New", Font.BOLD, 12));
@@ -147,7 +137,6 @@ public class UserView extends JFrame implements ActionListener {
 		creditDate.setFont(new Font("Courier New", Font.BOLD, 12));
 		this.add(creditDate);
 
-//        expDate = setExpDate(controller.getCardExp());
 		expDate = setExpDate(cardExpDate);
 		expDate.setBounds(250, 260, 400, 25);
 		expDate.setFont(new Font("Courier New", Font.BOLD, 12));
