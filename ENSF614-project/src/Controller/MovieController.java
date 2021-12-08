@@ -73,15 +73,19 @@ public class MovieController {
 			System.out.println(movieSearchView.getMovie());
 			try {
 				availableShowtimes = movieModel.returnShowtimesForMovie(movieSearchView.getMovie());
-
-				StringBuffer sb = new StringBuffer();
-
-				for (String s : availableShowtimes) {
-					sb.append(s);
-					sb.append("\n");
+				if(movieSearchView.getMovie().isEmpty()) {
+					movieSearchView.displayMessage("You must search a movie first!");
 				}
-				String availableShowtimesString = sb.toString();
-				movieSearchView.setShowtimesDisplay(availableShowtimesString);
+				else {
+					StringBuffer sb = new StringBuffer();
+
+					for (String s : availableShowtimes) {
+						sb.append(s);
+						sb.append("\n");
+					}
+					String availableShowtimesString = sb.toString();
+					movieSearchView.setShowtimesDisplay(availableShowtimesString);
+				}
 				
 
 			} catch (NullPointerException ex) {
@@ -107,7 +111,10 @@ public class MovieController {
 
 					seatController.getView().setVisible(true);
 					movieSearchView.setVisible(false);
-				} else {
+				} else if (movieSearchView.getMovie().isEmpty()){
+					movieSearchView.displayMessage("You must search a movie first!");
+				}
+				else {
 					movieSearchView.displayMessage("You must enter a showtime!");
 				}
 			} catch (NullPointerException ex) {

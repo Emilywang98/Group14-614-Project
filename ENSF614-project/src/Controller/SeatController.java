@@ -34,21 +34,21 @@ public class SeatController {
 	}
 
 	public class Board{
-		private char theBoard[][];
+		private String theBoard[][];
 		
 		public Board() {
-			theBoard = new char[5][];
+			theBoard = new String[5][];
 			for (int i = 0; i < 5; i++) {
-				theBoard[i] = new char[4];
+				theBoard[i] = new String[4];
 				for (int j = 0; j < 4; j++)
-					theBoard[i][j] = ' ';
+					theBoard[i][j] = "  ";
 			}
 		}
 		String displayColumnHeaders() {
 			StringBuilder columnHeaders= new StringBuilder();    
-			columnHeaders.append("          ");
+			columnHeaders.append("               ");
 			for (int j = 1; j < 5; j++)
-				columnHeaders.append("  col " + j + " ");
+				columnHeaders.append("   col " + j + "  ");
 			columnHeaders.append("\n");
 			return columnHeaders.toString();
 		}
@@ -58,9 +58,9 @@ public class SeatController {
 		 */
 		String addHyphens() {
 			StringBuilder hyphens= new StringBuilder();
-			hyphens.append("          ");
+			hyphens.append("               ");
 			for (int j = 0; j < 4; j++)
-				hyphens.append("+-------");
+				hyphens.append("+--------");
 			hyphens.append("+\n");
 			
 			return hyphens.toString();
@@ -71,9 +71,9 @@ public class SeatController {
 		 */
 		String addSpaces() {
 			StringBuilder spaces= new StringBuilder();
-			spaces.append("          ");
+			spaces.append("               ");
 			for (int j = 0; j < 4; j++)
-				spaces.append("|       ");
+				spaces.append("|            ");
 			spaces.append("|\n");
 			
 			return spaces.toString();
@@ -86,9 +86,9 @@ public class SeatController {
 			for (int row = 0; row < 5; row++) {
 				display.append(addSpaces());
 				int real_row = row+1;
-				display.append("    row " + real_row + ' ');
+				display.append("    row " + real_row + " ");
 				for (int col = 0; col < 4; col++)
-					display.append("|   " + addSeatMark(row, col) + "   ");
+					display.append("|      " + addSeatMark(row, col) + "    ");
 				display.append("|\n");
 				display.append(addSpaces());
 				display.append(addHyphens());
@@ -96,34 +96,14 @@ public class SeatController {
 			return display.toString();
 		}
 		
-		private char addSeatMark(int row, int col) {
-			ArrayList<ArrayList<String>> a = new ArrayList<>();
-
-		    ArrayList<String> a1 = new ArrayList<String>();
-		    ArrayList<String> a2 = new ArrayList<String>();
-		    ArrayList<String> a3 = new ArrayList<String>();
-
-		    a1.add("1");//ticketid
-		    a1.add("2");//seat row
-		    a1.add("2");//seat col
-
-		    a2.add("2");
-		    a2.add("3");
-		    a2.add("3");
-
-		    a3.add("3");
-		    a3.add("4");
-		    a3.add("4");
-		    
-		    a.add(a1);
-		    a.add(a2);
-		    a.add(a3);
+		private String addSeatMark(int row, int col) {
+			ArrayList<ArrayList<String>> a = seatModel.returnSeats(showtimeID);
 
 			for (int i=0; i< a.size(); i++) {
 				int real_row = row+1;
 				int real_col = col+1;
 				if(Integer.toString(real_row).equals(a.get(i).get(1))&& Integer.toString(real_col).equals(a.get(i).get(2))) {
-					theBoard[row][col] = 'A';
+					theBoard[row][col] = "A";
 				}
 				
 			}
