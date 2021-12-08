@@ -1,14 +1,17 @@
 package Controller;
 
-import View.MovieSearchView;
-import View.SeatView;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import Model.SeatModel;
 import Model.MovieModel;
+import View.MovieSearchView;
+import View.SeatView;
+
+/**
+ * The class is the controller of movie
+ *
+ */
 
 public class MovieController {
 	MovieSearchView movieSearchView;
@@ -51,7 +54,7 @@ public class MovieController {
 				movieName = movieSearchView.getMovie();
 				if (!movieName.isEmpty()) {
 
-					movies = movieModel.getMovieVerification(movieName);
+					movies = movieModel.verifyMovie(movieName);
 
 					movieSearchView.setMovieSuccessDisplay("Movie " + '"' + movieName + '"' + " was found");
 				} else {
@@ -68,7 +71,6 @@ public class MovieController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-//        	String showtime_selected;
 			ArrayList<String> availableShowtimes;
 			System.out.println(movieSearchView.getMovie());
 			try {
@@ -93,6 +95,7 @@ public class MovieController {
 			}
 		}
 	}
+	
 	class SelectShowtimeListener implements ActionListener {
 
 		@Override
@@ -102,10 +105,8 @@ public class MovieController {
 			try {
 				showtime_selected = movieSearchView.getShowtime();
 				if (!showtime_selected.isEmpty()) {
-					showtimeId = movieModel.getShowtimeVerification(showtime_selected);
+					showtimeId = movieModel.getVerifiedShowtimeId(showtime_selected);
 
-//					movieSearchView
-//							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
 					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
 					seatController = new SeatController(showtimeId.get(0));
 

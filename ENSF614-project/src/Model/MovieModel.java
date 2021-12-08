@@ -1,49 +1,61 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 import JDBC.SqlDatabaseConnection;
 
+/**
+ * The class is the model of movie
+ *
+ */
 public class MovieModel {
 
 	SqlDatabaseConnection myConnection;
-	private String movieName;
 	String showtime;
 
 	public MovieModel() throws ClassNotFoundException {
 		myConnection = new SqlDatabaseConnection();
 	}
-
-	public ArrayList<String> getMovieVerification(String movieName) {
+	
+	/**
+	 * The method is used to verify if movie is found or not
+	 * @param movieName
+	 * @return movie
+	 */
+	public ArrayList<String> verifyMovie(String movieName) {
 		ArrayList<ArrayList<String>> movies = myConnection
 				.doRetrievalQuery("SELECT Name FROM MOVIES WHERE Name= \"" + movieName + "\"");
 		if (!movies.isEmpty()) {
-			ArrayList<String> moviesList = new ArrayList();
-			moviesList.add(movieName);
-			return moviesList;
+			ArrayList<String> movie = new ArrayList();
+			movie.add(movieName);
+			return movie;
 		} else {
 			throw new NullPointerException();
 		}
 	}
+	
+	/**
+	 * The method is used to get showtimeId of verified showtime
+	 * @param showtime_selected
+	 * @return showtimeIdList
+	 */
+	public ArrayList<String> getVerifiedShowtimeId(String showtime_selected) {
 
-	public ArrayList<String> getShowtimeVerification(String showtime_selected) {
-
-		ArrayList<ArrayList<String>> showId = myConnection
+		ArrayList<ArrayList<String>> showtimeId = myConnection
 				.doRetrievalQuery("SELECT ShowTimeID FROM SHOWTIME WHERE ShowTime=\"" + showtime_selected + "\"");
-		if (!showId.isEmpty()) {
+		if (!showtimeId.isEmpty()) {
 			ArrayList<String> showtimeIdList = new ArrayList();
-			showtimeIdList.add(showId.get(0).get(0));
+			showtimeIdList.add(showtimeId.get(0).get(0));
 			return showtimeIdList;
 		} else {
 			throw new NullPointerException();
 		}
 	}
-
+	
+	/**
+	 * The method is used to return all showtimes found for the movie
+	 * @param movie_selected
+	 * @return showtimesForMovie
+	 */
 	public ArrayList<String> returnShowtimesForMovie(String movie_selected) {
 
 		ArrayList<ArrayList<String>> showtimes = myConnection

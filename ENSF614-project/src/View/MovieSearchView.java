@@ -3,6 +3,10 @@ package View;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * Movie Search view on the GUI
+ *
+ */
 public class MovieSearchView extends JFrame {
 
 	private JButton selectShowtimeButton, searchMovieButton, searchShowtimesButton;
@@ -12,12 +16,9 @@ public class MovieSearchView extends JFrame {
 
 	public MovieSearchView() {
 
-		// Creating the Frame
 		setSize(500, 700);
 		setTitle("Movie Search Page");
-//		JFrame frame = new JFrame("Movie Search Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setSize(500, 500);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -64,58 +65,79 @@ public class MovieSearchView extends JFrame {
 		selectShowtimeButton.setBounds(321, 597, 85, 21);
 		panel.add(selectShowtimeButton);
 
-//		JButton searchSeatsButton = new JButton("Search Seats");
-//		searchSeatsButton.setBounds(355, 432, 121, 21);
-//		panel.add(searchSeatsButton);
-		
 		getContentPane().add(panel);
 		setVisible(true);
 	}
-//	public void addSearchSeatsActionListener(ActionListener listen) {
-//
-//		searchSeatsButton.addActionListener(listen);
-//	}
-
+	
+	/**
+	 * The method is used to add actionListener for searchMovieButton
+	 * @param listen
+	 */
 	public void addSearchMovieActionListener(ActionListener listen) {
 
 		searchMovieButton.addActionListener(listen);
 	}
 
+	/**
+	 * The method is used to add actionListener for selectShowtimeButton
+	 * @param listen
+	 */
 	public void addSelectShowtimeActionListener(ActionListener listen) {
 
 		selectShowtimeButton.addActionListener(listen);
-
 	}
 
+	/**
+	 * The method is used to add actionListener for searchShowtimeButton
+	 * @param listen
+	 */
 	public void addSearchShowtimesActionListener(ActionListener listen) {
 
 		searchShowtimesButton.addActionListener(listen);
-
 	}
-
+	
+	/**
+	 * The method is used to get movie input from user
+	 * @return movie name from user input
+	 */
 	public String getMovie() {
 
 		return movieName.getText();
 	}
 
+	/**
+	 * The method is used to get showtime input from user
+	 * @return showtime from user input
+	 */
 	public String getShowtime() {
 
 		return showtimeSeleted.getText();
 	}
-
+	
+	/**
+	 * The method is used to set the display if movie is found successfully or not
+	 * @param message
+	 */
 	public void setMovieSuccessDisplay(String message) {
 
 		movieSuccessDisplay.setText(message);
 	}
-
-
+	
+	/**
+	 * The method is used to set the display all the showtimes found for the movie
+	 * @param message
+	 */
 	public void setShowtimesDisplay(String message) {
 
 		showtimesDisplay.setText(message);
 	}
-
+	
+	/**
+	 * The method is used to display a message 
+	 * @param message
+	 */
 	public void displayMessage(String message) {
-		JOptionPane.showMessageDialog(this, message);
 		
+		JOptionPane.showMessageDialog(this, message);
 	}
 }

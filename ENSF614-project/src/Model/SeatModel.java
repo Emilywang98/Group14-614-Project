@@ -1,14 +1,12 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 import JDBC.SqlDatabaseConnection;
 
+/**
+ * The class is the model of seat
+ *
+ */
 public class SeatModel {
 
 	SqlDatabaseConnection myConnection;
@@ -18,7 +16,12 @@ public class SeatModel {
 	public SeatModel() throws ClassNotFoundException {
 		myConnection = new SqlDatabaseConnection();
 	}
-
+	
+	/**
+	 * The method is used to return all seats for the showtime
+	 * @param showtimeID
+	 * @return all seats for the showtime
+	 */
 	public ArrayList<ArrayList<String>> returnSeats(String showtimeID) {
 		ArrayList<ArrayList<String>> allSeatsForTheShowtime = myConnection
 				.doRetrievalQuery("SELECT SeatID, SeatRow, SeatColumn FROM SEAT WHERE ShowtimeID = \"" + showtimeID + "\"");
@@ -37,14 +40,22 @@ public class SeatModel {
 		
 		return allSeatsForTheShowtime;
 	}
+	
+	/**
+	 * The method is used to get seatId which is selected and verified
+	 * @param seatRow
+	 * @param seatColumn
+	 * @param email
+	 * @param showtimeID
+	 * @return seatId
+	 */
+	public String getSeatId(String seatRow, String seatColumn, String email, String showtimeID) {
 
-	public String getVerification(String seatRow, String seatColumn, String email, String showtimeID) {
-
-		ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatRow=\""
+		ArrayList<ArrayList<String>> seat = myConnection.doRetrievalQuery("SELECT * FROM SEAT WHERE SeatRow=\""
 				+ seatRow + "\" AND SeatColumn =\"" + seatColumn + "\" AND ShowtimeID =\"" + showtimeID + "\"");
-		if (!matrix.isEmpty()) {
+		if (!seat.isEmpty()) {
 			ArrayList<String> ticket = new ArrayList<String>();
-			ticket.add(matrix.get(0).get(0));
+			ticket.add(seat.get(0).get(0));
 			ticket.add("reserved");
 			ticket.add(email);
 			myConnection.doInsertQuery("TICKET (SeatID, `Status`, Email)", ticket);
@@ -52,7 +63,7 @@ public class SeatModel {
 			throw new NullPointerException();
 		}
 
-		return matrix.get(0).get(0);
+		return seat.get(0).get(0);
 
 	}
 }
