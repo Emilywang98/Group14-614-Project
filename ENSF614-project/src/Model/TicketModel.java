@@ -3,6 +3,7 @@ package Model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import JDBC.SqlDatabaseConnection;
@@ -108,10 +109,11 @@ public class TicketModel {
 				.doRetrievalQuery("SELECT * FROM SHOWTIME WHERE ShowtimeId = \"" + seats.get(0).get(1) + "\"");
 		
 		// user is only allowed to cancel if its more than 72 hours away from the current show
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date movieDateTime = new java.util.Date();
 		try {
-			movieDateTime = dateFormatter.parse(movie.get(0).get(3) + " " + movie.get(0).get(4));
+			movieDateTime = dateTimeFormatter.parse(movie.get(0).get(3) + " " + movie.get(0).get(4));
 		} catch (ParseException e) {
 			System.err.println("entered date is not in correct format yyyy-MM-dd HH:mm");
 		}
@@ -156,7 +158,15 @@ public class TicketModel {
 				credit.add(email);
 				credit.add(String.valueOf(creditAmount));
 				
-				myConnection.doInsertQuery("MOVIECREDIT (Email, Amount)", credit);
+				// adding on year for the expiry date
+				Calendar c = Calendar.getInstance();
+				c.setTime(now);
+				c.add(Calendar.YEAR, 1);
+				Date expiry = c.getTime();
+				
+				credit.add(dateFormatter.format(expiry));
+				
+				myConnection.doInsertQuery("MOVIECREDIT (Email, Amount, Expiry)", credit);
 				
 				message = "Ticket ID #" + ticketId + " has been cancelled.";
 				message += "\nEmail: " + email + " has been credited.";
