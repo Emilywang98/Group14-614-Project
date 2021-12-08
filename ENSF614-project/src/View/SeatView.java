@@ -63,12 +63,9 @@ public class SeatView extends JFrame {
         emailInput.setColumns(10);
         
         getContentPane().add(panel);
-        
         setVisible(true);
     }
 
-
-	
 	public void addSelectSeatActionListener (ActionListener listen) {
 		selectSeatButton.addActionListener(listen);
 	}
@@ -89,17 +86,12 @@ public class SeatView extends JFrame {
 		return emailInput.getText();
 	}
 
-	
 	public void setAvailableSeatsDisplay(String availableSeats) {
 		availableSeatsDisplay.setText(availableSeats);
-		
 	}
-
-
 
 	public void displayMessage(String message) {
 		JOptionPane.showMessageDialog(this, message);
-		
 	}
 }
 

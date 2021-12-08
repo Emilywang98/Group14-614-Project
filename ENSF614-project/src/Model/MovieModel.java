@@ -12,7 +12,6 @@ import JDBC.SqlDatabaseConnection;
 public class MovieModel {
 
 	SqlDatabaseConnection myConnection;
-	private String movieName;
 	String showtime;
 
 	public MovieModel() throws ClassNotFoundException {

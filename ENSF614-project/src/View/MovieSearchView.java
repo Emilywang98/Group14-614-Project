@@ -12,12 +12,9 @@ public class MovieSearchView extends JFrame {
 
 	public MovieSearchView() {
 
-		// Creating the Frame
 		setSize(500, 700);
 		setTitle("Movie Search Page");
-//		JFrame frame = new JFrame("Movie Search Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setSize(500, 500);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -64,17 +61,9 @@ public class MovieSearchView extends JFrame {
 		selectShowtimeButton.setBounds(321, 597, 85, 21);
 		panel.add(selectShowtimeButton);
 
-//		JButton searchSeatsButton = new JButton("Search Seats");
-//		searchSeatsButton.setBounds(355, 432, 121, 21);
-//		panel.add(searchSeatsButton);
-		
 		getContentPane().add(panel);
 		setVisible(true);
 	}
-//	public void addSearchSeatsActionListener(ActionListener listen) {
-//
-//		searchSeatsButton.addActionListener(listen);
-//	}
 
 	public void addSearchMovieActionListener(ActionListener listen) {
 
@@ -84,13 +73,11 @@ public class MovieSearchView extends JFrame {
 	public void addSelectShowtimeActionListener(ActionListener listen) {
 
 		selectShowtimeButton.addActionListener(listen);
-
 	}
 
 	public void addSearchShowtimesActionListener(ActionListener listen) {
 
 		searchShowtimesButton.addActionListener(listen);
-
 	}
 
 	public String getMovie() {
@@ -108,14 +95,13 @@ public class MovieSearchView extends JFrame {
 		movieSuccessDisplay.setText(message);
 	}
 
-
 	public void setShowtimesDisplay(String message) {
 
 		showtimesDisplay.setText(message);
 	}
 
 	public void displayMessage(String message) {
-		JOptionPane.showMessageDialog(this, message);
 		
+		JOptionPane.showMessageDialog(this, message);
 	}
 }

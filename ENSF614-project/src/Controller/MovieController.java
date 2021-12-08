@@ -68,7 +68,6 @@ public class MovieController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-//        	String showtime_selected;
 			ArrayList<String> availableShowtimes;
 			System.out.println(movieSearchView.getMovie());
 			try {
@@ -104,8 +103,6 @@ public class MovieController {
 				if (!showtime_selected.isEmpty()) {
 					showtimeId = movieModel.getShowtimeVerification(showtime_selected);
 
-//					movieSearchView
-//							.setShowtimeSuccessDisplay("Showtime " + showtime_selected + " was successfully selected");
 					movieSearchView.displayMessage("Showtime " + showtime_selected + " was successfully selected");
 					seatController = new SeatController(showtimeId.get(0));
 

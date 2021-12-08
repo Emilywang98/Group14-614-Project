@@ -1,6 +1,5 @@
 package Controller;
 
-import View.MovieSearchView;
 import View.SeatView;
 import Model.SeatModel;
 
@@ -120,18 +119,7 @@ public class SeatController {
 			ArrayList<ArrayList<String>> availableSeats;
 			try {
 				availableSeats = seatModel.returnSeats(showtimeID);
-//				System.out.println(availableSeats);
-//				StringBuffer sb = new StringBuffer();
-//
-//				for (int i = 0; i < availableSeats.size(); i++) {
-//					for (int j = 1; j < availableSeats.get(i).size(); j++) {
-//						sb.append("" + availableSeats.get(i).get(j) + "          ");
-//					}
-//					sb.append("\n");
-//				}
-//				String availableSeatsString = sb.toString();
-//				String output = "Avaiable seats: A \n\n";
-//				seatView.setAvailableSeatsDisplay("Row   " + " Column\n" + availableSeatsString);
+
 				Board theboard = new Board();
 				seatView.setAvailableSeatsDisplay( theboard.display());
 			} catch (NullPointerException ex) {
@@ -153,7 +141,6 @@ public class SeatController {
 				if (!email.isEmpty()) {
 					seatID = seatModel.getVerification(seatRow, seatColumn, email, showtimeID);
 
-//					seatView.setTheDisplay("");
 					seatView.displayMessage("Email sent. Seat: Row " + seatRow + " - " + "Column "+ seatColumn + " was successfully selected");
 					ticketController = new TicketController();
 
@@ -163,8 +150,6 @@ public class SeatController {
 					seatView.displayMessage("You must enter email and choose an available seat.");
 				}
 
-//			} catch (NumberFormatException ex1) {
-//				seatView.setTheDisplay("Error!");
 			} catch (NullPointerException ex2) {
 				seatView.displayMessage("You must choose an available seat.");
 			}
