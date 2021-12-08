@@ -23,7 +23,8 @@ public class SeatController {
 		try {
 			seatModel = new SeatModel();
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			// catching if the database wont read from the model.
+			seatView.displayMessage("Sorry, we can't connect you to the database right now!");
 		}
 
 		seatView.setVisible(true);
