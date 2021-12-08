@@ -20,4 +20,4 @@ Project members: Jintao Wang, Erika Wang, Emily Wang, Gregory Slowski
 
 ### Instructions to run the program as a Regular User:
 1. Once you run the program by running (App.java), the login page pops up. First hit the "Continue as Guest" button.
-2. Now you will be given a choice between 4 buttons: "Book ticket", "Cancel ticket". 
+2. Now you will be given a choice between 2 buttons: "Book ticket", "Cancel ticket". 
