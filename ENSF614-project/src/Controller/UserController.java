@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class UserController {
 	private UserView view;
 	private UserModel model;
-	
+	private TheatreController theatreController;
+	private TicketController ticketController;
 	private String fName;
 	private String lName;
 	private String email;
@@ -119,7 +120,10 @@ public class UserController {
 			// TODO Auto-generated method stub
 			
 			try {
+				theatreController = new TheatreController();
 				
+				theatreController.getView().setVisible(true);
+				view.setVisible(false);
 				
 			} catch (NumberFormatException e1){
                 view.displayMessage("ERROR!");
@@ -147,6 +151,10 @@ public class UserController {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
+				ticketController = new TicketController();
+				
+				ticketController.getView().setVisible(true);
+				view.setVisible(false);
 				
 			} catch (NumberFormatException e1){
                 view.displayMessage("ERROR!");

@@ -1,4 +1,5 @@
 package Controller;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,6 +49,10 @@ public class TheatreController {
 	    	view.setVisible(false);
 	    }
 	
+	}
+	public TheatreView getView() {
+		// TODO Auto-generated method stub
+		return view;
 	}
 
 
