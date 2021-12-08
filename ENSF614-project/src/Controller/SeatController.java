@@ -94,7 +94,7 @@ public class SeatController {
 		}
 
 		/**
-		 * This method is used to display seats
+		 * This method is used to display seats on the board
 		 */
 		public String display() {
 			StringBuilder display = new StringBuilder();
@@ -114,7 +114,7 @@ public class SeatController {
 		}
 
 		/**
-		 * This method is used to add marks of seats
+		 * This method is used to add marks of seats on the board
 		 */
 		private String addSeatMark(int row, int col) {
 			ArrayList<ArrayList<String>> a = seatModel.returnSeats(showtimeID);
