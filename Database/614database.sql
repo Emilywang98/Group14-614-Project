@@ -175,13 +175,7 @@ CREATE TABLE MOVIECREDIT (
 );
 
 INSERT INTO MOVIECREDIT (Email, Amount) VALUES
-<<<<<<< HEAD
-('g@gmail.com', 15.00),
-('goodbye@gmail.com', 20.00),
-('goodbye@gmail.com', 17.00),
-('hello@gmail.com', 8.50),
-('hello@gmail.com', 17.00),
-('welcome@gmail.com', 8.50);
+('g@gmail.com', 15.00);
 
 DROP TABLE IF EXISTS ANNOUNCEMENTS;
 CREATE TABLE ANNOUNCEMENTS (
@@ -200,6 +194,3 @@ INSERT INTO ANNOUNCEMENTS(AnnouncementId, Announcement) VALUES
 (7, 'New movie harry potter in theatres 12-17-21 on Presale NOW for 10% of reserved seats'),
 (8, 'New movie home alone in theatres 12-19-21 on Presale NOW for 10% of reserved seats');
 
-=======
-('g@gmail.com', 15.00);
->>>>>>> f94e1bc9b2fcc57317bb61563b76cff05a27e779
