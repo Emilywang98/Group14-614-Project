@@ -17,9 +17,15 @@ public class PaymentController {
 		this.paymentView = new PaymentView();
 		try {
 			this.paymentModel = new PaymentModel(email, ticketID);
+			
+			// Invoking the model, sending initial response to view
 			paymentView.setTheDisplay(paymentModel.calculateTotalBill());
+			
 		} catch (ClassNotFoundException e) {
+			
+			// If the DB is disconnected for whatever reason the user is informed
 			paymentView.setTheDisplay("Sorry, we can't connect you to the database right now!");
+			
 		}
 		this.ticketController = ticketController;
 		
@@ -35,12 +41,17 @@ public class PaymentController {
 		return paymentView;
 	}
 	
+	/**
+     * Helper subclass PayListener used to check for the click of the "Pay" button.
+     * This will initiate the payment process and display the changes back to the user.
+     * 
+     * @author Greg
+     *
+     */
 	class PayListener implements ActionListener{
 		
 		@Override
 		public void actionPerformed (ActionEvent e) {
-			
-			// cardNumField, cardCVVField, cardNameField, cardDateYearField, cardDateMonthField, cardPostalCodeField;
 			
 			String cardNum;
 			String cardCVV;
@@ -59,16 +70,18 @@ public class PaymentController {
 				expMonth = paymentView.getCardMonth();
 				postalCode = paymentView.getCardPostalCode();
 				
+				// ensuring the user has at least entered something for every field as we are not actually processing payment
 				if (!cardNum.isBlank() && !cardCVV.isBlank() && !cardName.isBlank() && 
 						!expYear.isBlank() && !expMonth.isBlank() && !postalCode.isBlank()) {
-					// Invoking the model
+
+					// Invoking the model, sending response to view
 					paymentView.setTheDisplay(paymentModel.payBill());
 				}else {
+					// Informing user they have to enter all fields for payment.
 					paymentView.setTheDisplay("Please fill in all fields.\n\n" + paymentModel.calculateTotalBill());
 				}
 				
-			}catch(NumberFormatException ex) {
-				ex.printStackTrace();
+			}catch(Exception ex) {
 				paymentView.setTheDisplay("Error!");
 			}
 		
@@ -76,20 +89,21 @@ public class PaymentController {
 		
 	}
 	
+	/**
+     * Helper subclass CancelListener used to check for the click of the "Return to Tickets" button.
+     * This will send the user back to the ticket view.
+     * 
+     * @author Greg
+     *
+     */
 	class CancelListener implements ActionListener{
 		
 		@Override
 		public void actionPerformed (ActionEvent e) {
 
-			try {
-				// We are reading data from the view
-				
-				ticketController.getView().setVisible(true);
-				paymentView.setVisible(false);
-				
-			}catch(NumberFormatException ex) {
-				paymentView.setTheDisplay("Error!");
-			}
+			// Passing ticket off to payment
+			ticketController.getView().setVisible(true);
+			paymentView.setVisible(false);
 		
 		}
 		
