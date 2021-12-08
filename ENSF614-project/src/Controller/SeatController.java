@@ -48,7 +48,7 @@ public class SeatController {
 			StringBuilder columnHeaders= new StringBuilder();    
 			columnHeaders.append("               ");
 			for (int j = 1; j < 5; j++)
-				columnHeaders.append("  col " + j + " ");
+				columnHeaders.append("   col " + j + "  ");
 			columnHeaders.append("\n");
 			return columnHeaders.toString();
 		}
@@ -97,27 +97,7 @@ public class SeatController {
 		}
 		
 		private String addSeatMark(int row, int col) {
-			ArrayList<ArrayList<String>> a = new ArrayList<>();
-
-		    ArrayList<String> a1 = new ArrayList<String>();
-		    ArrayList<String> a2 = new ArrayList<String>();
-		    ArrayList<String> a3 = new ArrayList<String>();
-
-		    a1.add("1");//ticketid
-		    a1.add("2");//seat row
-		    a1.add("2");//seat col
-
-		    a2.add("2");
-		    a2.add("3");
-		    a2.add("3");
-
-		    a3.add("3");
-		    a3.add("4");
-		    a3.add("4");
-		    
-		    a.add(a1);
-		    a.add(a2);
-		    a.add(a3);
+			ArrayList<ArrayList<String>> a = seatModel.returnSeats(showtimeID);
 
 			for (int i=0; i< a.size(); i++) {
 				int real_row = row+1;
