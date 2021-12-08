@@ -37,12 +37,7 @@ public class LoginController {
                 login.getFrame().setVisible(false);
                 userController = new UserController(loginInfo);
             } // Login was not successful, catches the error and displays error message
-            catch (NumberFormatException e1){
-                login.displayErrorMessage("ERROR, try again!");
-            }
-            catch(NullPointerException e2){
-                login.displayErrorMessage("ERROR, try again!");
-            } catch (Exception exception) {
+            catch (Exception exception) {
                 login.displayErrorMessage("ERROR, try again!");
             }
         }

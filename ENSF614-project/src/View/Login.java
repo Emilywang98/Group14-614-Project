@@ -37,6 +37,8 @@ public class Login extends JFrame implements ActionListener{
     public void displayGUI(){
         JPanel panel = new JPanel();
         frame = new JFrame();
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //configure the frame
         frame.setSize(350, 200);
