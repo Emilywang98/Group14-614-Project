@@ -31,6 +31,10 @@ public class SeatController {
 		seatView.addSearchSeatsActionListener(new SearchSeatsListener());
 	}
 
+	/**
+	 * The class is used to get seatView
+	 * @return seatView
+	 */
 	public SeatView getView() {
 		return seatView;
 	}
@@ -51,6 +55,9 @@ public class SeatController {
 			}
 		}
 
+		/**
+		 * This method is used to display column headers on the board
+		 */
 		String displayColumnHeaders() {
 			StringBuilder columnHeaders = new StringBuilder();
 			columnHeaders.append("               ");
@@ -86,6 +93,9 @@ public class SeatController {
 			return spaces.toString();
 		}
 
+		/**
+		 * This method is used to display seats
+		 */
 		public String display() {
 			StringBuilder display = new StringBuilder();
 			display.append(displayColumnHeaders());
