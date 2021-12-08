@@ -63,7 +63,7 @@ public class SeatModel {
 			throw new NullPointerException();
 		}
 
-		return seat.get(0).get(0);
+		return seat.get(0).get(0);//seat.get(0).get(0) is the seatId
 
 	}
 }
