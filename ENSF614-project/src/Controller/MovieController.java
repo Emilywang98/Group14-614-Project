@@ -9,7 +9,7 @@ import View.MovieSearchView;
 import View.SeatView;
 
 /**
- * The class is the controller of movie
+ * The class is the controller of movie,  connects movie view and movie model
  *
  */
 

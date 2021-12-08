@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * The class is the controller of seat
+ * The class is the controller of seat, connects seat view and seat model
  *
  */
 public class SeatController {
