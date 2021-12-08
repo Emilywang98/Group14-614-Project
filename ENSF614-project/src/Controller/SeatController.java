@@ -36,7 +36,7 @@ public class SeatController {
 	}
 
 	/**
-	 * The class is used for displaying the seats graphically
+	 * The class is used for displaying the seats graphically on board
 	 *
 	 */
 	public class Board {
@@ -103,6 +103,9 @@ public class SeatController {
 			return display.toString();
 		}
 
+		/**
+		 * This method is used to add marks of seats
+		 */
 		private String addSeatMark(int row, int col) {
 			ArrayList<ArrayList<String>> a = seatModel.returnSeats(showtimeID);
 
