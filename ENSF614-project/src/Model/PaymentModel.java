@@ -1,6 +1,9 @@
 package Model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import JDBC.SqlDatabaseConnection;
 
@@ -118,13 +121,29 @@ public class PaymentModel {
 		ArrayList<ArrayList<String>> currentUserCredits = myConnection
 				.doRetrievalQuery("SELECT * FROM MOVIECREDIT WHERE Email = \"" + email + "\"");
 		
+		// getting expiry
+		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date expiryDateTime = new java.util.Date();
+		try {
+			expiryDateTime = dateTimeFormatter.parse(currentUserCredits.get(0).get(3));
+		} catch (ParseException e) {
+			System.err.println("entered date is not in correct format yyyy-MM-dd");
+		}
+		Date now = new java.util.Date();
+		
+		long expiryComparison = expiryDateTime.getTime() - now.getTime();
+		
 		if (!currentUserCredits.isEmpty()) {
 			
 			double billDisplay = getBillTotal();
 			
 			for (int i = 0; i < currentUserCredits.size(); i++)
+				//checking credits are smaller than the outstanding amount
 				if (billDisplay >= Double.parseDouble(currentUserCredits.get(i).get(2))) {
-					billDisplay -= Double.parseDouble(currentUserCredits.get(i).get(2));
+					//checking the credit hasn't expired
+					if (expiryComparison > 0) {
+						billDisplay -= Double.parseDouble(currentUserCredits.get(i).get(2));
+					}
 				}
 			String s = "Ticket credit for " + email + " has been applied:\n";
 			s += "Subtotal after credit: $" + billDisplay + "\n";

@@ -57,12 +57,12 @@ CREATE TABLE SHOWTIME (
 );
 INSERT INTO SHOWTIME (ShowTimeID, MovieName, TheatreName, ShowDate, ShowTime, price)
 VALUES
-(1, "No Time To Die", "Ciniplex Chinook", '2021-12-01', '10:00', 15),
-(2, "No Time To Die", "Ciniplex Chinook", '2021-12-01', '12:00', 15),
-(3, "Dune", "Ciniplex Crowfoot", '2021-12-01', '14:00', 20),
-(4, "Dune", "Ciniplex Crowfoot", '2021-12-01', '16:00', 20),
-(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '18:00', 25),
-(6, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-01', '20:00', 25),
+(1, "No Time To Die", "Ciniplex Chinook", '2021-12-09', '10:00', 15),
+(2, "No Time To Die", "Ciniplex Chinook", '2021-12-09', '12:00', 15),
+(3, "Dune", "Ciniplex Crowfoot", '2021-12-11', '14:00', 20),
+(4, "Dune", "Ciniplex Crowfoot", '2021-12-11', '16:00', 20),
+(5, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-15', '18:00', 25),
+(6, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-15', '20:00', 25),
 (7, "Spider-Man: No Way Home", "Ciniplex Sunridge", '2021-12-15', '22:00', 25);
 
 DROP TABLE IF EXISTS SEAT;
@@ -171,7 +171,7 @@ CREATE TABLE MOVIECREDIT (
 	MovieCreditID INTEGER NOT NULL AUTO_INCREMENT,
     Email VARCHAR(100),
     Amount DOUBLE,
-    Expiry Datetime,
+    Expiry Date,
     primary key (MovieCreditID)
 );
 
