@@ -13,11 +13,7 @@ Project members: Jintao Wang, Erika Wang, Emily Wang, Gregory Slowski
 7. Add all schema privileges on the fourth tab
 8. Press apply
 
-### Instructions to run the program as a Registered User: 
-1. Once you run the program by running (App.java), the login page pops up. First hit the register button, register your information and hit submit.
-2. Once you get "Registration successful", close the registration page and enter the username and password you just created to log in. 
-3. Now you will be given a choice between 4 buttons: "Book ticket", "Cancel ticket", "Pay Annual Free", "Announcements" as a registered user.
-
-### Instructions to run the program as a Regular User:
-1. Once you run the program by running (App.java), the login page pops up. First hit the "Continue as Guest" button.
-2. Now you will be given a choice between 2 buttons: "Book ticket", "Cancel ticket". 
+### Instructions to run the program (please ensure you have linked the database as noted above first): 
+1. Run the program using either App.java if viewing the files or run Group14-ENSF614-FinalProject.jar to launch the application.
+2. Proceed to register then login or continue as guest and follow the prompts to see the whole program. 
+3. Use username: greg96 and password: 123457 if a default login is preferred.
