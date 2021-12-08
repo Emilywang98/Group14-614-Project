@@ -35,6 +35,10 @@ public class SeatController {
 		return seatView;
 	}
 
+	/**
+	 * The class is used for displaying the seats graphically
+	 *
+	 */
 	public class Board {
 		private String theBoard[][];
 
@@ -116,6 +120,10 @@ public class SeatController {
 		}
 	}
 
+	/**
+	 * The class handlers the actions of searchSeats button
+	 *
+	 */
 	class SearchSeatsListener implements ActionListener {
 
 		@Override
@@ -132,6 +140,11 @@ public class SeatController {
 		}
 	}
 
+	/**
+	 * The class handlers the actions of searchSeat button
+	 *
+	 */
+	
 	class SelectSeatListener implements ActionListener {
 
 		@Override
