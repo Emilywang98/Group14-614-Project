@@ -44,6 +44,10 @@ public class MovieController {
 		return movieSearchView;
 	}
 
+	/**
+	 * The class handlers the actions of searchMovie button
+	 *
+	 */
 	class SearchMovieListener implements ActionListener {
 
 		@Override
@@ -66,7 +70,10 @@ public class MovieController {
 		}
 	}
 
-	
+	/**
+	 * The class handlers the actions of searchShowtimes button
+	 *
+	 */
 	class SearchShowtimesListener implements ActionListener {
 
 		@Override
@@ -96,6 +103,10 @@ public class MovieController {
 		}
 	}
 	
+	/**
+	 * The class handlers the actions of selectShowtime button
+	 *
+	 */
 	class SelectShowtimeListener implements ActionListener {
 
 		@Override
