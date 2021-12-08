@@ -1,14 +1,12 @@
 package Model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import JDBC.SqlDatabaseConnection;
 
+/**
+ * Login model to get verification that user exists in the database
+ */
 public class LoginModel {
 	
 	private SqlDatabaseConnection myConnection;
@@ -17,7 +15,7 @@ public class LoginModel {
     	myConnection = new SqlDatabaseConnection();
     }
     
-    public ArrayList<String> getVerification(String username, String password) throws Exception {
+    public ArrayList<String> getVerification(String username, String password) {
 
 		//query the username and password
     	ArrayList<ArrayList<String>> matrix = myConnection.doRetrievalQuery("SELECT Username, Password FROM REGISTEREDUSER WHERE Username=\""+username+"\" AND Password =\""+password+"\"");

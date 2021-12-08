@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Registration view on the GUI
+ */
 public class Registration extends JFrame{
     private JLabel firstName = new JLabel("First Name: ");
     private JLabel lastName = new JLabel("Last Name: ");
@@ -117,8 +120,6 @@ public class Registration extends JFrame{
 
         //card info
         cardTitle = new JLabel(String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>","Enter Card Information to Pay the $20 Annual Registration Fee:"));
-
-//                ("</html>"+ "Enter Card Information to Pay the $20 Annual Registration Fee:"+ "</html>");
         cardTitle.setFont(new Font("Arial", Font.PLAIN, 18));
         cardTitle.setSize(300, 50);
         cardTitle.setLocation(150, 400);
@@ -167,7 +168,6 @@ public class Registration extends JFrame{
         submit.setFont(new Font("Arial", Font.PLAIN, 15));
         submit.setSize(100, 20);
         submit.setLocation(235, 550);
-//        submit.addActionListener(this);
         c.add(submit);
         setVisible(true);
     }

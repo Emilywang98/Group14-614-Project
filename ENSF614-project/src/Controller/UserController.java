@@ -9,12 +9,9 @@ import java.util.ArrayList;
 
 
 public class UserController {
-	
 	private UserView view;
 	private UserModel model;
 	
-//	private String username;
-//	private String userPwd;
 	private String fName;
 	private String lName;
 	private String email;
@@ -25,17 +22,8 @@ public class UserController {
 	
 	private ArrayList<ArrayList<String>> matrix;
 	
-//	ArrayList<String> loginInfo;
-	
-//	public ArrayList<String> getLoginInfo(){
-//		loginInfo.add("Erika97");
-//		loginInfo.add("123456");
-//		return loginInfo;
-//	}
-	
 	 
 	public UserController(ArrayList<String> loginInfo){
-//		this.loginInfo = loginInfo;
 	    try {
 			String username = loginInfo.get(0);
 			String userPwd = loginInfo.get(1);

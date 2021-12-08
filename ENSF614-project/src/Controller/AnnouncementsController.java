@@ -5,6 +5,9 @@ import View.Announcements;
 
 import java.util.ArrayList;
 
+/**
+ * Connects the announcements view with controller
+ */
 public class AnnouncementsController {
     private Announcements view;
     private AnnouncementsModel model;

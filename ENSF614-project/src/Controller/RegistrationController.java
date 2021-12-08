@@ -1,11 +1,13 @@
 package Controller;
 import View.Registration;
 import Model.RegistrationModel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Registration controller to connect the registration view and model
+ */
 public class RegistrationController {
     private Registration register;
     private RegistrationModel model;
@@ -36,8 +38,9 @@ public class RegistrationController {
                 String cardCvv = register.getCardCvv();
                 String cardExp = register.getCardExp();
 
-
+                //passes the new user to the model
                 registrationInfo = model.addNewUser(name, lastName, username, password, email, address, cardNo, cardCvv, cardExp);
+
                 register.displayPlainMessage("Registration", "Registration Successful");
             } // Login was not successful
             catch (NumberFormatException e1){
